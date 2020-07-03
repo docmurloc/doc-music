@@ -22,7 +22,7 @@ function MyStack() {
           <Stack.Screen 
           name="Home" 
           component={LoginPage} 
-          options={{title: 'Welcome'}}/>
+          options={{title: 'Login'}}/>
         </Stack.Navigator>
     </NavigationContainer>
   );
