@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {connect} from 'react-redux';
 
-import {StyleSheet, Text, TextInput , View, Image, Button} from "react-native";
+import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView} from "react-native";
 
 import BackgroundImage from './backgroundImage'
 
