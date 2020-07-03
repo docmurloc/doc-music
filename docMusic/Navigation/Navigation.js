@@ -4,6 +4,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
 
+import LoginPage from '../components/LoginPage'
+
 import { View, Text } from 'react-native';
 function HomeScreen() {
     return (
@@ -19,7 +21,7 @@ function MyStack() {
         <Stack.Navigator>
           <Stack.Screen 
           name="Home" 
-          component={HomeScreen} 
+          component={LoginPage} 
           options={{title: 'Welcome'}}/>
         </Stack.Navigator>
     </NavigationContainer>
