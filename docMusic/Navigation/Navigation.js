@@ -10,6 +10,7 @@ import HeaderLeft from '../components/header'
 
 import LoginPage from '../components/LoginPage'
 import HomePage from '../components/HomePage'
+import SignUpPage from '../components/SignUpPage'
 
 function HomeStack() {
     return (
@@ -32,6 +33,14 @@ function MyStack() {
           <Stack.Screen 
           name="Login" 
           component={LoginPage}
+          options={{ 
+            headerTitle: props => <HeaderLeft {...props} />,
+            headerLeft: null,
+            }} 
+          />
+          <Stack.Screen 
+          name="SignUp" 
+          component={SignUpPage}
           options={{ 
             headerTitle: props => <HeaderLeft {...props} />,
             headerLeft: null,

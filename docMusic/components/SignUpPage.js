@@ -6,18 +6,17 @@ import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView}
 import BackgroundImage from './backgroundImage'
 
 
-
-function LoginPage(props) {
-
+function SignUpPage(props) {
     const [pseudo, setPseudo] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmpassword, setConfirmPassword] = useState("");
 
     return (
         <View style={styles.container}>
             <BackgroundImage/>
             <View style={styles.box}>
                 <View style={styles.content}>
-                    <Text style={styles.title}>Your music at your fingertips</Text>
+                    <Text style={styles.title}>At one step of your dream</Text>
                     <TextInput
                     style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
                     placeholder = "Pseudo"
@@ -30,24 +29,28 @@ function LoginPage(props) {
                     onChangeText={text => setPassword(text)}
                     value={password}
                     />
+                    <TextInput
+                    style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                    placeholder = "Confirm password"
+                    onChangeText={text => setConfirmPassword(text)}
+                    value={confirmpassword}
+                    />
                     <View style={styles.horizontalDisplay}>
                         <Button
-                        title="LOGIN"
+                        title="REGISTER"
                         onPress={() => props.navigation.navigate('Home')}
                         />
                         <Button
-                          title="SIGN UP"
-                          onPress={() => props.navigation.navigate('SignUp')}
+                          title="SIGN IN"
+                          onPress={() => props.navigation.navigate('Login')}
                         />
                     </View>
-                    <Text style={styles.text}>Use your google profile</Text>
-                    <Image source={require('../Images/logoGoogle.png')} style={styles.icon} />
                 </View>
             </View>
 
         </View>
     );
-};
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -102,4 +105,4 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
     return state
   }  
-export default connect(mapStateToProps)(LoginPage);
+export default connect(mapStateToProps)(SignUpPage);
