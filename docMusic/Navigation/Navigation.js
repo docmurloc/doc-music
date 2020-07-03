@@ -4,6 +4,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
 
+import HeaderLeft from '../components/header'
+
 import LoginPage from '../components/LoginPage'
 
 import { View, Text } from 'react-native';
@@ -18,11 +20,17 @@ function HomeScreen() {
 function MyStack() {
   return (
     <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+        screenOptions={{
+            headerStyle: {
+              backgroundColor: 'rgb(200, 200, 200)',
+            },
+          }}>
           <Stack.Screen 
           name="Home" 
-          component={LoginPage} 
-          options={{title: 'Login'}}/>
+          component={LoginPage}
+          options={{ headerTitle: props => <HeaderLeft {...props} /> }} 
+          />
         </Stack.Navigator>
     </NavigationContainer>
   );

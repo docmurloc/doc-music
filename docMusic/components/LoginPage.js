@@ -16,7 +16,6 @@ function LoginPage(props) {
         <View style={styles.container}>
             <BackgroundImage/>
             <View style={styles.box}>
-                <Image source={require('../Images/logoMusic.png')} style={styles.logo}/>
                 <View style={styles.content}>
                     <Text style={styles.title}>Your music at your fingertips</Text>
                     <TextInput
