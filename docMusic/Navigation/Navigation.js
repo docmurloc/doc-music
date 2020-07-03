@@ -1,20 +1,23 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 import HeaderLeft from '../components/header'
 
 import LoginPage from '../components/LoginPage'
+import HomePage from '../components/HomePage'
 
-import { View, Text } from 'react-native';
-function HomeScreen() {
+function HomeStack() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Home Screen</Text>
-      </View>
-    );
+          <Tab.Navigator>
+            <Tab.Screen name="Home" component={HomePage} />
+            <Tab.Screen name="Settings" component={HomePage} />
+          </Tab.Navigator>
+      );
   }
 
 function MyStack() {
@@ -27,9 +30,19 @@ function MyStack() {
             },
           }}>
           <Stack.Screen 
-          name="Home" 
+          name="Login" 
           component={LoginPage}
-          options={{ headerTitle: props => <HeaderLeft {...props} /> }} 
+          options={{ 
+            headerTitle: props => <HeaderLeft {...props} />,
+            headerLeft: null,
+            }} 
+          />
+          <Stack.Screen 
+          name="Home" 
+          component={HomeStack}
+          options={{ 
+            headerTitle: props => <HeaderLeft {...props} />,
+            headerLeft: null }} 
           />
         </Stack.Navigator>
     </NavigationContainer>

@@ -6,7 +6,7 @@ import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView}
 function HomePage(props) {
     return (
         <View>
-
+            <Text>HomePage</Text>
         </View>
     )
 }

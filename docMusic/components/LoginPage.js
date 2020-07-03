@@ -33,11 +33,11 @@ function LoginPage(props) {
                     <View style={styles.horizontalDisplay}>
                         <Button
                         title="LOGIN"
-                        onPress={() => Alert.alert('Simple Button pressed')}
+                        onPress={() => props.navigation.navigate('Home')}
                         />
                         <Button
                           title="SIGN UP"
-                          onPress={() => Alert.alert('Simple Button pressed')}
+                          onPress={() => props.navigation.navigate('Home')}
                         />
                     </View>
                     <Text style={styles.text}>Use your google profile</Text>
