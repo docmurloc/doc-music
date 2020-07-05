@@ -1,16 +1,58 @@
 import React, { useState } from "react";
 import {connect} from 'react-redux';
 
+import NetInfo from "@react-native-community/netinfo";
+
+
 import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView} from "react-native";
 
 import BackgroundImage from './backgroundImage'
 
+async function loginUser(props, newPseudo, newPassword, setInfo) {
+    const test = await NetInfo.fetch();
+//
+    console.log("testrequest :", test);
 
+    const headerRequest =JSON.stringify ({
+        pseudo : newPseudo,
+        password: newPassword
+    });
+
+    fetch('http://89.87.94.17:3000/users/login', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'pseudo' : newPseudo,
+            'password': newPassword
+
+        },
+        method: 'GET',
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((lol) => {
+        setInfo(lol.status);
+        if (lol.status == "succes") {
+            props.navigation.navigate('Home');
+        }
+        console.log(lol);
+      //return json;
+    })
+    .catch((error) => {
+        console.error("error :",error);
+    });
+    //props.navigation.navigate('Home');
+
+    //console.log("fetch request :", response);
+}
 
 function LoginPage(props) {
 
     const [pseudo, setPseudo] = useState("");
     const [password, setPassword] = useState("");
+    const [Info, setInfo] = useState("");
+
 
     return (
         <View style={styles.container}>
@@ -18,6 +60,7 @@ function LoginPage(props) {
             <View style={styles.box}>
                 <View style={styles.content}>
                     <Text style={styles.title}>Your music at your fingertips</Text>
+                    <Text style={styles.title}>{Info}</Text>
                     <TextInput
                     style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
                     placeholder = "Pseudo"
@@ -33,7 +76,7 @@ function LoginPage(props) {
                     <View style={styles.horizontalDisplay}>
                         <Button
                         title="LOGIN"
-                        onPress={() => props.navigation.navigate('Home')}
+                        onPress={() => loginUser(props, pseudo, password, setInfo)}
                         />
                         <Button
                           title="SIGN UP"

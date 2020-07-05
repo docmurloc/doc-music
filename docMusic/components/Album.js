@@ -1,25 +1,28 @@
 import React, { useState } from "react";
 import {connect} from 'react-redux';
 
-import Displayer from './Displayer';
+import {StyleSheet, Text, TextInput , View, Image, Button, FlatList} from "react-native";
 
-import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView} from "react-native";
-
-
-function HomePage(props) {
-    const [reponse, setreponse] = useState("");
+function Album(props) {
     return (
-        <View style={styles.container}>
-            <Displayer title={"Favorite"}/>
+        <View style={styles.content}>
+            <Image source={require('../Images/logoMusic.png')} style={styles.logo}/>
+            <View style={styles.content2}>
+                <Text style={styles.title}>{props.title}</Text>
+                <Text style={styles.text} numberOfLines={2} ellipsizeMode='tail'>{props.type} {props.author} {props.info}</Text>
+            </View>
+
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1, 
+    content2: {
+        padding: 5,
+        //backgroundColor: "yellow"
+        //flex: 1, 
         //alignItems: 'center', 
-        justifyContent: 'flex-start'
+        //justifyContent: 'center'
     },
     box: {
         width : "100%",
@@ -31,12 +34,15 @@ const styles = StyleSheet.create({
         
     },
     content: {
+        width: 130,
+        //height: 170,
+        padding: 5,
         //idth : "100%",
-        margin : 30,
-        flex: 1, 
+        //margin : 30,
+        //flex: 1, 
         alignItems: 'center', 
         justifyContent: "space-around",
-        backgroundColor : 'rgba(215, 215, 215, 0.9)',
+        //backgroundColor : 'rgba(215, 215, 215, 0.9)',
         borderRadius: 20
         
     },
@@ -47,11 +53,15 @@ const styles = StyleSheet.create({
         //backgroundColor : "red"
     },
     text: {
-      fontSize: 20,
+      fontSize: 12,
+      textAlign: "left"
+
     },
     title: {
-        fontSize: 30,
-        textAlign: "center"
+        fontSize: 12,
+        textAlign: "left",
+        fontWeight: "bold"
+
       },
     logo: {
         width: 100,
@@ -68,4 +78,4 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
     return state
   }  
-export default connect(mapStateToProps)(HomePage);
+export default connect(mapStateToProps)(Album);
