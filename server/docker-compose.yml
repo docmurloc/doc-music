@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      PORT: 27017
+    restart: 'on-failure'
+  db-express:
+    image: mongo-express
+    ports:
+      - "8082:8081"
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=db
+      - ME_CONFIG_MONGODB_PORT=27017
+    restart: 'on-failure'
+    depends_on:
+      - db

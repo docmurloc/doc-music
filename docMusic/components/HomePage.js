@@ -1,12 +1,43 @@
 import React, { useState } from "react";
 import {connect} from 'react-redux';
 
+import NetInfo from "@react-native-community/netinfo";
+
 import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView} from "react-native";
 
+async function testRequest() {
+    const test = await NetInfo.fetch();
+
+    console.log("testrequest :", test);
+
+    fetch('http://89.87.94.17:3000/users/', {
+        method: 'GET'
+        //Request Type 
+    })
+    //.then(response => response.json())
+    .then((response) => {
+        return response.json();
+      })
+    .then((lol) => {
+        console.log(lol);
+      //return json;
+    })
+    .catch((error) => {
+        console.error("error :",error);
+    });
+
+    //console.log("fetch request :", response);
+}
+
 function HomePage(props) {
+    const [reponse, setreponse] = useState("");
     return (
         <View>
             <Text>HomePage</Text>
+            <Button
+            title="LOGIN"
+            onPress={() => testRequest()}
+            />
         </View>
     )
 }
