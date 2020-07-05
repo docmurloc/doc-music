@@ -8,7 +8,7 @@ import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView}
 
 import BackgroundImage from './backgroundImage'
 
-async function registerUser(props, newPseudo, newPassword) {
+async function registerUser(props, newPseudo, newPassword, setInfo) {
     const test = await NetInfo.fetch();
 //
     console.log("testrequest :", test);
@@ -30,6 +30,10 @@ async function registerUser(props, newPseudo, newPassword) {
         return response.json();
     })
     .then((lol) => {
+        setInfo(lol.status);
+        if (lol.status == "succes") {
+            props.navigation.navigate('Home');
+        }
         console.log(lol);
       //return json;
     })
@@ -45,13 +49,15 @@ function SignUpPage(props) {
     const [pseudo, setPseudo] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmPassword] = useState("");
+    const [Info, setInfo] = useState("");
 
     return (
         <View style={styles.container}>
             <BackgroundImage/>
             <View style={styles.box}>
                 <View style={styles.content}>
-                    <Text style={styles.title}>At one step of your dream</Text>
+                <Text style={styles.title}>At one step of your dream</Text>
+                <Text style={styles.title}>{Info}</Text>
                     <TextInput
                     style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
                     placeholder = "Pseudo"
@@ -73,7 +79,7 @@ function SignUpPage(props) {
                     <View style={styles.horizontalDisplay}>
                         <Button
                         title="REGISTER"
-                        onPress={() => registerUser(props, pseudo, password)}
+                        onPress={() => registerUser(props, pseudo, password, setInfo)}
                         />
                         <Button
                           title="SIGN IN"

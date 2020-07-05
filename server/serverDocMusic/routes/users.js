@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/register', async function(req, res, next) {
 
-  console.log("register user: ", req);
+  //console.log("register user: ", req);
 
   let user = await UserModel.findOne({pseudo : req.body.pseudo});
 
