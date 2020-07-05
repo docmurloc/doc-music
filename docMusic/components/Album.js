@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 import {connect} from 'react-redux';
 
-import {StyleSheet, Text, TextInput , View, Image, Button, FlatList} from "react-native";
+import {StyleSheet, Text, TouchableHighlight , View, Image, Button, FlatList} from "react-native";
+
+//props.navigation.navigate('SignUp')
 
 function Album(props) {
     return (
+        <TouchableHighlight
+        onPress={() => props.navigation.navigate('SignUp')}
+        >
         <View style={styles.content}>
-            <Image source={require('../Images/logoMusic.png')} style={styles.logo}/>
+        <Image source={require('../Images/logoMusic.png')} style={styles.logo}/>
             <View style={styles.content2}>
                 <Text style={styles.title}>{props.title}</Text>
                 <Text style={styles.text} numberOfLines={2} ellipsizeMode='tail'>{props.type} {props.author} {props.info}</Text>
             </View>
 
         </View>
+        </TouchableHighlight>
     )
 }
 
