@@ -1,10 +1,45 @@
 import React, { useState } from "react";
 import {connect} from 'react-redux';
 
+import NetInfo from "@react-native-community/netinfo";
+
+
 import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView} from "react-native";
 
 import BackgroundImage from './backgroundImage'
 
+async function registerUser(props, newPseudo, newPassword) {
+    const test = await NetInfo.fetch();
+//
+    console.log("testrequest :", test);
+
+    const bodyRequest =JSON.stringify ({
+        pseudo : newPseudo,
+        password: newPassword
+    });
+
+    fetch('http://89.87.94.17:3000/users/register', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'post',
+        body: bodyRequest
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((lol) => {
+        console.log(lol);
+      //return json;
+    })
+    .catch((error) => {
+        console.error("error :",error);
+    });
+    //props.navigation.navigate('Home');
+
+    //console.log("fetch request :", response);
+}
 
 function SignUpPage(props) {
     const [pseudo, setPseudo] = useState("");
@@ -38,7 +73,7 @@ function SignUpPage(props) {
                     <View style={styles.horizontalDisplay}>
                         <Button
                         title="REGISTER"
-                        onPress={() => props.navigation.navigate('Home')}
+                        onPress={() => registerUser(props, pseudo, password)}
                         />
                         <Button
                           title="SIGN IN"
