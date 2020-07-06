@@ -32,11 +32,11 @@ async function loginUser(props, newPseudo, newPassword, setInfo) {
         return response.json();
     })
     .then((lol) => {
-        setInfo(lol.status);
-        if (lol.status == "succes") {
-            props.navigation.navigate('Home');
-        }
         console.log(lol);
+        setInfo(lol.status);
+        //if (lol.status == "succes") {
+            props.navigation.navigate('Home');
+        //}
       //return json;
     })
     .catch((error) => {

@@ -21,6 +21,7 @@
     "react-native-reanimated": "^1.9.0",
     "react-native-safe-area-context": "^3.0.7",
     "react-native-screens": "^2.9.0",
+    "react-native-track-player": "^1.2.3",
     "react-native-webview": "^10.3.2",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5"
