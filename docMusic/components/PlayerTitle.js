@@ -10,7 +10,11 @@ function PlayerTitle(props) {
     return (
         <View style={styles.container}>
             <Image source={require('../Images/logoMusic.png')} style={styles.icon}/>
-            <Text style={styles.title}>Player Title</Text>
+            <View style={styles.box}>
+                <Text style={styles.title}
+                    ellipsizeMode={"tail"}
+                    numberOfLines={1}>Title Player</Text>
+            </View>
             <Image source={require('../Images/logoMusic.png')} style={styles.icon}/>
         </View>
     )
@@ -27,8 +31,8 @@ const styles = StyleSheet.create({
 
     },
     box: {
-        width : "100%",
-        flex: 1, 
+        width : "40%",
+        //flex: 1, 
         alignItems: 'center', 
         justifyContent: "space-around",
         paddingTop: 10

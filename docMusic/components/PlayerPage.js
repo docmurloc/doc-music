@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {connect} from 'react-redux';
 
 import PlayerTitle from './PlayerTitle'
+import Player from './Player'
 
 import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView} from "react-native";
 
@@ -11,7 +12,7 @@ function PlayerPage(props) {
     return (
         <View style={styles.container}>
             <Image source={require('../Images/logoMusic.png')} style={styles.logo}/>
-            <PlayerTitle/>
+            <Player/>
 
         </View>
     )
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1, 
         alignItems: 'center', 
-        justifyContent: 'flex-start',
+        justifyContent: "space-around",
         padding: 20
     },
     box: {
