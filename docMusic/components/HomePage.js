@@ -5,12 +5,95 @@ import Displayer from './Displayer';
 
 import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView} from "react-native";
 
+import NetInfo from "@react-native-community/netinfo";
+
+
+async function registerAlbum(props, data) {
+    const test = await NetInfo.fetch();
+//
+    console.log("testrequest :", test);
+
+    const bodyRequest =JSON.stringify ({
+        title: "title",
+        artist: "artist",
+        artwork: "artwork",
+        genre: "genre",
+        trackListId: ["111","222"],
+    });
+
+    fetch('http://89.87.94.17:3000/albums/upload', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'post',
+        body: bodyRequest
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((lol) => {
+        //setInfo(lol.status);
+        if (lol.status == "succes") {
+            props.navigation.navigate('Home');
+        }
+        console.log(lol);
+      //return json;
+    })
+    .catch((error) => {
+        console.error("error :",error);
+    });
+    //props.navigation.navigate('Home');
+
+    //console.log("fetch request :", response);
+}
+
+async function GetRandomAlbum() {
+    const test = await NetInfo.fetch();
+//
+    console.log("testrequest :", test);
+
+    fetch('http://89.87.94.17:3000/albums/random', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((lol) => {
+        console.log(lol);
+        //setInfo(lol.status);
+        //if (lol.status == "succes") {
+            //props.navigation.navigate('Home');
+        //}
+      //return json;
+    })
+    .catch((error) => {
+        console.error("error :",error);
+    });
+    //props.navigation.navigate('Home');
+
+    //console.log("fetch request :", response);
+}
 
 function HomePage(props) {
     const [reponse, setreponse] = useState("");
+
+    
     return (
         <View style={styles.container}>
             <Displayer {...props} title={"Favorite"}/>
+            <Button
+            title={"Uplaod"}
+            onPress={() => registerAlbum(props, "lol")}
+            />
+            <Button
+            title={"random"}
+            onPress={() => GetRandomAlbum()}
+            />
         </View>
     )
 }
