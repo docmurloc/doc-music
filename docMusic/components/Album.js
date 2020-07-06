@@ -8,7 +8,7 @@ import {StyleSheet, Text, TouchableHighlight , View, Image, Button, FlatList} fr
 function Album(props) {
     return (
         <TouchableHighlight
-        onPress={() => props.navigation.navigate('SignUp')}
+        onPress={() => props.navigation.navigate('playlist')}
         >
         <View style={styles.content}>
         <Image source={require('../Images/logoMusic.png')} style={styles.logo}/>

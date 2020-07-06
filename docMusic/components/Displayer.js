@@ -47,7 +47,7 @@ function Displayer(props) {
             <FlatList
             horizontal={true}
             data={DATA}
-            renderItem={({ item }) => <Album title={item.title} type={item.type} author={item.author} info={item.info}/>}
+            renderItem={({ item }) => <Album {...props} title={item.title} type={item.type} author={item.author} info={item.info}/>}
             keyExtractor={item => item.id}
         />
         </View>

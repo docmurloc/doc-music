@@ -10,7 +10,7 @@ function HomePage(props) {
     const [reponse, setreponse] = useState("");
     return (
         <View style={styles.container}>
-            <Displayer title={"Favorite"}/>
+            <Displayer {...props} title={"Favorite"}/>
         </View>
     )
 }
