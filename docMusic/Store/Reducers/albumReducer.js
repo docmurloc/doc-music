@@ -8,18 +8,32 @@ const exempleAlbume = {
     trackListId: [111, 222, 333, 444],
 }
 
-
-const initialState = { 
+const initialState = {
+    albumIdList: [],
     albumList: [],
   };
+
+function albumFilter(albumList, id) {
+    return albumList.filter(
+        function(data) {
+            return data == id
+        }
+    )
+}
   
   function albumReducer(state = initialState, action) {
       let nextState
       switch (action.type) {
         case 'ADD_ALBUM':
+
+            let found = albumFilter(state.albumIdList, action.album.id);
+            if (found) {
+                return state
+            }
           nextState = {
               ...state,
-              access_token: action.accessToken,
+              albumIdList: [...state.albumIdList, action.album.id],
+              albumList: [...state.albumList, action.album],
           }
           return nextState
       default:

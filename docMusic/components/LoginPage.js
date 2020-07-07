@@ -43,7 +43,7 @@ async function loginUser(props, newPseudo, newPassword, setInfo) {
     .catch((error) => {
         console.error("error :",error);
     });
-    setInfo(lol.status);
+    setInfo(answer.status);
 }
 
 function LoginPage(props) {

@@ -34,9 +34,45 @@ async function registerAlbum(props, data) {
     })
     .then((lol) => {
         //setInfo(lol.status);
-        if (lol.status == "succes") {
-            props.navigation.navigate('Home');
-        }
+        //if (lol.status == "succes") {
+        //    props.navigation.navigate('Home');
+        //}
+        console.log(lol);
+      //return json;
+    })
+    .catch((error) => {
+        console.error("error :",error);
+    });
+    //props.navigation.navigate('Home');
+
+    //console.log("fetch request :", response);
+}
+
+async function registerImage() {
+    const test = await NetInfo.fetch();
+//
+    console.log("testrequest :", test);
+
+    const bodyRequest =JSON.stringify ({
+        url: "Url test",
+    });
+
+    fetch('http://89.87.94.17:3000/images/upload', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'post',
+        body: bodyRequest
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((lol) => {
+        //setInfo(lol.status);
+        //if (lol.status == "succes") {
+        //    props.navigation.navigate('Home');
+        //}
         console.log(lol);
       //return json;
     })
@@ -79,6 +115,37 @@ async function GetRandomAlbum() {
     //console.log("fetch request :", response);
 }
 
+async function GetRandomImage() {
+    const test = await NetInfo.fetch();
+//
+    console.log("testrequest :", test);
+
+    fetch('http://89.87.94.17:3000/images/random', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((lol) => {
+        console.log(lol);
+        //setInfo(lol.status);
+        //if (lol.status == "succes") {
+            //props.navigation.navigate('Home');
+        //}
+      //return json;
+    })
+    .catch((error) => {
+        console.error("error :",error);
+    });
+    //props.navigation.navigate('Home');
+
+    //console.log("fetch request :", response);
+}
+
 function HomePage(props) {
     const [reponse, setreponse] = useState("");
 
@@ -93,6 +160,14 @@ function HomePage(props) {
             <Button
             title={"random"}
             onPress={() => GetRandomAlbum()}
+            />
+            <Button
+            title={"Uplaod image"}
+            onPress={() => registerImage()}
+            />
+            <Button
+            title={"random image"}
+            onPress={() => GetRandomImage()}
             />
         </View>
     )

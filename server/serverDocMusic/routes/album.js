@@ -35,7 +35,7 @@ router.get('/random', async function(req, res, next) {
         id : user._id,
         title: user.title,
         artist: user.artist,
-        artwork: user.artwork,
+        artworkID: user.artwork,
         date: user.data,
         genre: user.genre,
         trackListId: user.trackListId,
