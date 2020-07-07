@@ -31,20 +31,19 @@ async function loginUser(props, newPseudo, newPassword, setInfo) {
     .then((response) => {
         return response.json();
     })
-    .then((lol) => {
-        console.log(lol);
-        setInfo(lol.status);
-        //if (lol.status == "succes") {
+    .then((answer) => {
+        console.log(answer);
+        if (answer.access_token) {
+            const action = {type: 'CONNECTION', accessToken: answer.access_token}
+            props.dispatch(action)
+
             props.navigation.navigate('Home');
-        //}
-      //return json;
+        }
     })
     .catch((error) => {
         console.error("error :",error);
     });
-    //props.navigation.navigate('Home');
-
-    //console.log("fetch request :", response);
+    setInfo(lol.status);
 }
 
 function LoginPage(props) {
