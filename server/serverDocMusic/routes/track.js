@@ -65,15 +65,6 @@ router.get('/id', async function(req, res, next) {
     res.status(200).send(answer);
   });
 
-router.get('/sound/*.mp3', async function(req, res, next) {
-    console.log(req.url);
-    let url = req.url;
-    let filename = url.substring(url.lastIndexOf("/") + 1, url.length);
-
-    console.log("send track sound:", url);
-    res.status(200).send(filename);
-});
-
 router.post('/upload', async function(req, res, next) {
 
   //console.log("register user: ", req);
