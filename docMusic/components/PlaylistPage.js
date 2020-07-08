@@ -89,8 +89,12 @@ function PlaylistPage(props) {
             <View style={styles.box2}>
                 <PlaylistHead title={"Song Title"} type={"Playlist"} author={" - Pierre ANTOINE"} info={" - 10 songs"}/>
                 <View style={styles.horizontalDisplay}>
-                    <PlaylistButton/>
-                    <PlaylistButton/>
+                    <PlaylistButton 
+                    title={"aléatoire"}
+                    icon={require('../Images/crossingArrow.png')}/>
+                    <PlaylistButton 
+                    title={"lire"}
+                    icon={require('../Images/playIcon.png')}/>
                 </View>
             </View>
             <View style={styles.box}>

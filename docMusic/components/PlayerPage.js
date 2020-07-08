@@ -11,7 +11,7 @@ function PlayerPage(props) {
     const [reponse, setreponse] = useState("");
     return (
         <View style={styles.container}>
-            <Image source={require('../Images/logoMusic.png')} style={styles.logo}/>
+            <Image source={{uri :props.track.currentTrack.artwork}} style={styles.logo}/>
             <Player/>
 
         </View>

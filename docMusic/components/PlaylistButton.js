@@ -7,9 +7,9 @@ import {StyleSheet, Text, TextInput , View, Image, Button, FlatList} from "react
 function PlaylistButton(props) {
     return(
         <View style={styles.horizontalDisplay}>
-            <Image source={require('../Images/logoMusic.png')} style={styles.icon}/>
+            <Image source={props.icon} style={styles.icon}/>
             <View style={styles.box}>
-                <Text style={styles.text}>playlist</Text>
+                <Text style={styles.text}>{props.title}</Text>
             </View>
         </View>
     )
@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     icon: {
-        width: 30,
-        height: 30,
+        width: 20,
+        height: 20,
         resizeMode: 'contain',
     },
   });

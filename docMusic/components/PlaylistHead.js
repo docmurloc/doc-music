@@ -91,11 +91,12 @@ function PlaylistHead(props) {
             style={styles.logo}/>
             <View style={styles.box}>
                 <Text style={styles.title}>{props.playlist.currentPlaylist.title}</Text>
-                <Text style={styles.text} numberOfLines={2} ellipsizeMode='tail'>{props.type} {props.playlist.currentPlaylist.author} {props.info}</Text>
+                <Text style={styles.text} numberOfLines={2} ellipsizeMode='tail'>Par {props.playlist.currentPlaylist.author}</Text>
+                <Text style={styles.text} numberOfLines={2} ellipsizeMode='tail'>{props.type} {props.info}</Text>
                 <View style={styles.horizontalDisplay}>
-                    <Image source={require('../Images/logoMusic.png')} style={styles.icon}/>
-                    <Image source={require('../Images/logoMusic.png')} style={styles.icon}/>
-                    <Image source={require('../Images/logoMusic.png')} style={styles.icon}/>
+                    <Image source={require('../Images/pencil.png')} style={styles.icon}/>
+                    <Image source={require('../Images/downloadArrow.png')} style={styles.icon}/>
+                    <Image source={require('../Images/dotMenu.png')} style={styles.icon}/>
                 </View>
             </View>
         </View>
@@ -156,13 +157,13 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     logo: {
-        width: 100,
-        height: 100,
+        width: 120,
+        height: 120,
         resizeMode: 'contain',
     },
     icon: {
-        width: 30,
-        height: 30,
+        width: 20,
+        height: 20,
         resizeMode: 'contain',
     },
   });

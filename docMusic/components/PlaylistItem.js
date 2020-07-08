@@ -59,7 +59,7 @@ function PlaylistItem(props) {
                 <Text style={styles.title} numberOfLines={2} ellipsizeMode='tail'>{props.track.currentTrack.title}</Text>
                 <Text style={styles.text}>{props.track.currentTrack.artist} - 4.00</Text>
             </View>
-            <Image source={require('../Images/logoMusic.png')} style={styles.logo}/>
+            <Image source={require('../Images/dotMenu.png')} style={styles.logo}/>
         </View>
     )
 }
