@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {connect} from 'react-redux';
 
+import ButtonSwitch from './ButtonSwitch'
 
 import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView} from "react-native";
 
@@ -9,13 +10,19 @@ function PlayerTitle(props) {
     const [stateLike, setStateLike] = useState("");
     return (
         <View style={styles.container}>
-            <Image source={require('../Images/dislikeOff.png')} style={styles.icon}/>
+            <ButtonSwitch
+            iconOff = {require('../Images/dislikeOff.png')}
+            iconOn = {require('../Images/dislikeOn.png')}
+            />
             <View style={styles.box}>
                 <Text style={styles.title}
                     ellipsizeMode={"tail"}
                     numberOfLines={1}>Title Player</Text>
             </View>
-            <Image source={require('../Images/likeOff.png')} style={styles.icon}/>
+            <ButtonSwitch
+            iconOff = {require('../Images/likeOff.png')}
+            iconOn = {require('../Images/likeOn.png')}
+            />
         </View>
     )
 }
