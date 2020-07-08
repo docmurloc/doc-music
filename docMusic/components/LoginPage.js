@@ -33,14 +33,14 @@ async function loginUser(props, newPseudo, newPassword, setInfo) {
     })
     .then((answer) => {
         console.log(answer);
-        if (answer.access_token) {
-            const action = {type: 'CONNECTION', accessToken: answer.access_token}
-            props.dispatch(action)
+        //if (answer.access_token) {
+            //const action = {type: 'CONNECTION', accessToken: answer.access_token}
+            //props.dispatch(action)
 
             props.navigation.navigate('Home');
-        } else {
-            setInfo(answer.status);
-        }
+        //} else {
+        //    setInfo(answer.status);
+        //}
     })
     .catch((error) => {
         console.error("error :",error);

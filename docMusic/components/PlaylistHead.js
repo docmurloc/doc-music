@@ -37,10 +37,46 @@ async function GetRandomPlaylist(props) {
     //console.log("fetch request :", response);
 }
 
+async function GetRandomTrack(props) {
+    //const test = await NetInfo.fetch();
+//
+    //console.log("testrequest :", test);
+
+    fetch('http://89.87.94.17:3000/tracks/random', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        console.log(data);
+        const action = {type: 'SET_CURRENT_TRACK', track: data}
+        props.dispatch(action)
+
+        //setInfo(data.status);
+        //if (data.status == "succes") {
+            //props.navigation.navigate('Home');
+        //}
+      //return json;
+    })
+    .catch((error) => {
+        console.error("error :",error);
+    });
+    //props.navigation.navigate('Home');
+
+    //console.log("fetch request :", response);
+}
+
 function PlaylistHead(props) {
 
     if (!props.playlist.currentPlaylist) {
         GetRandomPlaylist(props);
+        GetRandomTrack(props);
+
         return (
             <View>
                 <Text>Image not found</Text>

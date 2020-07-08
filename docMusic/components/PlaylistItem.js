@@ -4,14 +4,60 @@ import {connect} from 'react-redux';
 
 import {StyleSheet, Text, TextInput , View, Image, Button, FlatList} from "react-native";
 
+async function GetRandomTrack(props) {
+    //const test = await NetInfo.fetch();
+//
+    //console.log("testrequest :", test);
+
+    fetch('http://89.87.94.17:3000/tracks/random', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        console.log(data);
+        const action = {type: 'SET_CURRENT_TRACK', track: data}
+        props.dispatch(action)
+
+        //setInfo(data.status);
+        //if (data.status == "succes") {
+            //props.navigation.navigate('Home');
+        //}
+      //return json;
+    })
+    .catch((error) => {
+        console.error("error :",error);
+    });
+    //props.navigation.navigate('Home');
+
+    //console.log("fetch request :", response);
+}
+
 function PlaylistItem(props) {
+
+    console.log("track current: ", props.track, !props.track.currentTrack);
+
+    if (!props.track.currentTrack) {
+        return (
+            <View>
+                <Text>Image not found</Text>
+            </View>
+        )
+    }
 
     return(
         <View style={styles.horizontalDisplay}>
-            <Image source={require('../Images/logoMusic.png')} style={styles.icon}/>
+            <Image 
+            source={{uri :props.track.currentTrack.artwork}} 
+            style={styles.icon}/>
             <View style={styles.box}>
-                <Text style={styles.title} numberOfLines={2} ellipsizeMode='tail'>Title song</Text>
-                <Text style={styles.text}>author - 4.00</Text>
+                <Text style={styles.title} numberOfLines={2} ellipsizeMode='tail'>{props.track.currentTrack.title}</Text>
+                <Text style={styles.text}>{props.track.currentTrack.artist} - 4.00</Text>
             </View>
             <Image source={require('../Images/logoMusic.png')} style={styles.logo}/>
         </View>

@@ -30,7 +30,7 @@ function getDate() {
 /* GET users listing. */
 router.get('/random', async function(req, res, next) {
 
-  let track = await TrackModel.findOne({_id : "5f051750a551852618ca3957"});
+  let track = await TrackModel.findOne({_id : "5f052e211aa79f5d884c304d"});
 
     const answer = {
         id : track._id,
@@ -80,7 +80,10 @@ router.post('/upload', async function(req, res, next) {
         title: req.body.title,
         date: getDate(),
         artwork: req.body.artwork,
-        trackListId: req.body.trackListId,
+        artist: req.body.artist,
+        album: req.body.album,
+        genre: req.body.genre,
+        url: req.body.url,
     });
     await track.save();
     return  res.status(200).send({status : "succes"});

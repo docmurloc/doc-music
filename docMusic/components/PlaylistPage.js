@@ -96,6 +96,7 @@ function PlaylistPage(props) {
             <View style={styles.box}>
             <FlatList
                 data={DATA}
+                extraData={props.track.currentTrack}
                 renderItem={({ item }) => <PlaylistItem/>}
                 keyExtractor={item => item.id}
                 />
