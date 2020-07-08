@@ -91,7 +91,8 @@ async function registerPlaylist() {
 
     const bodyRequest =JSON.stringify ({
         title: "title playlist",
-        url: "https://www.cdiscount.com/pdt2/7/9/9/1/700x700/auc0715235459799/rw/dadju-poison-album-cd-2019-edition-limitee.jpg",
+        author : "pierre antoine",
+        artwork: "https://www.cdiscount.com/pdt2/7/9/9/1/700x700/auc0715235459799/rw/dadju-poison-album-cd-2019-edition-limitee.jpg",
         trackListId: ["111", "222"],
     });
 

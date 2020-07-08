@@ -30,11 +30,12 @@ function getDate() {
 /* GET users listing. */
 router.get('/random', async function(req, res, next) {
 
-  let playlist = await PlaylistModel.findOne({_id : "5f0516e9a551852618ca3956"});
+  let playlist = await PlaylistModel.findOne({_id : "5f0527e7e399654bc6d6cfc9"});
 
     const answer = {
         id : playlist._id,
         title: playlist.title,
+        author: playlist.author,
         date: playlist.date,
         artwork: playlist.artwork,
         trackListId: playlist.trackListId,
@@ -51,6 +52,7 @@ router.get('/id', async function(req, res, next) {
       const answer = {
         id : playlist._id,
         title: playlist.title,
+        author: req.body.author,
         date: playlist.date,
         artwork: playlist.artwork,
         trackListId: playlist.trackListId,
@@ -61,17 +63,19 @@ router.get('/id', async function(req, res, next) {
 
 router.post('/upload', async function(req, res, next) {
 
-  //console.log("register user: ", req);
+  console.log("register playlist: ", req.body);
 
   let playlist = await PlaylistModel.findOne({
     title: req.body.title,
     artwork: req.body.artwork,
+    author: req.body.author,
     trackListId: req.body.trackListId,
 });
 
   if (!playlist) {
     playlist = new PlaylistModel({
         title: req.body.title,
+        author: req.body.author,
         date: getDate(),
         artwork: req.body.artwork,
         trackListId: req.body.trackListId,

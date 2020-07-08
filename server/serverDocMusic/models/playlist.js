@@ -7,6 +7,7 @@ var Schema = mongoose.Schema;
 var PlaylistModelSchema = new Schema({
     title: String,
     date: String,
+    author: String,
     artwork: String,
     trackListId: [String],
 });

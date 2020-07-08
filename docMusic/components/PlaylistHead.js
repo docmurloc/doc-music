@@ -3,13 +3,59 @@ import {connect} from 'react-redux';
 
 import {StyleSheet, Text, TextInput , View, Image, Button, FlatList} from "react-native";
 
+async function GetRandomPlaylist(props) {
+    //const test = await NetInfo.fetch();
+//
+    //console.log("testrequest :", test);
+
+    fetch('http://89.87.94.17:3000/playlists/random', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        console.log(data);
+        const action = {type: 'SET_CURRENT_PLAYLIST', playlist: data}
+        props.dispatch(action)
+
+        //setInfo(data.status);
+        //if (data.status == "succes") {
+            //props.navigation.navigate('Home');
+        //}
+      //return json;
+    })
+    .catch((error) => {
+        console.error("error :",error);
+    });
+    //props.navigation.navigate('Home');
+
+    //console.log("fetch request :", response);
+}
+
 function PlaylistHead(props) {
+
+    if (!props.playlist.currentPlaylist) {
+        GetRandomPlaylist(props);
+        return (
+            <View>
+                <Text>Image not found</Text>
+            </View>
+        )
+    }
+    console.log("current playlist:", props.playlist.currentPlaylist);
     return(
         <View style={styles.container}>
-            <Image source={require('../Images/logoMusic.png')} style={styles.logo}/>
+            <Image 
+            source={{uri :props.playlist.currentPlaylist.artwork}} 
+            style={styles.logo}/>
             <View style={styles.box}>
-                <Text style={styles.title}>{props.title}</Text>
-                <Text style={styles.text} numberOfLines={2} ellipsizeMode='tail'>{props.type} {props.author} {props.info}</Text>
+                <Text style={styles.title}>{props.playlist.currentPlaylist.title}</Text>
+                <Text style={styles.text} numberOfLines={2} ellipsizeMode='tail'>{props.type} {props.playlist.currentPlaylist.author} {props.info}</Text>
                 <View style={styles.horizontalDisplay}>
                     <Image source={require('../Images/logoMusic.png')} style={styles.icon}/>
                     <Image source={require('../Images/logoMusic.png')} style={styles.icon}/>
