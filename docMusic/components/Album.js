@@ -5,13 +5,61 @@ import {StyleSheet, Text, TouchableHighlight , View, Image, Button, FlatList} fr
 
 //props.navigation.navigate('SignUp')
 
+async function GetRandomImage(setImage) {
+    //const test = await NetInfo.fetch();
+////
+    //console.log("testrequest :", test);
+
+    fetch('http://89.87.94.17:3000/images/random', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((answer) => {
+        console.log(answer);
+        setImage(answer.url);
+        //setInfo(lol.status);
+        //if (lol.status == "succes") {
+            //props.navigation.navigate('Home');
+        //}
+      //return json;
+    })
+    .catch((error) => {
+        console.error("error :",error);
+    });
+    //props.navigation.navigate('Home');
+
+    //console.log("fetch request :", response);
+}
+
+
 function Album(props) {
+
+    const [image, setImage] = useState(null);
+
+    if (!image) {
+        GetRandomImage(setImage);
+        return (
+            <View>
+                <Text>Image not found</Text>
+            </View>
+        )
+    }
+
+
     return (
         <TouchableHighlight
         onPress={() => props.navigation.navigate('playlist')}
         >
         <View style={styles.content}>
-        <Image source={require('../Images/logoMusic.png')} style={styles.logo}/>
+        <Image
+         source={{uri :image}} 
+         style={styles.logo}/>
             <View style={styles.content2}>
                 <Text style={styles.title}>{props.title}</Text>
                 <Text style={styles.text} numberOfLines={2} ellipsizeMode='tail'>{props.type} {props.author} {props.info}</Text>

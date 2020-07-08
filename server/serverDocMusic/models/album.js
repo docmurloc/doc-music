@@ -10,7 +10,7 @@ var AlbumModelSchema = new Schema({
     artwork: String,
     date: String,
     genre: String,
-    trackListId: [String],
+    playListId: String,
 });
 
 // Compile model from schema

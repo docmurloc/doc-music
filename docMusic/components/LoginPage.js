@@ -38,12 +38,13 @@ async function loginUser(props, newPseudo, newPassword, setInfo) {
             props.dispatch(action)
 
             props.navigation.navigate('Home');
+        } else {
+            setInfo(answer.status);
         }
     })
     .catch((error) => {
         console.error("error :",error);
     });
-    setInfo(answer.status);
 }
 
 function LoginPage(props) {

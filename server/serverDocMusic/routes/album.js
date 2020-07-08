@@ -29,16 +29,16 @@ function getDate() {
 /* GET users listing. */
 router.get('/random', async function(req, res, next) {
 
-  let user = await AlbumModel.findOne({_id : "5f032b94c5a0c1183327a8d9"});
+  let album = await AlbumModel.findOne({_id : "5f032b94c5a0c1183327a8d9"});
 
     const answer = {
-        id : user._id,
-        title: user.title,
-        artist: user.artist,
-        artworkID: user.artwork,
-        date: user.data,
-        genre: user.genre,
-        trackListId: user.trackListId,
+        id : album._id,
+        title: album.title,
+        artist: album.artist,
+        artworkID: album.artwork,
+        date: album.data,
+        genre: album.genre,
+        playListId: album.playListId,
     };
     //await Test.save();
   console.log("get random album");
@@ -49,22 +49,22 @@ router.post('/upload', async function(req, res, next) {
 
   //console.log("register user: ", req);
 
-  let user = await AlbumModel.findOne({
+  let album = await AlbumModel.findOne({
       title: req.body.title,
       artist: req.body.artist,
       trackListId: req.body.trackListId,
     });
 
-  if (!user) {
-    user = new AlbumModel({
+  if (!album) {
+    album = new AlbumModel({
         title: req.body.title,
         artist: req.body.artist,
         artwork: req.body.artwork,
         date: getDate(),
         genre: req.body.genre,
-        trackListId: req.body.trackListId,
+        playListId: req.body.playListId,
     });
-    await user.save();
+    await album.save();
     return  res.status(200).send({status : "succes"});
   }
   return res.status(400).send({status : "album already exist"});

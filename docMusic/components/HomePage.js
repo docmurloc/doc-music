@@ -18,7 +18,7 @@ async function registerAlbum(props, data) {
         artist: "artist",
         artwork: "artwork",
         genre: "genre",
-        trackListId: ["111","222"],
+        playListId: "111"
     });
 
     fetch('http://89.87.94.17:3000/albums/upload', {
@@ -32,12 +32,12 @@ async function registerAlbum(props, data) {
     .then((response) => {
         return response.json();
     })
-    .then((lol) => {
-        //setInfo(lol.status);
-        //if (lol.status == "succes") {
+    .then((data) => {
+        //setInfo(data.status);
+        //if (data.status == "succes") {
         //    props.navigation.navigate('Home');
         //}
-        console.log(lol);
+        console.log(data);
       //return json;
     })
     .catch((error) => {
@@ -54,7 +54,7 @@ async function registerImage() {
     console.log("testrequest :", test);
 
     const bodyRequest =JSON.stringify ({
-        url: "Url test",
+        url: "https://www.cdiscount.com/pdt2/7/9/9/1/700x700/auc0715235459799/rw/dadju-poison-album-cd-2019-edition-limitee.jpg",
     });
 
     fetch('http://89.87.94.17:3000/images/upload', {
@@ -68,12 +68,91 @@ async function registerImage() {
     .then((response) => {
         return response.json();
     })
-    .then((lol) => {
-        //setInfo(lol.status);
-        //if (lol.status == "succes") {
+    .then((data) => {
+        //setInfo(data.status);
+        //if (data.status == "succes") {
         //    props.navigation.navigate('Home');
         //}
-        console.log(lol);
+        console.log(data);
+      //return json;
+    })
+    .catch((error) => {
+        console.error("error :",error);
+    });
+    //props.navigation.navigate('Home');
+
+    //console.log("fetch request :", response);
+}
+
+async function registerPlaylist() {
+    const test = await NetInfo.fetch();
+//
+    console.log("testrequest :", test);
+
+    const bodyRequest =JSON.stringify ({
+        title: "title playlist",
+        url: "https://www.cdiscount.com/pdt2/7/9/9/1/700x700/auc0715235459799/rw/dadju-poison-album-cd-2019-edition-limitee.jpg",
+        trackListId: ["111", "222"],
+    });
+
+    fetch('http://89.87.94.17:3000/playlists/upload', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'post',
+        body: bodyRequest
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        //setInfo(data.status);
+        //if (data.status == "succes") {
+        //    props.navigation.navigate('Home');
+        //}
+        console.log(data);
+      //return json;
+    })
+    .catch((error) => {
+        console.error("error :",error);
+    });
+    //props.navigation.navigate('Home');
+
+    //console.log("fetch request :", response);
+}
+
+async function registerTrack() {
+    const test = await NetInfo.fetch();
+//
+    console.log("testrequest :", test);
+
+    const bodyRequest =JSON.stringify ({
+        title: "title track",
+        artist: "pierre antoine",
+        album: "album id",
+        genre: "track genre",
+        url: "url sound",
+        artwork: "https://www.cdiscount.com/pdt2/7/9/9/1/700x700/auc0715235459799/rw/dadju-poison-album-cd-2019-edition-limitee.jpg",
+    });
+
+    fetch('http://89.87.94.17:3000/tracks/upload', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'post',
+        body: bodyRequest
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        //setInfo(data.status);
+        //if (data.status == "succes") {
+        //    props.navigation.navigate('Home');
+        //}
+        console.log(data);
       //return json;
     })
     .catch((error) => {
@@ -99,10 +178,10 @@ async function GetRandomAlbum() {
     .then((response) => {
         return response.json();
     })
-    .then((lol) => {
-        console.log(lol);
-        //setInfo(lol.status);
-        //if (lol.status == "succes") {
+    .then((data) => {
+        console.log(data);
+        //setInfo(data.status);
+        //if (data.status == "succes") {
             //props.navigation.navigate('Home');
         //}
       //return json;
@@ -130,10 +209,72 @@ async function GetRandomImage() {
     .then((response) => {
         return response.json();
     })
-    .then((lol) => {
-        console.log(lol);
-        //setInfo(lol.status);
-        //if (lol.status == "succes") {
+    .then((data) => {
+        console.log(data);
+        //setInfo(data.status);
+        //if (data.status == "succes") {
+            //props.navigation.navigate('Home');
+        //}
+      //return json;
+    })
+    .catch((error) => {
+        console.error("error :",error);
+    });
+    //props.navigation.navigate('Home');
+
+    //console.log("fetch request :", response);
+}
+
+async function GetRandomPlaylist() {
+    const test = await NetInfo.fetch();
+//
+    console.log("testrequest :", test);
+
+    fetch('http://89.87.94.17:3000/playlists/random', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        console.log(data);
+        //setInfo(data.status);
+        //if (data.status == "succes") {
+            //props.navigation.navigate('Home');
+        //}
+      //return json;
+    })
+    .catch((error) => {
+        console.error("error :",error);
+    });
+    //props.navigation.navigate('Home');
+
+    //console.log("fetch request :", response);
+}
+
+async function GetRandomTrack() {
+    const test = await NetInfo.fetch();
+//
+    console.log("testrequest :", test);
+
+    fetch('http://89.87.94.17:3000/tracks/random', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: 'GET',
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        console.log(data);
+        //setInfo(data.status);
+        //if (data.status == "succes") {
             //props.navigation.navigate('Home');
         //}
       //return json;
@@ -155,7 +296,7 @@ function HomePage(props) {
             <Displayer {...props} title={"Favorite"}/>
             <Button
             title={"Uplaod"}
-            onPress={() => registerAlbum(props, "lol")}
+            onPress={() => registerAlbum(props, "data")}
             />
             <Button
             title={"random"}
@@ -168,6 +309,22 @@ function HomePage(props) {
             <Button
             title={"random image"}
             onPress={() => GetRandomImage()}
+            />
+             <Button
+            title={"upload playlist"}
+            onPress={() => registerPlaylist()}
+            />
+             <Button
+            title={"random playlist"}
+            onPress={() => GetRandomPlaylist()}
+            />
+             <Button
+            title={"upload track"}
+            onPress={() => registerTrack()}
+            />
+             <Button
+            title={"random track"}
+            onPress={() => GetRandomTrack()}
             />
         </View>
     )
