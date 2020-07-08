@@ -25,11 +25,11 @@ function Player(props) {
                 </View>
             </View>
             <View style={styles.horizontalDisplay}>
-                <Image source={require('../Images/logoMusic.png')} style={styles.icon}/>
-                <Image source={require('../Images/logoMusic.png')} style={styles.icon}/>
-                <Image source={require('../Images/logoMusic.png')} style={styles.icon}/>
-                <Image source={require('../Images/logoMusic.png')} style={styles.icon}/>
-                <Image source={require('../Images/logoMusic.png')} style={styles.icon}/>
+                <Image source={require('../Images/crossingArrow.png')} style={styles.icon}/>
+                <Image source={require('../Images/previousArrow.png')} style={styles.icon}/>
+                <Image source={require('../Images/playIcon.png')} style={styles.icon}/>
+                <Image source={require('../Images/nextArrow.png')} style={styles.icon}/>
+                <Image source={require('../Images/loopArrow.png')} style={styles.icon}/>
             </View>
 
         </View>

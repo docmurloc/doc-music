@@ -6,16 +6,16 @@ import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView}
 
 
 function PlayerTitle(props) {
-    const [reponse, setreponse] = useState("");
+    const [stateLike, setStateLike] = useState("");
     return (
         <View style={styles.container}>
-            <Image source={require('../Images/logoMusic.png')} style={styles.icon}/>
+            <Image source={require('../Images/dislikeOff.png')} style={styles.icon}/>
             <View style={styles.box}>
                 <Text style={styles.title}
                     ellipsizeMode={"tail"}
                     numberOfLines={1}>Title Player</Text>
             </View>
-            <Image source={require('../Images/logoMusic.png')} style={styles.icon}/>
+            <Image source={require('../Images/likeOff.png')} style={styles.icon}/>
         </View>
     )
 }
@@ -69,8 +69,8 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     icon: {
-        width: 65,
-        height: 65,
+        width: 35,
+        height: 35,
         resizeMode: 'contain',
     },
   });
