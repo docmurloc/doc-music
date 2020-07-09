@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import {GetRandomTrack, GetTrackById} from '../APIserver/Track';
 
-import {StyleSheet, Text, TextInput , View, Image, Button, FlatList} from "react-native";
+import {StyleSheet, Text, TextInput , View, Image, Button, TouchableHighlight} from "react-native";
 
 async function SetTrackItem(setTrack, id) {
     let answer = await GetTrackById(id);
@@ -11,8 +11,15 @@ async function SetTrackItem(setTrack, id) {
     setTrack(answer);
 }
 
-function PlaylistItem(props) {
+function selectedTrack(props, track) {
+    console.log("slected props",props);
+    //const action = {type: 'SET_CURRENT_TRACK', track: track};
+    //props.dispatch(action);
 
+    props.navigation.navigate('Player');
+}
+
+function PlaylistItem(props) {
     const [track, setTrack] = useState(null);
 
 
@@ -28,16 +35,19 @@ function PlaylistItem(props) {
     }
 
     return(
-        <View style={styles.horizontalDisplay}>
-            <Image 
-            source={{uri :track.artwork}} 
-            style={styles.icon}/>
-            <View style={styles.box}>
-                <Text style={styles.title} numberOfLines={2} ellipsizeMode='tail'>{track.title}</Text>
-                <Text style={styles.text}>{track.artist} - 4.00</Text>
+        <TouchableHighlight
+        onPress={() => selectedTrack(props, track)}>
+            <View style={styles.horizontalDisplay}>
+                <Image 
+                source={{uri :track.artwork}} 
+                style={styles.icon}/>
+                <View style={styles.box}>
+                    <Text style={styles.title} numberOfLines={2} ellipsizeMode='tail'>{track.title}</Text>
+                    <Text style={styles.text}>{track.artist} - 4.00</Text>
+                </View>
+                <Image source={require('../Images/dotMenu.png')} style={styles.logo}/>
             </View>
-            <Image source={require('../Images/dotMenu.png')} style={styles.logo}/>
-        </View>
+        </TouchableHighlight>
     )
 }
 

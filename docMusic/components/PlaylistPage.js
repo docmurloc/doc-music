@@ -48,7 +48,7 @@ function PlaylistPage(props) {
                 <View style={styles.box}>
                 <FlatList
                     data={props.playlist.currentPlaylist.trackListId}
-                    renderItem={({ item }) => <PlaylistItem id={item}/>}
+                    renderItem={({ item }) => <PlaylistItem {...props} id={item}/>}
                     keyExtractor={item => item}
                     />
                 </View>
