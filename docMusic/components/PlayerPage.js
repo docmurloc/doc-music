@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {connect} from 'react-redux';
+import TrackPlayer from 'react-native-track-player';
+
 
 import PlayerTitle from './PlayerTitle'
 import Player from './Player'
@@ -8,7 +10,28 @@ import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView}
 
 
 function PlayerPage(props) {
-    const [reponse, setreponse] = useState("");
+    const [event, setEvent] = useState(null);
+
+    useEffect(() => {
+        //return () => {
+        //    event.remove();
+        //};
+    });
+
+    if (!event) {
+        //setEvent(
+        //    TrackPlayer.addEventListener('playback-track-changed', async (data) => {
+        //        let track = await TrackPlayer.getTrack(data.nextTrack);
+//
+        //        console.log("track change:", track);
+//
+        //        const action = {type: 'SET_CURRENT_TRACK', track: track};
+        //        props.dispatch(action);
+//
+        //    })
+        //)
+    }
+    
     if (props.track.currentTrack == null) {
         return (
             <View>

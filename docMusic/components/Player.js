@@ -3,9 +3,11 @@ import {connect} from 'react-redux';
 
 import pause from '../APIsound/pause'
 import {play} from '../APIsound/play'
+import {next, previous} from '../APIsound/skip';
 
 import PlayerTitle from './PlayerTitle'
 import ButtonSwitch from './ButtonSwitch'
+import ButtonIcon from './ButtonIcon';
 import * as Progress from 'react-native-progress';
 
 import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView} from "react-native";
@@ -30,14 +32,18 @@ function Player(props) {
             </View>
             <View style={styles.horizontalDisplay}>
                 <Image source={require('../Images/crossingArrow.png')} style={styles.icon}/>
-                <Image source={require('../Images/previousArrow.png')} style={styles.icon}/>
+                <ButtonIcon 
+                icon={require('../Images/previousArrow.png')} 
+                Onpress={previous}/>
                 <ButtonSwitch
                 iconOff = {require('../Images/playIcon.png')}
                 onPressOff = {play}
                 iconOn = {require('../Images/pauseIcon.png')}
                 onPressOn = {pause}
                 />
-                <Image source={require('../Images/nextArrow.png')} style={styles.icon}/>
+                <ButtonIcon 
+                icon={require('../Images/nextArrow.png')} 
+                onPress={next}/>
                 <Image source={require('../Images/loopArrow.png')} style={styles.icon}/>
             </View>
 
