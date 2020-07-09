@@ -29,14 +29,18 @@ function getDate() {
 /* GET users listing. */
 router.get('/random', async function(req, res, next) {
 
-  let album = await AlbumModel.findOne({_id : "5f032b94c5a0c1183327a8d9"});
+  let nbAlbum = await AlbumModel.count();
+
+  let random = Math.floor(Math.random() * nbAlbum);
+
+  let album = await AlbumModel.findOne().skip(random);
 
     const answer = {
         id : album._id,
         title: album.title,
         artist: album.artist,
-        artworkID: album.artwork,
-        date: album.data,
+        artwork: album.artwork,
+        date: album.date,
         genre: album.genre,
         playListId: album.playListId,
     };
