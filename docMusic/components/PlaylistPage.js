@@ -21,7 +21,6 @@ async function SetPlaylistRandom(props) {
 function PlaylistPage(props) {
 
       if (!props.playlist.currentPlaylist) {
-        SetPlaylistRandom(props);
         return (
             <View>
                 <Text>Playlist not found</Text>

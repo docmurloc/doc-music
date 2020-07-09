@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {connect} from 'react-redux';
 
 import pause from '../APIsound/pause'
-import start from '../APIsound/play'
+import {play} from '../APIsound/play'
 
 import PlayerTitle from './PlayerTitle'
 import ButtonSwitch from './ButtonSwitch'
@@ -33,7 +33,7 @@ function Player(props) {
                 <Image source={require('../Images/previousArrow.png')} style={styles.icon}/>
                 <ButtonSwitch
                 iconOff = {require('../Images/playIcon.png')}
-                onPressOff = {start}
+                onPressOff = {play}
                 iconOn = {require('../Images/pauseIcon.png')}
                 onPressOn = {pause}
                 />

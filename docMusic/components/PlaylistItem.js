@@ -3,6 +3,9 @@ import {connect} from 'react-redux';
 
 import {GetRandomTrack, GetTrackById} from '../APIserver/Track';
 
+import {playAtId} from '../APIsound/play';
+import {remplaceTrack} from '../APIsound/track';
+
 import {StyleSheet, Text, TextInput , View, Image, Button, TouchableHighlight} from "react-native";
 
 async function SetTrackItem(setTrack, id) {
@@ -11,10 +14,17 @@ async function SetTrackItem(setTrack, id) {
     setTrack(answer);
 }
 
-function selectedTrack(props, track) {
-    console.log("slected props",props);
+async function setupPlayer(idTrackList, idSelected) {
+    await remplaceTrack(idTrackList);
+    await playAtId(idSelected);
+}
+
+async function selectedTrack(props, track) {
+    await setupPlayer(props.playlist.currentPlaylist.trackListId, track.id);
+
     const action = {type: 'SET_CURRENT_TRACK', track: track};
     props.dispatch(action);
+
 
     props.navigation.navigate('Player');
 }
@@ -23,7 +33,7 @@ function PlaylistItem(props) {
     const [track, setTrack] = useState(null);
 
 
-    console.log("track current: ", track);
+    //console.log("track current: ", track);
 
     if (!track) {
         SetTrackItem(setTrack, props.id);

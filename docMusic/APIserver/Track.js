@@ -17,6 +17,8 @@ exports.GetRandomTrack = GetRandomTrack;
 
 async function GetTrackById(id) {
 
+    console.log("GetTrackById", id)
+
     let answer = await fetch('http://89.87.94.17:3000/tracks/id', {
         headers: {
             'Accept': 'application/json',
@@ -27,6 +29,9 @@ async function GetTrackById(id) {
     })
 
     answer = await answer.json();
+
+    console.log("GetTrackById result", answer);
+
 
     return answer;
 }
