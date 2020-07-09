@@ -30,7 +30,12 @@ function getDate() {
 /* GET users listing. */
 router.get('/random', async function(req, res, next) {
 
-  let playlist = await PlaylistModel.findOne({_id : "5f0527e7e399654bc6d6cfc9"});
+  let nbPlaylist = await PlaylistModel.count();
+
+  let random = Math.floor(Math.random() * nbPlaylist);
+
+  let playlist = await PlaylistModel.findOne().skip(random);
+
 
     const answer = {
         id : playlist._id,

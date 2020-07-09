@@ -5,108 +5,56 @@ import PlaylistHead from './PlaylistHead'
 import PlaylistButton from './PlaylistButton'
 import PlaylistItem from './PlaylistItem'
 
+import {GetRandomPlaylist} from '../APIserver/Playlist'
+
 
 import {StyleSheet, Text, TextInput , View, Image, Button, FlatList} from "react-native";
 
+async function SetPlaylistRandom(props) {
+    let answer = await GetRandomPlaylist();
+
+    const action = {type: 'SET_CURRENT_PLAYLIST', playlist: answer};
+    props.dispatch(action);
+}
+
+
 function PlaylistPage(props) {
 
-    const DATA = [
-        {
-          id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-          title: 'First Item',
-          type: "playlist",
-          author: " - Pierre ANTOINE",
-          info: " - 10 song"
-        },
-        {
-          id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-          title: 'Second Item',
-          type: "playlist",
-          author: " - Pierre ANTOINE",
-          info: " - 10 song"
-        },
-        {
-          id: '58694a0f-3da1-471f-bd96-145571e29d72',
-          title: 'Third Item',
-          type: "playlist",
-          author: " - Pierre ANTOINE",
-          info: " - 10 song"
-        },
-        {
-            id: '58694a0f-3da1-471f-bd96-145571e29d722',
-            title: 'Third Item',
-            type: "playlist",
-            author: " - Pierre ANTOINE",
-            info: " - 10 song"
-        },
-        {
-            id: '58694a0f-3da1-471f-bd96-145571e29d73',
-            title: 'Third Item',
-            type: "playlist",
-            author: " - Pierre ANTOINE",
-            info: " - 10 song"
-        },
-        {
-            id: '58694a0f-3da1-471f-bd96-145571e29d724',
-            title: 'Third Item',
-            type: "playlist",
-            author: " - Pierre ANTOINE",
-            info: " - 10 song"
-        },
-        {
-            id: '58694a0f-3da1-471f-bd96-145571e29d75',
-            title: 'Third Item',
-            type: "playlist",
-            author: " - Pierre ANTOINE",
-            info: " - 10 song"
-        },
-        {
-            id: '58694a0f-3da1-471f-bd96-145571e29d76',
-            title: 'Third Item',
-            type: "playlist",
-            author: " - Pierre ANTOINE",
-            info: " - 10 song"
-        },
-        {
-            id: '58694a0f-3da1-471f-bd96-145571e29d77',
-            title: 'Third Item',
-            type: "playlist",
-            author: " - Pierre ANTOINE",
-            info: " - 10 song"
-        },
-        {
-            id: '58694a0f-3da1-471f-bd96-145571e29d78',
-            title: 'Third Item',
-            type: "playlist",
-            author: " - Pierre ANTOINE",
-            info: " - 10 song"
-        },
-
-      ];
-
-    return(
-        <View style={styles.container}>
-            <View style={styles.box2}>
-                <PlaylistHead title={"Song Title"} type={"Playlist"} author={" - Pierre ANTOINE"} info={" - 10 songs"}/>
-                <View style={styles.horizontalDisplay}>
-                    <PlaylistButton 
-                    title={"aléatoire"}
-                    icon={require('../Images/crossingArrow.png')}/>
-                    <PlaylistButton 
-                    title={"lire"}
-                    icon={require('../Images/playIcon.png')}/>
+      if (!props.playlist.currentPlaylist) {
+        SetPlaylistRandom(props);
+        return (
+            <View>
+                <Text>Playlist not found</Text>
+            </View>
+        )
+    } else {
+        return(
+            <View style={styles.container}>
+                <View style={styles.box2}>
+                    <PlaylistHead 
+                    title={props.playlist.currentPlaylist.title} 
+                    artwork={props.playlist.currentPlaylist.artwork} 
+                    author={props.playlist.currentPlaylist.author} 
+                    nbSongs={props.playlist.currentPlaylist.trackListId.length}/>
+                    <View style={styles.horizontalDisplay}>
+                        <PlaylistButton 
+                        title={"aléatoire"}
+                        icon={require('../Images/crossingArrow.png')}/>
+                        <PlaylistButton 
+                        title={"lire"}
+                        icon={require('../Images/playIcon.png')}/>
+                    </View>
+                </View>
+                <View style={styles.box}>
+                <FlatList
+                    data={props.playlist.currentPlaylist.trackListId}
+                    renderItem={({ item }) => <PlaylistItem id={item}/>}
+                    keyExtractor={item => item}
+                    />
                 </View>
             </View>
-            <View style={styles.box}>
-            <FlatList
-                data={DATA}
-                extraData={props.track.currentTrack}
-                renderItem={({ item }) => <PlaylistItem/>}
-                keyExtractor={item => item.id}
-                />
-            </View>
-        </View>
-    )
+        )
+    }
 }
 
 const styles = StyleSheet.create({

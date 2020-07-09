@@ -1,48 +1,25 @@
 import React, { useState } from "react";
 import {connect} from 'react-redux';
 
+import {GetRandomTrack, GetTrackById} from '../APIserver/Track';
 
 import {StyleSheet, Text, TextInput , View, Image, Button, FlatList} from "react-native";
 
-async function GetRandomTrack(props) {
-    //const test = await NetInfo.fetch();
-//
-    //console.log("testrequest :", test);
+async function SetTrackItem(setTrack, id) {
+    let answer = await GetTrackById(id);
 
-    fetch('http://89.87.94.17:3000/tracks/random', {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        method: 'GET',
-    })
-    .then((response) => {
-        return response.json();
-    })
-    .then((data) => {
-        console.log(data);
-        const action = {type: 'SET_CURRENT_TRACK', track: data}
-        props.dispatch(action)
-
-        //setInfo(data.status);
-        //if (data.status == "succes") {
-            //props.navigation.navigate('Home');
-        //}
-      //return json;
-    })
-    .catch((error) => {
-        console.error("error :",error);
-    });
-    //props.navigation.navigate('Home');
-
-    //console.log("fetch request :", response);
+    setTrack(answer);
 }
 
 function PlaylistItem(props) {
 
-    console.log("track current: ", props.track, !props.track.currentTrack);
+    const [track, setTrack] = useState(null);
 
-    if (!props.track.currentTrack) {
+
+    console.log("track current: ", track);
+
+    if (!track) {
+        SetTrackItem(setTrack, props.id);
         return (
             <View>
                 <Text>Image not found</Text>
@@ -53,11 +30,11 @@ function PlaylistItem(props) {
     return(
         <View style={styles.horizontalDisplay}>
             <Image 
-            source={{uri :props.track.currentTrack.artwork}} 
+            source={{uri :track.artwork}} 
             style={styles.icon}/>
             <View style={styles.box}>
-                <Text style={styles.title} numberOfLines={2} ellipsizeMode='tail'>{props.track.currentTrack.title}</Text>
-                <Text style={styles.text}>{props.track.currentTrack.artist} - 4.00</Text>
+                <Text style={styles.title} numberOfLines={2} ellipsizeMode='tail'>{track.title}</Text>
+                <Text style={styles.text}>{track.artist} - 4.00</Text>
             </View>
             <Image source={require('../Images/dotMenu.png')} style={styles.logo}/>
         </View>

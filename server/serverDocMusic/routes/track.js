@@ -29,8 +29,11 @@ function getDate() {
 
 /* GET users listing. */
 router.get('/random', async function(req, res, next) {
+    let nbTrack = await TrackModel.count();
 
-  let track = await TrackModel.findOne({_id : "5f052e211aa79f5d884c304d"});
+    let random = Math.floor(Math.random() * nbTrack);
+
+    let track = await TrackModel.findOne().skip(random);
 
     const answer = {
         id : track._id,
