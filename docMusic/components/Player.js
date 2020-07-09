@@ -7,6 +7,7 @@ import {next, previous} from '../APIsound/skip';
 
 import PlayerTitle from './PlayerTitle'
 import ButtonSwitch from './ButtonSwitch'
+import PlayButton from './PlayButton'
 import ButtonIcon from './ButtonIcon';
 import * as Progress from 'react-native-progress';
 
@@ -34,8 +35,8 @@ function Player(props) {
                 <Image source={require('../Images/crossingArrow.png')} style={styles.icon}/>
                 <ButtonIcon 
                 icon={require('../Images/previousArrow.png')} 
-                Onpress={previous}/>
-                <ButtonSwitch
+                onPress={previous}/>
+                <PlayButton
                 iconOff = {require('../Images/playIcon.png')}
                 onPressOff = {play}
                 iconOn = {require('../Images/pauseIcon.png')}

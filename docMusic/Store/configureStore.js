@@ -5,6 +5,7 @@ import albumReducer from './Reducers/albumReducer'
 import imageReducer from './Reducers/imageReducer'
 import playlistReducer from './Reducers/playlistReducer'
 import trackReducer from './Reducers/trackReducer'
+import playerReducer from './Reducers/playerReducer'
 
 const rootReducer = combineReducers({
     profil: profileReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     album : albumReducer,
     image : imageReducer,
     playlist : playlistReducer,
-    track : trackReducer
+    track : trackReducer,
+    player : playerReducer
 })
 
 export default createStore(rootReducer)

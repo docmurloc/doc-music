@@ -11,26 +11,6 @@ import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView}
 
 function PlayerPage(props) {
     const [event, setEvent] = useState(null);
-
-    useEffect(() => {
-        //return () => {
-        //    event.remove();
-        //};
-    });
-
-    if (!event) {
-        //setEvent(
-        //    TrackPlayer.addEventListener('playback-track-changed', async (data) => {
-        //        let track = await TrackPlayer.getTrack(data.nextTrack);
-//
-        //        console.log("track change:", track);
-//
-        //        const action = {type: 'SET_CURRENT_TRACK', track: track};
-        //        props.dispatch(action);
-//
-        //    })
-        //)
-    }
     
     if (props.track.currentTrack == null) {
         return (

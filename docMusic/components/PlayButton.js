@@ -4,19 +4,19 @@ import {connect} from 'react-redux';
 
 import {StyleSheet, Text, TextInput , View, Image, Button, TouchableHighlight} from "react-native";
 
-function ButtonSwitch(props) {
-    const [state, setState] = useState(props.statusButton);
+function PlayButton(props) {
 
     const changeState = () => {
-        if (state) {
+        if (props.player.play) {
             props.onPressOn();
         } else {
             props.onPressOff();
         }
-        setState(!state);
+        //setState(!state);
     }
 
-    if (state) {
+    console.log("statue Play:", props.player.play);
+    if (props.player.play) {
         return (
             <TouchableHighlight 
             style={styles.box}
@@ -99,4 +99,4 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
     return state
   }  
-export default connect(mapStateToProps)(ButtonSwitch);
+export default connect(mapStateToProps)(PlayButton);

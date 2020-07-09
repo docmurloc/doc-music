@@ -7,9 +7,24 @@ import Store from './Store/configureStore'
 
 async function trackService() {
 
-    TrackPlayer.addEventListener('remote-play', () => TrackPlayer.play());
+    TrackPlayer.addEventListener('remote-play', () => {
 
-    TrackPlayer.addEventListener('remote-pause', () => TrackPlayer.pause());
+        console.log("Play event");
+
+        const action = {type: 'SET_PLAY', status: true};
+        Store.dispatch(action);
+
+        TrackPlayer.play();
+    });
+
+    TrackPlayer.addEventListener('remote-pause', () => {
+
+        console.log("pause event");
+
+        const action = {type: 'SET_PLAY', status: false};
+        Store.dispatch(action);
+        TrackPlayer.pause();
+    });
 
     TrackPlayer.addEventListener('remote-stop', () => TrackPlayer.destroy());
 
