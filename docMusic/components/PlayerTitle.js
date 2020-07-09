@@ -17,7 +17,7 @@ function PlayerTitle(props) {
             <View style={styles.box}>
                 <Text style={styles.title}
                     ellipsizeMode={"tail"}
-                    numberOfLines={1}>Title Player</Text>
+                    numberOfLines={1}>{props.track.currentTrack.title}</Text>
             </View>
             <ButtonSwitch
             iconOff = {require('../Images/likeOff.png')}

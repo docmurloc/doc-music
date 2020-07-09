@@ -17,7 +17,7 @@ function Player(props) {
         <View style={styles.container}>
             <PlayerTitle/>
             <View style={styles.box}>
-                <Text style={styles.title}>author</Text>
+                <Text style={styles.title}>{props.track.currentTrack.artist}</Text>
                 <Progress.Bar progress={0.3} width={300} />
                 <View style={styles.horizontalDisplay}>
                     <View style={styles.textCenter}>

@@ -9,13 +9,21 @@ import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView}
 
 function PlayerPage(props) {
     const [reponse, setreponse] = useState("");
+    if (props.track.currentTrack == null) {
+        return (
+            <View>
+                <Text>Player Page</Text>
+            </View>
+        )
+    } else {
     return (
         <View style={styles.container}>
             <Image source={{uri :props.track.currentTrack.artwork}} style={styles.logo}/>
             <Player/>
 
         </View>
-    )
+        )
+    }
 }
 
 const styles = StyleSheet.create({

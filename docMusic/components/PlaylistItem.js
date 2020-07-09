@@ -13,8 +13,8 @@ async function SetTrackItem(setTrack, id) {
 
 function selectedTrack(props, track) {
     console.log("slected props",props);
-    //const action = {type: 'SET_CURRENT_TRACK', track: track};
-    //props.dispatch(action);
+    const action = {type: 'SET_CURRENT_TRACK', track: track};
+    props.dispatch(action);
 
     props.navigation.navigate('Player');
 }

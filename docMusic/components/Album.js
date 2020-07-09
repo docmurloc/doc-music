@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 
 import {StyleSheet, Text, TouchableHighlight , View, Image, Button, FlatList} from "react-native";
 
-import {GetRandomAlbum} from '../APIserver/Album'
+import {GetRandomAlbum} from '../APIserver/Album';
+import {GetPlaylistById} from '../APIserver/Playlist'
 
 //props.navigation.navigate('SignUp')
 
@@ -13,6 +14,15 @@ async function SetAlbumRandom(setAlbum) {
     setAlbum(answer);
 }
 
+async function selectedAlbum(props, id) {
+    console.log("slected props",props);
+
+    let answer = await GetPlaylistById(id);
+    const action = {type: 'SET_CURRENT_PLAYLIST', playlist: answer};
+    props.dispatch(action);
+
+    props.navigation.navigate('playlist');
+}
 
 function Album(props) {
 
@@ -30,7 +40,7 @@ function Album(props) {
 
     return (
         <TouchableHighlight
-        onPress={() => props.navigation.navigate('playlist')}
+        onPress={() => selectedAlbum(props, album.playListId)}
         >
         <View style={styles.content}>
         <Image
