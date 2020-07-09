@@ -37,7 +37,7 @@ async function loginUser(props, newPseudo, newPassword, setInfo) {
             //const action = {type: 'CONNECTION', accessToken: answer.access_token}
             //props.dispatch(action)
 
-            props.navigation.navigate('Home');
+            props.navigation.navigate('HomeTab');
         //} else {
         //    setInfo(answer.status);
         //}

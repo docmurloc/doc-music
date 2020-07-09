@@ -23,18 +23,16 @@ function HomeStack() {
             },
           }}>
           <Stack.Screen 
-          name="Home" 
-          component={HomeStack}
-          options={{ 
-            headerTitle: props => <HeaderLeft {...props} />,
-            headerLeft: null }} 
+          name="HomePage" 
+          component={HomePage}
           />
           <Stack.Screen 
           name="playlist" 
           component={PlaylistPage}
-          options={{ 
-            headerTitle: props => <HeaderLeft {...props} />,
-            headerLeft: null }} 
+          />
+          <Stack.Screen 
+          name="Player" 
+          component={PlayerPage}
           />
         </Stack.Navigator>
   );
@@ -43,9 +41,9 @@ function HomeStack() {
 function HomeNavigator() {
     return (
           <Tab.Navigator>
-            <Tab.Screen name="Home" component={HomePage} />
-            <Tab.Screen name="playlist" component={PlaylistPage} />
-            <Tab.Screen name="Player" component={PlayerPage} />
+            <Tab.Screen name="Home" component={HomeStack} />
+            <Tab.Screen name="discovery" component={PlaylistPage} />
+            <Tab.Screen name="Library" component={PlayerPage} />
           </Tab.Navigator>
       );
   }
@@ -76,7 +74,7 @@ function MyStack() {
             }} 
           />
           <Stack.Screen 
-          name="Home" 
+          name="HomeTab" 
           component={HomeNavigator}
           options={{ 
             headerTitle: props => <HeaderLeft {...props} />,
