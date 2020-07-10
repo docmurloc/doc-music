@@ -46,7 +46,7 @@ function shuffle(a) {
 async function randomTrack(listIdTrack, id = null) {
     console.log("randomTrack", listIdTrack.length)
 
-    await TrackPlayer.setupPlayer();
+    //await TrackPlayer.setupPlayer();
     await TrackPlayer.reset();
 
 

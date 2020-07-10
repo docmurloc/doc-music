@@ -17,7 +17,7 @@ function PlayerTitle(props) {
             <View style={styles.box}>
                 <Text style={styles.title}
                     ellipsizeMode={"tail"}
-                    numberOfLines={1}>{props.track.currentTrack.title}</Text>
+                    numberOfLines={3}>{props.track.currentTrack.title}</Text>
             </View>
             <ButtonSwitch
             iconOff = {require('../Images/likeOff.png')}
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
       fontSize: 20,
     },
     title: {
-        fontSize: 30,
+        fontSize: 20,
         textAlign: "center",
         fontWeight: "bold"
       },

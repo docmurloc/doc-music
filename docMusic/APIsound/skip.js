@@ -31,12 +31,12 @@ exports.next = next;
 async function previous() {
 
     let queue = await TrackPlayer.getQueue();
-    //console.log("queue:", queue);
+    console.log("queue:", queue);
 
     let store = Store.getState();
 
     let track = store.track.currentTrack.id;
-    //console.log("track:", track);
+    console.log("track:", track);
 
     if (queue[0].id != track) {
         await TrackPlayer.skipToPrevious();
@@ -47,8 +47,6 @@ async function previous() {
         console.log("queue first:");
 
     }
-
-    await TrackPlayer.skipToPrevious();
 }
 
 exports.previous = previous;

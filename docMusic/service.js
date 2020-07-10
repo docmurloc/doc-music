@@ -37,10 +37,10 @@ async function trackService() {
         let queue = await TrackPlayer.getQueue();
         console.log("queue change:", queue);
 
-
-        const action = {type: 'SET_CURRENT_TRACK', track: track};
-        Store.dispatch(action);
-
+        if (track) {
+            const action = {type: 'SET_CURRENT_TRACK', track: track};
+            Store.dispatch(action);    
+        }
     })
 
     TrackPlayer.addEventListener('playback-queue-ended', async (data) => {

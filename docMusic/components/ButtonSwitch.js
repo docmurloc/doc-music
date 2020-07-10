@@ -5,18 +5,18 @@ import {connect} from 'react-redux';
 import {StyleSheet, Text, TextInput , View, Image, Button, TouchableHighlight} from "react-native";
 
 function ButtonSwitch(props) {
-    const [state, setState] = useState(props.statusButton);
+    //const [state, setState] = useState(props.statusButton);
 
     const changeState = () => {
-        if (state) {
+        if (props.statusButton) {
             props.onPressOn();
         } else {
             props.onPressOff();
         }
-        setState(!state);
+        //setState(!state);
     }
 
-    if (state) {
+    if (props.statusButton) {
         return (
             <TouchableHighlight 
             style={styles.box}
