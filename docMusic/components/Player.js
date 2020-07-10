@@ -32,7 +32,18 @@ function Player(props) {
                 </View>
             </View>
             <View style={styles.horizontalDisplay}>
-                <Image source={require('../Images/crossingArrow.png')} style={styles.icon}/>
+                <ButtonSwitch
+                iconOff = {require('../Images/crossingArrowOff.png')}
+                onPressOff = {() => {
+                    const action = {type: 'SET_RANDOM', status: true}
+                    props.dispatch(action)
+                }}
+                iconOn = {require('../Images/crossingArrowOn.png')}
+                onPressOn = {() => {
+                    const action = {type: 'SET_RANDOM', status: false}
+                    props.dispatch(action)
+                }}
+                />
                 <ButtonIcon 
                 icon={require('../Images/previousArrow.png')} 
                 onPress={previous}/>
@@ -45,7 +56,18 @@ function Player(props) {
                 <ButtonIcon 
                 icon={require('../Images/nextArrow.png')} 
                 onPress={next}/>
-                <Image source={require('../Images/loopArrow.png')} style={styles.icon}/>
+                <ButtonSwitch
+                iconOff = {require('../Images/loopArrowOff.png')}
+                onPressOff = {() => {
+                    const action = {type: 'SET_LOOP', status: true}
+                    props.dispatch(action)
+                }}
+                iconOn = {require('../Images/loopArrowOn.png')}
+                onPressOn = {() => {
+                    const action = {type: 'SET_LOOP', status: false}
+                    props.dispatch(action)
+                }}
+                />
             </View>
 
         </View>

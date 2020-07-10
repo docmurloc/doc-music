@@ -38,7 +38,7 @@ function PlaylistPage(props) {
                     <View style={styles.horizontalDisplay}>
                         <PlaylistButton 
                         title={"aléatoire"}
-                        icon={require('../Images/crossingArrow.png')}/>
+                        icon={require('../Images/crossingArrowOn.png')}/>
                         <PlaylistButton 
                         title={"lire"}
                         icon={require('../Images/playIcon.png')}/>
