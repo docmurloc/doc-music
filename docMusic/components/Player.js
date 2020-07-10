@@ -5,6 +5,8 @@ import pause from '../APIsound/pause'
 import {play} from '../APIsound/play'
 import {next, previous} from '../APIsound/skip';
 import {remplaceTrack, randomTrack} from '../APIsound/track'
+import MyPlayerBar from './PlayerBar'
+
 
 import PlayerTitle from './PlayerTitle'
 import ButtonSwitch from './ButtonSwitch'
@@ -22,15 +24,7 @@ function Player(props) {
             <PlayerTitle/>
             <View style={styles.box}>
                 <Text style={styles.title}>{props.track.currentTrack.artist}</Text>
-                <Progress.Bar progress={0.3} width={300} />
-                <View style={styles.horizontalDisplay}>
-                    <View style={styles.textCenter}>
-                        <Text style={styles.text}>0.00</Text>
-                    </View>
-                    <View style={styles.textCenter}>
-                        <Text style={styles.text}>4.35</Text>
-                    </View>
-                </View>
+                <MyPlayerBar/>
             </View>
             <View style={styles.horizontalDisplay}>
                 <ButtonSwitch
@@ -86,7 +80,9 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         justifyContent: "space-between",
         padding: 10,
-        backgroundColor : 'rgba(191, 155, 63, 0.5)',
+        backgroundColor : 'rgba(215, 215, 215, 1)',
+        borderRadius: 15
+
 
     },
     textCenter: {
@@ -96,7 +92,7 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         //justifyContent: "space-between",
         //padding: 10,
-        backgroundColor : 'rgba(191, 155, 63, 0.5)',
+        //backgroundColor : 'rgba(191, 155, 63, 0.5)',
 
     },
     box: {
@@ -105,7 +101,7 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         justifyContent: "center",
         paddingTop: 10,
-        backgroundColor : 'red'
+        //backgroundColor : 'red'
         
     },
     content: {
@@ -113,7 +109,7 @@ const styles = StyleSheet.create({
         margin : 30,
         flex: 1, 
         justifyContent: "space-around",
-        backgroundColor : 'rgba(215, 215, 215, 0.9)',
+        //backgroundColor : 'rgba(215, 215, 215, 0.9)',
         borderRadius: 20
         
     },
@@ -121,7 +117,7 @@ const styles = StyleSheet.create({
         width : "100 %",
         flexDirection: 'row',
         justifyContent: "space-around",
-        backgroundColor : "green",
+        //backgroundColor : "green",
         paddingVertical : 5
     },
     text: {

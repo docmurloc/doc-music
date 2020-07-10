@@ -1,4 +1,5 @@
 import TrackPlayer from 'react-native-track-player';
+import Store from '../Store/configureStore'
 
 import {GetTrackById} from '../APIserver/Track'
 
@@ -26,6 +27,9 @@ async function remplaceTrack(listIdTrack, id = null) {
 
     await TrackPlayer.play();
 
+    const action = {type: 'SET_PLAY', status: true};
+    Store.dispatch(action);
+
     console.log("remplaceTrack end")
 
 }
@@ -46,7 +50,7 @@ function shuffle(a) {
 async function randomTrack(listIdTrack, id = null) {
     console.log("randomTrack", listIdTrack.length)
 
-    //await TrackPlayer.setupPlayer();
+    await TrackPlayer.setupPlayer();
     await TrackPlayer.reset();
 
 
@@ -72,6 +76,9 @@ async function randomTrack(listIdTrack, id = null) {
     }
 
     await TrackPlayer.play();
+
+    const action = {type: 'SET_PLAY', status: true};
+    Store.dispatch(action);
 
     console.log("randomTrack end")
 

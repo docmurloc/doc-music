@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         flex: 1, 
         alignItems: 'center', 
         justifyContent: "space-around",
-        backgroundColor : 'rgba(215, 215, 215, 0.9)',
+        //backgroundColor : 'rgba(215, 215, 215, 0.9)',
         borderRadius: 20
         
     },

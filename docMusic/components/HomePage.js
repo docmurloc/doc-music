@@ -295,38 +295,7 @@ function HomePage(props) {
     return (
         <View style={styles.container}>
             <Displayer {...props} title={"Favorite"}/>
-            <Button
-            title={"Uplaod"}
-            onPress={() => registerAlbum(props, "data")}
-            />
-            <Button
-            title={"random"}
-            onPress={() => GetRandomAlbum()}
-            />
-            <Button
-            title={"Uplaod image"}
-            onPress={() => registerImage()}
-            />
-            <Button
-            title={"random image"}
-            onPress={() => GetRandomImage()}
-            />
-             <Button
-            title={"upload playlist"}
-            onPress={() => registerPlaylist()}
-            />
-             <Button
-            title={"random playlist"}
-            onPress={() => GetRandomPlaylist()}
-            />
-             <Button
-            title={"upload track"}
-            onPress={() => registerTrack()}
-            />
-             <Button
-            title={"random track"}
-            onPress={() => GetRandomTrack()}
-            />
+            <Displayer {...props} title={"Random"}/>
         </View>
     )
 }

@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start', 
         justifyContent: "space-around",
         paddingHorizontal: 15,
-        backgroundColor : 'rgba(191, 155, 63, 0.5)',
+        //backgroundColor : 'rgba(191, 155, 63, 0.5)',
         
     },
     content: {
@@ -93,8 +93,7 @@ const styles = StyleSheet.create({
         padding: 10,
         flexDirection: 'row',
         justifyContent: 'flex-start',
-        backgroundColor : "green",
-        borderRadius: 5
+        backgroundColor : 'rgba(215, 215, 215, 1)',
     },
     text: {
       fontSize: 16,

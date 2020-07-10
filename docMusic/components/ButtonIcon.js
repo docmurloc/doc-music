@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         //alignItems: 'center', 
         //justifyContent: "space-around",
         //paddingHorizontal: 15,
-        backgroundColor : 'rgba(191, 155, 63, 0.5)',
+        //backgroundColor : 'rgba(191, 155, 63, 0.5)',
         
     },
     content: {
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         flex: 1, 
         alignItems: 'center', 
         justifyContent: "space-around",
-        backgroundColor : 'rgba(215, 215, 215, 0.9)',
+        //backgroundColor : 'rgba(215, 215, 215, 0.9)',
         borderRadius: 20
         
     },

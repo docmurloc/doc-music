@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         padding: 5,
         flexDirection: 'row',
-        backgroundColor: 'red'
+        //backgroundColor: 'red'
 
     },
     box: {

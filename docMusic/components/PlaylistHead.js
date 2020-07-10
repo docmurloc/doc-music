@@ -12,7 +12,7 @@ function PlaylistHead(props) {
             style={styles.logo}/>
             <View style={styles.box}>
                 <Text style={styles.title}>{props.title}</Text>
-                <Text style={styles.text} numberOfLines={2} ellipsizeMode='tail'>{props.nbSongs} Songs par {props.author}</Text>
+                <Text style={styles.text} numberOfLines={2} ellipsizeMode='tail'>{props.nbSongs} Songs</Text>
                 <View style={styles.horizontalDisplay}>
                     <Image source={require('../Images/pencil.png')} style={styles.icon}/>
                     <Image source={require('../Images/downloadArrow.png')} style={styles.icon}/>
@@ -43,7 +43,9 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         justifyContent: "space-around",
         padding: 10,
-        backgroundColor : 'rgba(191, 155, 63, 0.5)',
+        marginLeft: 10, 
+        backgroundColor : 'rgba(215, 215, 215, 1)',
+        borderRadius: 15
         
     },
     content: {
@@ -62,7 +64,7 @@ const styles = StyleSheet.create({
         width : "80 %",
         flexDirection: 'row',
         justifyContent: 'space-around',
-        backgroundColor : "red"
+        //backgroundColor : "red"
     },
     text: {
       fontSize: 13,

@@ -6,6 +6,8 @@ import PlaylistButton from './PlaylistButton'
 import PlaylistItem from './PlaylistItem'
 
 import {GetRandomPlaylist} from '../APIserver/Playlist'
+import {remplaceTrack, randomTrack} from '../APIsound/track'
+
 
 
 import {StyleSheet, Text, TextInput , View, Image, Button, FlatList} from "react-native";
@@ -38,10 +40,19 @@ function PlaylistPage(props) {
                     <View style={styles.horizontalDisplay}>
                         <PlaylistButton 
                         title={"aléatoire"}
-                        icon={require('../Images/crossingArrowOn.png')}/>
+                        icon={require('../Images/crossingArrowOn.png')}
+                        onPress={() =>{
+                            randomTrack(props.playlist.currentPlaylist.trackListId);
+                            props.navigation.navigate('Player');
+
+                        }}/>
                         <PlaylistButton 
                         title={"lire"}
-                        icon={require('../Images/playIcon.png')}/>
+                        icon={require('../Images/playIcon.png')}
+                        onPress={() => {
+                            remplaceTrack(props.playlist.currentPlaylist.trackListId);
+                            props.navigation.navigate('Player');
+                        }}/>
                     </View>
                 </View>
                 <View style={styles.box}>
@@ -88,7 +99,7 @@ const styles = StyleSheet.create({
         flex: 1, 
         alignItems: 'center', 
         justifyContent: "space-around",
-        backgroundColor : 'rgba(215, 215, 215, 0.9)',
+        backgroundColor : 'rgba(215, 215, 215, 1)',
         borderRadius: 20
         
     },
@@ -96,7 +107,8 @@ const styles = StyleSheet.create({
         width : "90 %",
         flexDirection: 'row',
         justifyContent: 'space-around',
-        backgroundColor : "red"
+        paddingBottom: 5
+        //backgroundColor : "red"
     },
     text: {
       fontSize: 20,

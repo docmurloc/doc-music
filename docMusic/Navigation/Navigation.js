@@ -41,9 +41,9 @@ function HomeStack() {
 function HomeNavigator() {
     return (
           <Tab.Navigator>
-            <Tab.Screen name="Home" component={HomeStack} />
-            <Tab.Screen name="discovery" component={PlaylistPage} />
-            <Tab.Screen name="Library" component={PlayerPage} />
+            <Tab.Screen name="Home page" component={HomeStack} />
+            <Tab.Screen name="playlist page" component={PlaylistPage} />
+            <Tab.Screen name="player page" component={PlayerPage} />
           </Tab.Navigator>
       );
   }

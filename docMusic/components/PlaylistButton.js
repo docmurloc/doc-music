@@ -2,26 +2,36 @@ import React, { useState } from "react";
 import {connect} from 'react-redux';
 
 
-import {StyleSheet, Text, TextInput , View, Image, Button, FlatList} from "react-native";
+import {StyleSheet, Text, TextInput , View, Image, Button, TouchableHighlight} from "react-native";
 
 function PlaylistButton(props) {
     return(
-        <View style={styles.horizontalDisplay}>
-            <Image source={props.icon} style={styles.icon}/>
-            <View style={styles.box}>
-                <Text style={styles.text}>{props.title}</Text>
+        <TouchableHighlight
+        style={styles.container}
+        onPress = {() => {
+            props.onPress()
+        }}>
+            <View style={styles.horizontalDisplay}>
+                <Image source={props.icon} style={styles.icon}/>
+                <View style={styles.box}>
+                    <Text style={styles.text}>{props.title}</Text>
+                </View>
             </View>
-        </View>
+        </TouchableHighlight>
+
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        //flex: 1,
-        //height: "30%",
-        //alignItems: 'center', 
-        //justifyContent: 'center',
-        //backgroundColor : 'red'
+        //width : "40 %",
+        padding: 10,
+        //flexDirection: 'row',
+        justifyContent: 'center',
+        //backgroundColor : "green",
+        borderRadius: 5,
+        backgroundColor : 'rgba(215, 215, 215, 1)',
+        borderRadius: 5
     },
     box: {
         //width : "100%",
@@ -29,7 +39,7 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         justifyContent: "space-around",
         paddingHorizontal: 15,
-        backgroundColor : 'rgba(191, 155, 63, 0.5)',
+        //backgroundColor : 'rgba(191, 155, 63, 0.5)',
         
     },
     content: {
@@ -38,17 +48,17 @@ const styles = StyleSheet.create({
         flex: 1, 
         alignItems: 'center', 
         justifyContent: "space-around",
-        backgroundColor : 'rgba(215, 215, 215, 0.9)',
+        //backgroundColor : 'rgba(215, 215, 215, 0.9)',
         borderRadius: 20
         
     },
     horizontalDisplay: {
-        width : "40 %",
-        padding: 10,
+        //width : "40 %",
+        //padding: 10,
         flexDirection: 'row',
         justifyContent: 'center',
-        backgroundColor : "green",
-        borderRadius: 5
+        //backgroundColor : "green",
+        //borderRadius: 5
     },
     text: {
       fontSize: 16,
