@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import pause from '../APIsound/pause'
 import {play} from '../APIsound/play'
 import {next, previous} from '../APIsound/skip';
+import {remplaceTrack, randomTrack} from '../APIsound/track'
 
 import PlayerTitle from './PlayerTitle'
 import ButtonSwitch from './ButtonSwitch'
@@ -35,11 +36,13 @@ function Player(props) {
                 <ButtonSwitch
                 iconOff = {require('../Images/crossingArrowOff.png')}
                 onPressOff = {() => {
+                    randomTrack(props.playlist.currentPlaylist.trackListId, props.track.currentTrack.id);
                     const action = {type: 'SET_RANDOM', status: true}
                     props.dispatch(action)
                 }}
                 iconOn = {require('../Images/crossingArrowOn.png')}
                 onPressOn = {() => {
+                    remplaceTrack(props.playlist.currentPlaylist.trackListId, props.track.currentTrack.id);
                     const action = {type: 'SET_RANDOM', status: false}
                     props.dispatch(action)
                 }}

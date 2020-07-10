@@ -29,10 +29,11 @@ async function loginUser(props, newPseudo, newPassword, setInfo) {
         method: 'GET',
     })
     .then((response) => {
+        console.log("reqponse login",response);
         return response.json();
     })
     .then((answer) => {
-        console.log(answer);
+        console.log("answer login",answer);
         //if (answer.access_token) {
             //const action = {type: 'CONNECTION', accessToken: answer.access_token}
             //props.dispatch(action)
