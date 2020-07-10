@@ -43,6 +43,7 @@ function Player(props) {
                     const action = {type: 'SET_RANDOM', status: false}
                     props.dispatch(action)
                 }}
+                statusButton= {props.player.random}
                 />
                 <ButtonIcon 
                 icon={require('../Images/previousArrow.png')} 
@@ -67,6 +68,7 @@ function Player(props) {
                     const action = {type: 'SET_LOOP', status: false}
                     props.dispatch(action)
                 }}
+                statusButton= {props.player.loop}
                 />
             </View>
 
