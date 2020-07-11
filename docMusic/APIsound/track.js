@@ -4,7 +4,7 @@ import Store from '../Store/configureStore'
 import {GetTrackById} from '../APIserver/Track'
 
 async function remplaceTrack(listIdTrack, id = null) {
-    console.log("remplaceTrack", listIdTrack.length)
+    //console.log("remplaceTrack", listIdTrack.length)
 
     await TrackPlayer.setupPlayer();
     await TrackPlayer.reset();
@@ -19,7 +19,7 @@ async function remplaceTrack(listIdTrack, id = null) {
 
     let queue = await TrackPlayer.getQueue();
 
-    console.log("current queue ", queue);
+    //console.log("current queue ", queue);
 
     if (id) {
         await TrackPlayer.skip(id);
@@ -30,7 +30,7 @@ async function remplaceTrack(listIdTrack, id = null) {
     const action = {type: 'SET_PLAY', status: true};
     Store.dispatch(action);
 
-    console.log("remplaceTrack end")
+    //console.log("remplaceTrack end")
 
 }
 
@@ -48,7 +48,7 @@ function shuffle(a) {
 }
 
 async function randomTrack(listIdTrack, id = null) {
-    console.log("randomTrack", listIdTrack.length)
+    //console.log("randomTrack", listIdTrack.length)
 
     await TrackPlayer.setupPlayer();
     await TrackPlayer.reset();
@@ -69,7 +69,7 @@ async function randomTrack(listIdTrack, id = null) {
 
     let queue = await TrackPlayer.getQueue();
 
-    console.log("current queue ", queue);
+    //console.log("current queue ", queue);
 
     if (id) {
         await TrackPlayer.skip(id);
@@ -80,7 +80,7 @@ async function randomTrack(listIdTrack, id = null) {
     const action = {type: 'SET_PLAY', status: true};
     Store.dispatch(action);
 
-    console.log("randomTrack end")
+    //console.log("randomTrack end")
 
 }
 

@@ -9,7 +9,7 @@ async function trackService() {
 
     TrackPlayer.addEventListener('remote-play', () => {
 
-        console.log("Play event");
+        //console.log("Play event");
 
         const action = {type: 'SET_PLAY', status: true};
         Store.dispatch(action);
@@ -19,7 +19,7 @@ async function trackService() {
 
     TrackPlayer.addEventListener('remote-pause', () => {
 
-        console.log("pause event");
+        //console.log("pause event");
 
         const action = {type: 'SET_PLAY', status: false};
         Store.dispatch(action);
@@ -31,11 +31,11 @@ async function trackService() {
     // ...
     TrackPlayer.addEventListener('playback-track-changed', async (data) => {
         let track = await TrackPlayer.getTrack(data.nextTrack);
-        console.log("track change:", track);
+        //console.log("track change:", track);
 
 
         let queue = await TrackPlayer.getQueue();
-        console.log("queue change:", queue);
+        //console.log("queue change:", queue);
 
         if (track) {
             const action = {type: 'SET_CURRENT_TRACK', track: track};
@@ -46,7 +46,7 @@ async function trackService() {
     TrackPlayer.addEventListener('playback-queue-ended', async (data) => {
         //let track = await TrackPlayer.getTrack(data.nextTrack);
 
-        console.log("track end:", data);
+        //console.log("track end:", data);
 
         //const action = {type: 'SET_CURRENT_TRACK', track: track};
         //Store.dispatch(action);

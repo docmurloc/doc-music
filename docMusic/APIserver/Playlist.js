@@ -1,3 +1,5 @@
+import {saveNewPlaylist, getPlaylistCacheById} from '../cache/playlist'
+
 async function GetRandomPlaylist() {
 
     let answer = await fetch('http://89.87.94.17:3000/playlists/random', {
@@ -10,6 +12,8 @@ async function GetRandomPlaylist() {
 
     answer = await answer.json();
 
+    saveNewPlaylist(answer);
+
     return answer;
 }
 
@@ -17,7 +21,14 @@ exports.GetRandomPlaylist = GetRandomPlaylist;
 
 async function GetPlaylistById(id) {
 
-    let answer = await fetch('http://89.87.94.17:3000/playlists/id', {
+    let answer = getPlaylistCacheById(id);
+
+    if (answer) {
+        console.log("answer cache: ", answer);
+        return answer;
+    }
+
+    answer = await fetch('http://89.87.94.17:3000/playlists/id', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -27,6 +38,8 @@ async function GetPlaylistById(id) {
     })
 
     answer = await answer.json();
+
+    saveNewPlaylist(answer);
 
     return answer;
 }

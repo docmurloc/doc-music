@@ -1,4 +1,4 @@
-
+import {saveNewAlbum} from '../cache/album'
 
 async function GetRandomAlbum() {
 
@@ -11,6 +11,8 @@ async function GetRandomAlbum() {
     })
 
     answer = await answer.json();
+
+    saveNewAlbum(answer);
 
     return answer;
 }

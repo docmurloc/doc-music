@@ -12,24 +12,11 @@ const initialState = {
     albumIdList: [],
     albumList: [],
   };
-
-function albumFilter(albumList, id) {
-    return albumList.filter(
-        function(data) {
-            return data == id
-        }
-    )
-}
   
   function albumReducer(state = initialState, action) {
       let nextState
       switch (action.type) {
         case 'ADD_ALBUM':
-
-            let found = albumFilter(state.albumIdList, action.album.id);
-            if (found) {
-                return state
-            }
           nextState = {
               ...state,
               albumIdList: [...state.albumIdList, action.album.id],

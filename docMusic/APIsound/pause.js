@@ -5,11 +5,11 @@ import Store from '../Store/configureStore'
 async function pause() {
     await TrackPlayer.pause();
 
-    console.log("pause event");
+    //console.log("pause event");
 
-        const action = {type: 'SET_PLAY', status: false};
-        Store.dispatch(action);
-        TrackPlayer.pause();
+    const action = {type: 'SET_PLAY', status: false};
+    Store.dispatch(action);
+    TrackPlayer.pause();
 }
 
 export default pause;

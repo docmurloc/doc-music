@@ -13,27 +13,14 @@ const initialState = {
     playlistCache: [],
   };
 
-function playlistFilter(imageList, id) {
-    return imageList.filter(
-        function(data) {
-            return data == id
-        }
-    )
-}
-
   function playlistReducer(state = initialState, action) {
       let nextState
       switch (action.type) {
         case 'ADD_PLAYLIST':
-
-            let found = playlistFilter(state.playlistId, action.playlist.id)
-            if (found) {
-                return state
-            }
           nextState = {
               ...state,
-              imageId: [...state.imageId, action.image.id],
-              imageCache: [...state.imageCache, action.image],
+              playlistId: [...state.playlistId, action.playlist.id],
+              playlistCache: [...state.playlistCache, action.playlist],
           }
           return nextState
         case 'SET_CURRENT_PLAYLIST':

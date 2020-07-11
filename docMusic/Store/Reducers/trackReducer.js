@@ -1,3 +1,4 @@
+
 const exempleTrack = {
     id : "track._id",
     title: "track.title",
@@ -15,23 +16,12 @@ const initialState = {
     trackCache: [],
   };
 
-function trackFilter(imageList, id) {
-    return imageList.filter(
-        function(data) {
-            return data == id
-        }
-    )
-}
-
   function trackReducer(state = initialState, action) {
-      let nextState
+      let nextState;
+
+      console.log("track reducer",action);
       switch (action.type) {
         case 'ADD_TRACK':
-
-            let found = trackFilter(state.trackId, action.track.id)
-            if (found) {
-                return state
-            }
           nextState = {
               ...state,
               trackId: [...state.trackId, action.track.id],
