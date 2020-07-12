@@ -15,7 +15,7 @@ async function SetAlbumRandom(setAlbum) {
 }
 
 async function selectedAlbum(props, id) {
-    console.log("slected props",props);
+    //console.log("slected props",props);
 
     let answer = await GetPlaylistById(id);
     const action = {type: 'SET_CURRENT_PLAYLIST', playlist: answer};

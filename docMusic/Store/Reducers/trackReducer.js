@@ -19,7 +19,7 @@ const initialState = {
   function trackReducer(state = initialState, action) {
       let nextState;
 
-      console.log("track reducer",action);
+      //console.log("track reducer",action);
       switch (action.type) {
         case 'ADD_TRACK':
           nextState = {

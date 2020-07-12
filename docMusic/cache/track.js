@@ -16,7 +16,7 @@ function isSaveTrack(idTrack) {
     let arrayTrackId = store.track.trackId;
     let result = trackFilter(arrayTrackId, idTrack);
 
-    console.log("is Save track result:", result, result.length == 0)
+    //console.log("is Save track result:", result, result.length == 0)
     if (result.length == 0) {
         //console.log("return false");
         return false;

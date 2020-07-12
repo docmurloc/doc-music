@@ -12,7 +12,7 @@ function isSaveAlbum(idAlbum) {
     let store = Store.getState();
 
     let arrayAlbumId = store.album.albumIdList;
-    let result = playlistFilter(playlistId, idPlaylist);
+    let result = albumFilter(arrayAlbumId, idAlbum);
 
     if (result.length == 0) {
         return false;

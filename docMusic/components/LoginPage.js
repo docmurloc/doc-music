@@ -1,52 +1,12 @@
 import React, { useState } from "react";
 import {connect} from 'react-redux';
 
-import NetInfo from "@react-native-community/netinfo";
-
+import {loginUser} from '../APIserver/User'
 
 import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView} from "react-native";
 
 import BackgroundImage from './backgroundImage'
 
-async function loginUser(props, newPseudo, newPassword, setInfo) {
-    const test = await NetInfo.fetch();
-//
-    console.log("testrequest :", test);
-
-    const headerRequest =JSON.stringify ({
-        pseudo : newPseudo,
-        password: newPassword
-    });
-
-    fetch('http://89.87.94.17:3000/users/login', {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'pseudo' : newPseudo,
-            'password': newPassword
-
-        },
-        method: 'GET',
-    })
-    .then((response) => {
-        console.log("reqponse login",response);
-        return response.json();
-    })
-    .then((answer) => {
-        console.log("answer login",answer);
-        //if (answer.access_token) {
-            //const action = {type: 'CONNECTION', accessToken: answer.access_token}
-            //props.dispatch(action)
-
-            props.navigation.navigate('HomeTab');
-        //} else {
-        //    setInfo(answer.status);
-        //}
-    })
-    .catch((error) => {
-        console.error("error :",error);
-    });
-}
 
 function LoginPage(props) {
 
