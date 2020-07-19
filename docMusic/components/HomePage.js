@@ -173,7 +173,7 @@ function HomePage(props) {
         <View style={styles.container}>
             <Displayer {...props} title={"Favorite"}/>
             <Displayer {...props} title={"Random"}/>
-            <PlayerOverlay/>
+            <PlayerOverlay {...props} />
         </View>
     )
 }

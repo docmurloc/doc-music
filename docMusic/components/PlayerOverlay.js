@@ -10,7 +10,7 @@ import PlayButton from './PlayButton'
 import ButtonIcon from './ButtonIcon';
 
 
-import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView} from "react-native";
+import {StyleSheet, Text, TextInput , View, Image, Button, TouchableHighlight} from "react-native";
 
 
 function PlayerOverlay(props) {
@@ -18,14 +18,21 @@ function PlayerOverlay(props) {
     if (props.track.currentTrack) {
     return (
         <View style={styles.container}>
-            <Image source={{uri :props.track.currentTrack.artwork}} style={styles.logo}/>
-            <View style={styles.box}>
-                <Text style={styles.title}
-                ellipsizeMode={"tail"}
-                numberOfLines={2}>{props.track.currentTrack.title}</Text>
-                <Text
-                style={styles.text}>{props.track.currentTrack.artist}</Text>
-            </View>
+            <TouchableHighlight
+            onPress={() => props.navigation.navigate('Player')}>
+                <Image source={{uri :props.track.currentTrack.artwork}} style={styles.logo}/>
+            </TouchableHighlight>
+            <TouchableHighlight 
+            style={styles.box}
+            onPress={() => props.navigation.navigate('Player')}>
+                <View>
+                    <Text style={styles.title}
+                    ellipsizeMode={"tail"}
+                    numberOfLines={2}>{props.track.currentTrack.title}</Text>
+                    <Text
+                    style={styles.text}>{props.track.currentTrack.artist}</Text>
+                </View>
+            </TouchableHighlight>
             <PlayButton
                 iconOff = {require('../Images/playIcon.png')}
                 onPressOff = {play}
@@ -53,7 +60,7 @@ const styles = StyleSheet.create({
         flex: 1, 
         //alignItems: 'center', 
         justifyContent: 'flex-start',
-        backgroundColor : 'rgba(191, 155, 63, 0.5)',
+        backgroundColor : 'rgba(191, 155, 63, 1)',
         position: 'absolute',
         left:     0,
         bottom:      0,

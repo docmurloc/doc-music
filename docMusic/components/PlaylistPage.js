@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import PlaylistHead from './PlaylistHead'
 import PlaylistButton from './PlaylistButton'
 import PlaylistItem from './PlaylistItem'
+import PlayerOverlay from './PlayerOverlay'
 
 import {GetRandomPlaylist} from '../APIserver/Playlist'
 import {remplaceTrack, randomTrack} from '../APIsound/track'
@@ -62,6 +63,7 @@ function PlaylistPage(props) {
                     keyExtractor={item => item}
                     />
                 </View>
+                <PlayerOverlay {...props} />
             </View>
         )
     }

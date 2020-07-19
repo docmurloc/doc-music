@@ -26,7 +26,7 @@ async function selectedTrack(props, track) {
     props.dispatch(action);
 
 
-    props.navigation.navigate('Player');
+    //props.navigation.navigate('Player');
 }
 
 function PlaylistItem(props) {
@@ -39,26 +39,44 @@ function PlaylistItem(props) {
         SetTrackItem(setTrack, props.id);
         return (
             <View>
-                <Text>Image not found</Text>
+                <Text>Track not found</Text>
             </View>
         )
     }
 
-    return(
-        <TouchableHighlight
-        onPress={() => selectedTrack(props, track)}>
-            <View style={styles.horizontalDisplay}>
-                <Image 
-                source={{uri :track.artwork}} 
-                style={styles.icon}/>
-                <View style={styles.box}>
-                    <Text style={styles.title} numberOfLines={2} ellipsizeMode='tail'>{track.title}</Text>
-                    <Text style={styles.text}>{track.artist} - 4.00</Text>
+    if (props.track.currentTrack && props.track.currentTrack.title == track.title) {
+        return (
+            <TouchableHighlight
+            onPress={() => props.navigation.navigate('Player')}>
+                <View style={styles.horizontalDisplaySelected}>
+                    <Image 
+                    source={{uri :track.artwork}} 
+                    style={styles.icon}/>
+                    <View style={styles.box}>
+                        <Text style={styles.title} numberOfLines={2} ellipsizeMode='tail'>{track.title}</Text>
+                        <Text style={styles.text}>{track.artist} - 4.00</Text>
+                    </View>
+                    <Image source={require('../Images/dotMenu.png')} style={styles.logo}/>
                 </View>
-                <Image source={require('../Images/dotMenu.png')} style={styles.logo}/>
-            </View>
-        </TouchableHighlight>
-    )
+            </TouchableHighlight>
+        )
+    } else {
+        return(
+            <TouchableHighlight
+            onPress={() => selectedTrack(props, track)}>
+                <View style={styles.horizontalDisplay}>
+                    <Image 
+                    source={{uri :track.artwork}} 
+                    style={styles.icon}/>
+                    <View style={styles.box}>
+                        <Text style={styles.title} numberOfLines={2} ellipsizeMode='tail'>{track.title}</Text>
+                        <Text style={styles.text}>{track.artist} - 4.00</Text>
+                    </View>
+                    <Image source={require('../Images/dotMenu.png')} style={styles.logo}/>
+                </View>
+            </TouchableHighlight>
+        )   
+    }
 }
 
 const styles = StyleSheet.create({
@@ -94,6 +112,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-start',
         backgroundColor : 'rgba(215, 215, 215, 1)',
+    },
+    horizontalDisplaySelected: {
+        width : "100 %",
+        padding: 10,
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        backgroundColor : 'rgba(235, 235, 235, 1)',
     },
     text: {
       fontSize: 16,
