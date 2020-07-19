@@ -13,6 +13,7 @@ import HomePage from '../components/HomePage'
 import SignUpPage from '../components/SignUpPage'
 import PlaylistPage from '../components/PlaylistPage'
 import PlayerPage from '../components/PlayerPage'
+import ResearchPage from '../components/ResearchPage'
 
 function HomeStack() {
   return (
@@ -42,7 +43,7 @@ function HomeNavigator() {
     return (
           <Tab.Navigator>
             <Tab.Screen name="Home page" component={HomeStack} />
-            <Tab.Screen name="playlist page" component={PlaylistPage} />
+            <Tab.Screen name="Research" component={ResearchPage} />
             <Tab.Screen name="player page" component={PlayerPage} />
           </Tab.Navigator>
       );

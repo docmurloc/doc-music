@@ -53,3 +53,26 @@ async function GetTrackById(id) {
 }
 
 exports.GetTrackById = GetTrackById;
+
+
+async function GetTrackByTitle(title) {
+
+    console.log("GetTrackByTitle", title)
+
+    let answer = await fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/tracks/research', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'title' : title
+        },
+        method: 'GET',
+    })
+
+    answer = await answer.json();
+
+    console.log("GetTrackByTitle result", answer);
+
+    return answer;
+}
+
+exports.GetTrackByTitle = GetTrackByTitle;

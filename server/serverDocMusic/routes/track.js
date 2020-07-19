@@ -68,6 +68,29 @@ router.get('/id', async function(req, res, next) {
     res.status(200).send(answer);
   });
 
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+}
+
+router.get('/research', async function(req, res, next) {
+
+  //console.log("research ", req.headers.title);
+
+    const titleString = escapeRegExp(req.headers.title);
+
+    //console.log("titleString ", titleString);
+
+    //console.log("regex ", titleString);
+
+    
+
+
+    let trackResult = await TrackModel.find({title : new RegExp('^.*'+titleString+'.*$', "i")}).limit(5);
+  
+    //console.log("research track:", trackResult);
+    res.status(200).send(trackResult);
+});
+
 router.post('/upload', async function(req, res, next) {
 
   //console.log("register user: ", req);

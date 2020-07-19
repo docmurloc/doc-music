@@ -10,7 +10,6 @@ function HeaderLeft(props) {
             <View style={styles.box}>
                 <Text style={styles.title}>Doc-Music</Text>
             </View>
-            <Image source={require('../Images/logoLoop.png')} style={styles.logo}/>
             <Image source={require('../Images/avatar.png')} style={styles.logo}/>
         </View>
     );
