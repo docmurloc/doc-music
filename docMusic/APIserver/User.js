@@ -1,9 +1,11 @@
 import Store from '../Store/configureStore'
+import {IP_SERVER, PORT_SERVER} from '../env';
+
 
 
 async function loginUser(props, newPseudo, newPassword, setInfo) {
 
-    fetch('http://89.87.94.17:3000/users/login', {
+    fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/users/login', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -41,7 +43,7 @@ async function UserHistoric(userToken) {
 
     console.log("get user historic");
 
-    fetch('http://89.87.94.17:3000/users/historic', {
+    fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/users/historic', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -69,7 +71,7 @@ exports.UserHistoric = UserHistoric;
 async function UserFavorite(userToken) {
     console.log("get user favorite");
 
-    fetch('http://89.87.94.17:3000/users/favorite', {
+    fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/users/favorite', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -96,7 +98,7 @@ async function UserUnfavorite(userToken) {
 
     console.log("get user Unfavorite");
 
-    fetch('http://89.87.94.17:3000/users/unfavorite', {
+    fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/users/unfavorite', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -125,7 +127,7 @@ async function addUserHistoric(userToken, id) {
         trackId : id,
     });
 
-    fetch('http://89.87.94.17:3000/users/add_historic', {
+    fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/users/add_historic', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -159,7 +161,7 @@ async function addUserFavorite(userToken, id) {
         trackId : id,
     });
 
-    fetch('http://89.87.94.17:3000/users/add_favorite', {
+    fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/users/add_favorite', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -195,7 +197,7 @@ async function addUserUnfavorite(userToken, id) {
         trackId : id,
     });
 
-    fetch('http://89.87.94.17:3000/users/add_unfavorite', {
+    fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/users/add_unfavorite', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -228,7 +230,7 @@ async function removeUserFavorite(userToken, id) {
         trackId : id,
     });
 
-    fetch('http://89.87.94.17:3000/users/rem_favorite', {
+    fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/users/rem_favorite', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -262,7 +264,7 @@ async function removeUserUnfavorite(userToken, id) {
         trackId : id,
     });
 
-    fetch('http://89.87.94.17:3000/users/rem_unfavorite', {
+    fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/users/rem_unfavorite', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',

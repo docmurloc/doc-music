@@ -1,8 +1,10 @@
-import {saveNewAlbum} from '../cache/album'
+import {saveNewAlbum} from '../cache/album';
+import {IP_SERVER, PORT_SERVER} from '../env';
+
 
 async function GetRandomAlbum() {
 
-    let answer = await fetch('http://89.87.94.17:3000/albums/random', {
+    let answer = await fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/albums/random', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',

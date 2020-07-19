@@ -1,8 +1,10 @@
 import {saveNewPlaylist, getPlaylistCacheById} from '../cache/playlist'
+import {IP_SERVER, PORT_SERVER} from '../env';
+
 
 async function GetRandomPlaylist() {
 
-    let answer = await fetch('http://89.87.94.17:3000/playlists/random', {
+    let answer = await fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/playlists/random', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -28,7 +30,7 @@ async function GetPlaylistById(id) {
         return answer;
     }
 
-    answer = await fetch('http://89.87.94.17:3000/playlists/id', {
+    answer = await fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/playlists/id', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',

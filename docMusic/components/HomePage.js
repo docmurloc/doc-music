@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import Displayer from './Displayer';
 import PlayerOverlay from './PlayerOverlay';
 
+import {IP_SERVER, PORT_SERVER} from '../env';
+
 import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView} from "react-native";
 
 import NetInfo from "@react-native-community/netinfo";
@@ -167,6 +169,8 @@ async function registerTrack() {
 
 function HomePage(props) {
     const [reponse, setreponse] = useState("");
+
+    console.log("port = ", PORT_SERVER, "ip = ", IP_SERVER);
 
     
     return (
