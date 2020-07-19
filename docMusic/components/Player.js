@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {connect} from 'react-redux';
 
-import pause from '../APIsound/pause'
+import {pause, stop} from '../APIsound/pause'
 import {play} from '../APIsound/play'
 import {next, previous} from '../APIsound/skip';
 import {remplaceTrack, randomTrack} from '../APIsound/track'

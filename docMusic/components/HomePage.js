@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {connect} from 'react-redux';
 
 import Displayer from './Displayer';
+import PlayerOverlay from './PlayerOverlay';
 
 import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView} from "react-native";
 
@@ -172,6 +173,7 @@ function HomePage(props) {
         <View style={styles.container}>
             <Displayer {...props} title={"Favorite"}/>
             <Displayer {...props} title={"Random"}/>
+            <PlayerOverlay/>
         </View>
     )
 }
