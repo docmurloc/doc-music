@@ -1,9 +1,33 @@
 import React, { useState } from "react";
 import {connect} from 'react-redux';
 
+import ButtonSwitch from './ButtonSwitch'
+
+import {addAlbumFavorite, removeAlbumFavorite} from '../APIserver/Album'
+
 import {StyleSheet, Text, TextInput , View, Image, Button, FlatList} from "react-native";
 
+async function setFavorite(props) {
+    console.log("props favorite in setFavorite", props.profil);
+
+    await addAlbumFavorite(props.profil.access_token, props.playlist.currentPlaylist.id)
+    const action = {type: 'STATE_FAVORITE_ALBUM', status: true}
+    props.dispatch(action)
+    console.log("setFavorite end");
+
+
+}
+
+async function unsetFavorite(props) {
+    await removeAlbumFavorite(props.profil.access_token, props.playlist.currentPlaylist.id)
+    const action = {type: 'STATE_FAVORITE_ALBUM', status: false}
+    props.dispatch(action)
+}
+
 function PlaylistHead(props) {
+
+    console.log("playlist head page props ", props.profil);
+
 
     return(
         <View style={styles.container}>
@@ -14,9 +38,17 @@ function PlaylistHead(props) {
                 <Text style={styles.title}>{props.title}</Text>
                 <Text style={styles.text} numberOfLines={2} ellipsizeMode='tail'>{props.nbSongs} Songs</Text>
                 <View style={styles.horizontalDisplay}>
-                    <Image source={require('../Images/pencil.png')} style={styles.icon}/>
-                    <Image source={require('../Images/downloadArrow.png')} style={styles.icon}/>
-                    <Image source={require('../Images/dotMenu.png')} style={styles.icon}/>
+                <ButtonSwitch
+                iconOff = {require('../Images/emptyHeart.png')}
+                onPressOff = {() => {
+                    setFavorite(props)
+                }}
+                iconOn = {require('../Images/heart.png')}
+                onPressOn = {() => {
+                    unsetFavorite(props);
+                }}
+                statusButton= {props.album.favorite}
+                />
                 </View>
             </View>
         </View>

@@ -5,6 +5,11 @@ const {
   AlbumModel
 } = require("../models/album")
 
+const {
+  UserModel
+} = require("../models/user")
+
+
 function getDate() {
     var pad = function (amount, width) {
      var padding = "";
@@ -74,27 +79,50 @@ router.post('/upload', async function(req, res, next) {
   return res.status(400).send({status : "album already exist"});
 });
 
-router.get('/login', async function(req, res, next) {
+router.post('/add_favorite', async function(req, res, next) {
+
+  console.log("add favorite: ", req.body.trackId);
+
+  let user = await UserModel.findOne({access_token : req.headers.access_token});
+
+  if (user) {
+    await user.updateOne({albumFavorite : [req.body.trackId, ...user.albumFavorite]});
+    return  res.status(200).send({status : "succes"});
+  }
+  return res.status(400).send({status : "user not found"});
+});
+
+
+router.post('/rem_favorite', async function(req, res, next) {
 
   //console.log("register user: ", req);
 
-  let user = await AlbumModel.findOne({pseudo : req.headers.pseudo, password : req.headers.password});
-
-  let token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-
-  console.log("token = ", token);
+  let user = await UserModel.findOne({access_token : req.headers.access_token});
 
   if (user) {
+    let arrayFavorite = user.albumFavorite;
 
-    await user.updateOne({access_token : token});
-    //user = new UserModel({
-    //  pseudo: req.body.pseudo,
-    //  password: req.body.password,
-    //});
-    //await user.save();
-    return  res.status(200).send({access_token : token});
+    arrayFavorite = arrayFavorite.filter(
+      function(data) {
+        return data != req.body.trackId;
+      }
+    );
+    await user.updateOne({albumFavorite : arrayFavorite});
+    return  res.status(200).send({status : "succes"});
   }
-  return res.status(400).send({status : "wrong input"});
+  return res.status(400).send({status : "user not found"});
+});
+
+router.get('/favorite', async function(req, res, next) {
+
+  console.log("album favorite: ", req.headers);
+
+  let user = await UserModel.findOne({access_token : req.headers.access_token});
+
+  if (user) {
+    return  res.status(200).send({albumFavorite : user.albumFavorite});
+  }
+  return res.status(400).send({status : "user not found"});
 });
 
 module.exports = router;

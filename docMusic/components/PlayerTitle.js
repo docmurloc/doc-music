@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 import ButtonSwitch from './ButtonSwitch'
 
-import {addUserFavorite, addUserUnfavorite, removeUserFavorite, removeUserUnfavorite} from '../APIserver/User';
+import {addTrackFavorite, addTrackUnfavorite, removeTrackFavorite, removeTrackUnfavorite} from '../APIserver/Track';
 
 import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView} from "react-native";
 
@@ -14,7 +14,7 @@ async function setFavorite(props) {
     if (props.player.unfavorite) {
        await unsetUnfavorite(props);
     }
-    await addUserFavorite(props.profil.access_token, props.track.currentTrack.id)
+    await addTrackFavorite(props.profil.access_token, props.track.currentTrack.id)
     const action = {type: 'SET_FAVORITE_PLAYER', status: true}
     props.dispatch(action)
     console.log("setFavorite end");
@@ -23,7 +23,7 @@ async function setFavorite(props) {
 }
 
 async function unsetFavorite(props) {
-    await removeUserFavorite(props.profil.access_token, props.track.currentTrack.id)
+    await removeTrackFavorite(props.profil.access_token, props.track.currentTrack.id)
     const action = {type: 'SET_FAVORITE_PLAYER', status: false}
     props.dispatch(action)
 }
@@ -32,13 +32,13 @@ async function setUnfavorite(props) {
     if (props.player.favorite) {
        await unsetFavorite(props);
     }
-    await addUserUnfavorite(props.profil.access_token, props.track.currentTrack.id)
+    await addTrackUnfavorite(props.profil.access_token, props.track.currentTrack.id)
     const action = {type: 'SET_UNFAVORITE_PLAYER', status: true}
     props.dispatch(action)
 }
 
 async function unsetUnfavorite(props) {
-    await removeUserUnfavorite(props.profil.access_token, props.track.currentTrack.id)
+    await removeTrackUnfavorite(props.profil.access_token, props.track.currentTrack.id)
     const action = {type: 'SET_UNFAVORITE_PLAYER', status: false}
     props.dispatch(action)
 }

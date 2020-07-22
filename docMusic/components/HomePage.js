@@ -170,7 +170,9 @@ async function registerTrack() {
 function HomePage(props) {
     const [reponse, setreponse] = useState("");
 
-    console.log("port = ", PORT_SERVER, "ip = ", IP_SERVER);
+    //console.log("port = ", PORT_SERVER, "ip = ", IP_SERVER);
+
+    //console.log("Home page props ", props.profil);
 
     
     return (

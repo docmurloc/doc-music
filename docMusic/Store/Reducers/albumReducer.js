@@ -11,6 +11,7 @@ const exempleAlbume = {
 const initialState = {
     albumIdList: [],
     albumList: [],
+    favorite : null,
   };
   
   function albumReducer(state = initialState, action) {
@@ -21,6 +22,12 @@ const initialState = {
               ...state,
               albumIdList: [...state.albumIdList, action.album.id],
               albumList: [...state.albumList, action.album],
+          }
+          return nextState
+        case 'STATE_FAVORITE_ALBUM':
+          nextState = {
+              ...state,
+              favorite: action.status,
           }
           return nextState
       default:

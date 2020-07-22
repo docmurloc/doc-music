@@ -10,7 +10,8 @@ var UserModelSchema = new Schema({
   access_token: String,
   trackHistoric: [String],
   trackFavorite : [String],
-  trackUnfavorite: [String]
+  trackUnfavorite: [String],
+  albumFavorite: [String]
 });
 
 // Compile model from schema

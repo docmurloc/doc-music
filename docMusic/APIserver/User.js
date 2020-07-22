@@ -1,5 +1,7 @@
 import Store from '../Store/configureStore'
 import {IP_SERVER, PORT_SERVER} from '../env';
+import {TrackFavorite, TrackUnfavorite} from './Track'
+import {AlbumFavorite} from './Album'
 
 
 
@@ -20,12 +22,19 @@ async function loginUser(props, newPseudo, newPassword, setInfo) {
     })
     .then(async (answer) => {
         if (answer.access_token) {
-            const action = {type: 'CONNECTION', accessToken: answer.access_token}
-            props.dispatch(action)
 
             await UserHistoric(answer.access_token);
-            await UserFavorite(answer.access_token);
-            await UserUnfavorite(answer.access_token);
+            await TrackFavorite(answer.access_token);
+            await AlbumFavorite(answer.access_token);
+            console.log("login answer acces token", answer.access_token)
+            await TrackUnfavorite(answer.access_token);
+
+            const action = {type: 'CONNECTION', accessToken: answer.access_token}
+            props.dispatch(action);
+
+            console.log("login answer acces token", answer.access_token)
+
+            
 
             props.navigation.navigate('HomeTab');
         } else {
@@ -67,59 +76,6 @@ async function UserHistoric(userToken) {
 
 exports.UserHistoric = UserHistoric;
 
-
-async function UserFavorite(userToken) {
-    console.log("get user favorite");
-
-    fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/users/favorite', {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'access_token' : userToken,
-        },
-        method: 'GET',
-    })
-    .then((response) => {
-        return response.json();
-    })
-    .then((answer) => {
-        const action = {type: 'SET_FAVORITE', trackFavorite: answer.trackFavorite};
-        Store.dispatch(action);
-        return answer;
-    })
-    .catch((error) => {
-        console.error("error :",error);
-    });
-}
-
-exports.UserFavorite = UserFavorite;
-
-async function UserUnfavorite(userToken) {
-
-    console.log("get user Unfavorite");
-
-    fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/users/unfavorite', {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'access_token' : userToken,
-        },
-        method: 'GET',
-    })
-    .then((response) => {
-        return response.json();
-    })
-    .then((answer) => {
-        const action = {type: 'SET_UNFAVORITE', trackUnfavorite: answer.trackUnfavorite};
-        Store.dispatch(action);
-        return answer;
-    })
-    .catch((error) => {
-        console.error("error :",error);
-    });
-}
-
-exports.UserUnfavorite = UserUnfavorite;
 
 async function addUserHistoric(userToken, id) {
 

@@ -23,6 +23,9 @@ async function SetPlaylistRandom(props) {
 
 function PlaylistPage(props) {
 
+    //console.log("playlist page props ", props.profil);
+
+
       if (!props.playlist.currentPlaylist) {
         return (
             <View>

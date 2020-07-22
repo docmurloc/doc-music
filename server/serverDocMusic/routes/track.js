@@ -5,6 +5,11 @@ const {
     TrackModel
 } = require("../models/track")
 
+const {
+  UserModel
+} = require("../models/user")
+
+
 function getDate() {
     var pad = function (amount, width) {
      var padding = "";
@@ -64,7 +69,7 @@ router.get('/id', async function(req, res, next) {
         artwork: track.artwork,
         url: track.url,
     };
-    console.log("get track:", answer);
+    //console.log("get track:", answer);
     res.status(200).send(answer);
   });
 
@@ -105,6 +110,97 @@ router.post('/upload', async function(req, res, next) {
     return  res.status(200).send({status : "succes"});
   }
   return res.status(400).send({status : "track already exist"});
+});
+
+
+router.post('/add_favorite', async function(req, res, next) {
+
+  console.log("add favorite: ", req.body.trackId);
+
+  let user = await UserModel.findOne({access_token : req.headers.access_token});
+
+  if (user) {
+    await user.updateOne({trackFavorite : [req.body.trackId, ...user.trackFavorite]});
+    return  res.status(200).send({status : "succes"});
+  }
+  return res.status(400).send({status : "user not found"});
+});
+
+router.post('/add_unfavorite', async function(req, res, next) {
+
+  //console.log("register user: ", req);
+
+  let user = await UserModel.findOne({access_token : req.headers.access_token});
+
+  if (user) {
+    await user.updateOne({trackUnfavorite : [req.body.trackId, ...user.trackUnfavorite]});
+    return  res.status(200).send({status : "succes"});
+  }
+  return res.status(400).send({status : "user not found"});
+});
+
+router.post('/rem_favorite', async function(req, res, next) {
+
+  //console.log("register user: ", req);
+
+  let user = await UserModel.findOne({access_token : req.headers.access_token});
+
+  if (user) {
+    let arrayFavorite = user.trackFavorite;
+
+    arrayFavorite = arrayFavorite.filter(
+      function(data) {
+        return data != req.body.trackId;
+      }
+    );
+    await user.updateOne({trackFavorite : arrayFavorite});
+    return  res.status(200).send({status : "succes"});
+  }
+  return res.status(400).send({status : "user not found"});
+});
+
+router.post('/rem_unfavorite', async function(req, res, next) {
+
+  //console.log("register user: ", req);
+
+  let user = await UserModel.findOne({access_token : req.headers.access_token});
+
+  if (user) {
+    let arrayUnfavorite = user.trackUnfavorite;
+
+    arrayUnfavorite = arrayUnfavorite.filter(
+      function(data) {
+        return data != req.body.trackId;
+      }
+    );
+    await user.updateOne({trackUnfavorite : arrayUnfavorite});
+    return  res.status(200).send({status : "succes"});
+  }
+  return res.status(400).send({status : "user not found"});
+});
+
+router.get('/unfavorite', async function(req, res, next) {
+
+  //console.log("register user: ", req);
+
+  let user = await UserModel.findOne({access_token : req.headers.access_token});
+
+  if (user) {
+    return  res.status(200).send({trackUnfavorite : user.trackUnfavorite});
+  }
+  return res.status(400).send({status : "user not found"});
+});
+
+router.get('/favorite', async function(req, res, next) {
+
+  //console.log("register user: ", req);
+
+  let user = await UserModel.findOne({access_token : req.headers.access_token});
+
+  if (user) {
+    return  res.status(200).send({trackFavorite : user.trackFavorite});
+  }
+  return res.status(400).send({status : "user not found"});
 });
 
 module.exports = router;
