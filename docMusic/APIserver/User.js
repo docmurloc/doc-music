@@ -26,13 +26,13 @@ async function loginUser(props, newPseudo, newPassword, setInfo) {
             await UserHistoric(answer.access_token);
             await TrackFavorite(answer.access_token);
             await AlbumFavorite(answer.access_token);
-            console.log("login answer acces token", answer.access_token)
+            //console.log("login answer acces token", answer.access_token)
             await TrackUnfavorite(answer.access_token);
 
             const action = {type: 'CONNECTION', accessToken: answer.access_token}
             props.dispatch(action);
 
-            console.log("login answer acces token", answer.access_token)
+            //console.log("login answer acces token", answer.access_token)
 
             
 

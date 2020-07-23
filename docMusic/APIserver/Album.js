@@ -1,4 +1,4 @@
-import {saveNewAlbum} from '../cache/album';
+import {saveNewAlbum, getAlbumCacheById} from '../cache/album';
 import {IP_SERVER, PORT_SERVER} from '../env';
 
 import Store from '../Store/configureStore'
@@ -16,12 +16,45 @@ async function GetRandomAlbum() {
 
     answer = await answer.json();
 
+    //console.log("random album ", answer);
+
     saveNewAlbum(answer);
 
     return answer;
 }
 
 exports.GetRandomAlbum = GetRandomAlbum;
+
+async function GetAlbumById(id) {
+
+    console.log("GetAlbumById", id)
+
+    let answer = getAlbumCacheById(id);
+
+    if (answer) {
+        //console.log("answer cache get track by id: ", answer);
+        return answer;
+    }
+
+    answer = await fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/albums/id', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'id' : id
+        },
+        method: 'GET',
+    })
+
+    answer = await answer.json();
+
+    //console.log("GetTrackById result", answer);
+
+    saveNewAlbum(answer);
+
+    return answer;
+}
+
+exports.GetAlbumById = GetAlbumById;
 
 async function AlbumFavorite(userToken) {
     //console.log("get album favorite ", userToken);

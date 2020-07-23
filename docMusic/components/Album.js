@@ -4,13 +4,20 @@ import Store from '../Store/configureStore'
 
 import {StyleSheet, Text, TouchableHighlight , View, Image, Button, FlatList} from "react-native";
 
-import {GetRandomAlbum} from '../APIserver/Album';
+import {GetRandomAlbum, GetAlbumById} from '../APIserver/Album';
 import {GetPlaylistById} from '../APIserver/Playlist'
 
 //props.navigation.navigate('SignUp')
 
-async function SetAlbumRandom(setAlbum) {
-    let answer = await GetRandomAlbum();
+async function SetAlbumItem(setAlbum, id = null) {
+    let answer = null;
+
+    if (id < 100) {
+        answer = await GetRandomAlbum();
+    } else {
+        answer = await GetAlbumById(id);
+    }
+
 
     setAlbum(answer);
 }
@@ -18,8 +25,9 @@ async function SetAlbumRandom(setAlbum) {
 async function SetAlbumFavorite(idTrack) {
     const store = Store.getState();
 
-    //console.log("album", store.profil);
     const arrayLike = store.profil.albumFavorite;
+
+    console.log("album Favorite", arrayLike, "id ", idTrack, arrayLike.includes(idTrack));
 
     const action = {type: 'STATE_FAVORITE_ALBUM', status: false};
     Store.dispatch(action);
@@ -32,11 +40,11 @@ async function SetAlbumFavorite(idTrack) {
 
 }
 
-async function selectedAlbum(props, id) {
+async function selectedAlbum(props, id, album) {
     //console.log("slected props",props);
 
     let answer = await GetPlaylistById(id);
-    await SetAlbumFavorite(id);
+    SetAlbumFavorite(album);
     const action = {type: 'SET_CURRENT_PLAYLIST', playlist: answer};
     props.dispatch(action);
 
@@ -45,37 +53,38 @@ async function selectedAlbum(props, id) {
 
 function Album(props) {
 
-    //console.log("album page props ", props.profil);
 
 
     const [album, setAlbum] = useState(null);
-
     if (!album) {
-        SetAlbumRandom(setAlbum);
+        console.log("album page props ", props.id);
+        SetAlbumItem(setAlbum, props.id);
         return (
             <View>
-                <Text>Image not found</Text>
+                <Text>album not found</Text>
             </View>
         )
+    } else {
+        return (
+            <TouchableHighlight
+            onPress={() => selectedAlbum(props, album.playListId, album.id)}
+            >
+            <View style={styles.content}>
+            <Image
+             source={{uri : album.artwork}} 
+             style={styles.logo}/>
+                <View style={styles.content2}>
+                    <Text style={styles.title}>{album.title}</Text>
+                    <Text style={styles.text} numberOfLines={2} ellipsizeMode='tail'>{album.genre} {album.artist}</Text>
+                </View>
+                <Text>LOL</Text>
+    
+            </View>
+            </TouchableHighlight>
+        )    
     }
 
 
-    return (
-        <TouchableHighlight
-        onPress={() => selectedAlbum(props, album.playListId)}
-        >
-        <View style={styles.content}>
-        <Image
-         source={{uri :album.artwork}} 
-         style={styles.logo}/>
-            <View style={styles.content2}>
-                <Text style={styles.title}>{album.title}</Text>
-                <Text style={styles.text} numberOfLines={2} ellipsizeMode='tail'>{album.genre} {album.artist}</Text>
-            </View>
-
-        </View>
-        </TouchableHighlight>
-    )
 }
 
 const styles = StyleSheet.create({

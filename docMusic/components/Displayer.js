@@ -3,6 +3,9 @@ import {connect} from 'react-redux';
 
 import Album from './Album';
 
+import {GetRandomAlbum} from '../APIserver/Album';
+
+
 import {StyleSheet, Text, TextInput , View, Image, Button, FlatList} from "react-native";
 
 function Item({ title }) {
@@ -13,31 +16,21 @@ function Item({ title }) {
     );
 }
 
+
 function Displayer(props) {
 
-    const DATA = [
-        {
-          id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-          title: 'First Item',
-          type: "playlist",
-          author: " - Pierre ANTOINE",
-          info: " - 10 song"
-        },
-        {
-          id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-          title: 'Second Item',
-          type: "playlist",
-          author: " - Pierre ANTOINE",
-          info: " - 10 song"
-        },
-        {
-          id: '58694a0f-3da1-471f-bd96-145571e29d72',
-          title: 'Third Item',
-          type: "playlist",
-          author: " - Pierre ANTOINE",
-          info: " - 10 song"
-        },
-      ];
+    //const [albums, setAlbums] = useState(props.data);
+    console.log("display album listItemId", props.listItemId);
+
+    if (!props.listItemId || props.listItemId.length <= 0) {
+
+        //SetAlbumRandom(setAlbums);
+        return (
+            <View>
+                <Text>No album to display</Text>
+            </View>
+        )
+    }
 
     return (
         <View style={styles.container}>
@@ -46,9 +39,9 @@ function Displayer(props) {
             </View>
             <FlatList
             horizontal={true}
-            data={DATA}
-            renderItem={({ item }) => <Album {...props} title={item.title} type={item.type} author={item.author} info={item.info}/>}
-            keyExtractor={item => item.id}
+            data={props.listItemId}
+            renderItem={({ item }) => <Album {...props} id={item}/>}
+            keyExtractor={item => item}
         />
         </View>
     )

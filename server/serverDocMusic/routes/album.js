@@ -50,7 +50,27 @@ router.get('/random', async function(req, res, next) {
         playListId: album.playListId,
     };
     //await Test.save();
-  console.log("get random album");
+  res.status(200).send(answer);
+});
+
+
+router.get('/id', async function(req, res, next) {
+
+  console.log("get id album", req.headers.id);
+
+
+  let album = await AlbumModel.findOne({_id : req.headers.id});
+
+    const answer = {
+      id : album._id,
+      title: album.title,
+      artist: album.artist,
+      artwork: album.artwork,
+      date: album.date,
+      genre: album.genre,
+      playListId: album.playListId,
+  };
+  //console.log("get album:", answer);
   res.status(200).send(answer);
 });
 

@@ -10,7 +10,7 @@ import {StyleSheet, Text, TextInput , View, Image, Button, FlatList} from "react
 async function setFavorite(props) {
     console.log("props favorite in setFavorite", props.profil);
 
-    await addAlbumFavorite(props.profil.access_token, props.playlist.currentPlaylist.id)
+    await addAlbumFavorite(props.profil.access_token, props.playlist.currentPlaylist.album)
     const action = {type: 'STATE_FAVORITE_ALBUM', status: true}
     props.dispatch(action)
     console.log("setFavorite end");
@@ -19,14 +19,14 @@ async function setFavorite(props) {
 }
 
 async function unsetFavorite(props) {
-    await removeAlbumFavorite(props.profil.access_token, props.playlist.currentPlaylist.id)
+    await removeAlbumFavorite(props.profil.access_token, props.playlist.currentPlaylist.album)
     const action = {type: 'STATE_FAVORITE_ALBUM', status: false}
     props.dispatch(action)
 }
 
 function PlaylistHead(props) {
 
-    console.log("playlist head page props ", props.profil);
+    console.log("playlist head page props statue", props.album.favorite);
 
 
     return(

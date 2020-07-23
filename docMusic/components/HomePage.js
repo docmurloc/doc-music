@@ -167,18 +167,34 @@ async function registerTrack() {
     //console.log("fetch request :", response);
 }
 
+function SetAlbumRandom(nbItem) {
+
+
+    let albums = [];
+
+    let i = 0
+
+    for (i = 0; i < nbItem; i++) {
+        albums = [...albums, i];
+    }
+
+    return albums;
+}
+
 function HomePage(props) {
-    const [reponse, setreponse] = useState("");
+    const [randDisplay, setrandDisplay] = useState(SetAlbumRandom(2));
 
     //console.log("port = ", PORT_SERVER, "ip = ", IP_SERVER);
 
-    //console.log("Home page props ", props.profil);
+    console.log("Home page props ", props.profil.albumFavorite);
 
-    
+    const DATA = ['5f06563efff14000085ced8e', '5f065644fff14000085ced90'];
+
+    //props.profil.albumFavorite
     return (
         <View style={styles.container}>
-            <Displayer {...props} title={"Favorite"}/>
-            <Displayer {...props} title={"Random"}/>
+            <Displayer {...props} title={"Favorite"} listItemId={props.profil.albumFavorite}/>
+            <Displayer {...props} title={"Random"} listItemId={DATA} />
             <PlayerOverlay {...props} />
         </View>
     )

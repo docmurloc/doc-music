@@ -17,11 +17,11 @@ function idFilterRemover(List, id) {
 
 function profileReducer(state = initialState, action) {
 
-  if (action.type == "ADD_ALBUM_FAVORITE") {
-    console.log("profile reducer state", state);
-    console.log("profile reducer action", action);
-    console.log("profile albumFavorite", state.albumFavorite);
-  }
+  //if (action.type == "ADD_ALBUM_FAVORITE") {
+  //  console.log("profile reducer state", state);
+  //  console.log("profile reducer action", action);
+  //  console.log("profile albumFavorite", state.albumFavorite);
+  //}
   let nextState;
     switch (action.type) {
       case 'CONNECTION':

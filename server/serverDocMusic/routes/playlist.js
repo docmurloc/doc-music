@@ -42,6 +42,7 @@ router.get('/random', async function(req, res, next) {
         title: playlist.title,
         author: playlist.author,
         date: playlist.date,
+        album: playlist.album,
         artwork: playlist.artwork,
         trackListId: playlist.trackListId,
     };
@@ -57,7 +58,8 @@ router.get('/id', async function(req, res, next) {
       const answer = {
         id : playlist._id,
         title: playlist.title,
-        author: req.body.author,
+        author: playlist.author,
+        album: playlist.album,
         date: playlist.date,
         artwork: playlist.artwork,
         trackListId: playlist.trackListId,

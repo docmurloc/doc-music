@@ -9,6 +9,7 @@ var PlaylistModelSchema = new Schema({
     date: String,
     author: String,
     artwork: String,
+    album: String,
     trackListId: [String],
 });
 
