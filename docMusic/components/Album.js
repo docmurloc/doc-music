@@ -76,9 +76,7 @@ function Album(props) {
                 <View style={styles.content2}>
                     <Text style={styles.title}>{album.title}</Text>
                     <Text style={styles.text} numberOfLines={2} ellipsizeMode='tail'>{album.genre} {album.artist}</Text>
-                </View>
-                <Text>LOL</Text>
-    
+                </View>    
             </View>
             </TouchableHighlight>
         )    
