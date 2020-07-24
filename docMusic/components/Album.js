@@ -27,7 +27,7 @@ async function SetAlbumFavorite(idTrack) {
 
     const arrayLike = store.profil.albumFavorite;
 
-    console.log("album Favorite", arrayLike, "id ", idTrack, arrayLike.includes(idTrack));
+    //console.log("album Favorite", arrayLike, "id ", idTrack, arrayLike.includes(idTrack));
 
     const action = {type: 'STATE_FAVORITE_ALBUM', status: false};
     Store.dispatch(action);
@@ -57,7 +57,7 @@ function Album(props) {
 
     const [album, setAlbum] = useState(null);
     if (!album) {
-        console.log("album page props ", props.id);
+        //console.log("album page props ", props.id);
         SetAlbumItem(setAlbum, props.id);
         return (
             <View>

@@ -27,7 +27,7 @@ exports.GetRandomAlbum = GetRandomAlbum;
 
 async function GetAlbumById(id) {
 
-    console.log("GetAlbumById", id)
+    //console.log("GetAlbumById", id)
 
     let answer = getAlbumCacheById(id);
 
@@ -71,7 +71,7 @@ async function AlbumFavorite(userToken) {
         return response.json();
     })
     .then((answer) => {
-        console.log("answer album favorite", answer);
+        //console.log("answer album favorite", answer);
         const action = {type: 'SET_ALBUM_FAVORITE', albumFavorite: answer.albumFavorite};
         Store.dispatch(action);
         return answer;

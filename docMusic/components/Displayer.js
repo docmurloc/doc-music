@@ -20,7 +20,7 @@ function Item({ title }) {
 function Displayer(props) {
 
     //const [albums, setAlbums] = useState(props.data);
-    console.log("display album listItemId", props.listItemId);
+    //console.log("display album listItemId", props.listItemId);
 
     if (!props.listItemId || props.listItemId.length <= 0) {
 

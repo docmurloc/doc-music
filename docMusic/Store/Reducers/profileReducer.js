@@ -84,7 +84,7 @@ function profileReducer(state = initialState, action) {
             ...state,
             albumFavorite: action.albumFavorite,
         }
-        console.log("profile albumFavorite result", nextState);
+        //console.log("profile albumFavorite result", nextState);
         return nextState
       case 'ADD_ALBUM_FAVORITE':
         nextState = {

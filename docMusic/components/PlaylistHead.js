@@ -26,7 +26,7 @@ async function unsetFavorite(props) {
 
 function PlaylistHead(props) {
 
-    console.log("playlist head page props statue", props.album.favorite);
+    //console.log("playlist head page props statue", props.album.favorite);
 
 
     return(

@@ -135,7 +135,7 @@ router.post('/rem_favorite', async function(req, res, next) {
 
 router.get('/favorite', async function(req, res, next) {
 
-  console.log("album favorite: ", req.headers);
+  //console.log("album favorite: ", req.headers);
 
   let user = await UserModel.findOne({access_token : req.headers.access_token});
 

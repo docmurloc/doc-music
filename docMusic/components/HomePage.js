@@ -186,7 +186,7 @@ function HomePage(props) {
 
     //console.log("port = ", PORT_SERVER, "ip = ", IP_SERVER);
 
-    console.log("Home page props ", props.profil.albumFavorite);
+    //console.log("Home page props ", props.profil.albumFavorite);
 
     const DATA = ['5f06563efff14000085ced8e', '5f065644fff14000085ced90'];
 

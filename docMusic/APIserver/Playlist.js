@@ -26,7 +26,7 @@ async function GetPlaylistById(id) {
     let answer = getPlaylistCacheById(id);
 
     if (answer) {
-        console.log("answer cache: ", answer);
+        console.log("answer cache playlist: ", answer);
         return answer;
     }
 
@@ -40,6 +40,9 @@ async function GetPlaylistById(id) {
     })
 
     answer = await answer.json();
+
+    console.log("answer not cached playlist: ", answer);
+
 
     saveNewPlaylist(answer);
 
