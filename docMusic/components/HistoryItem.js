@@ -20,16 +20,16 @@ async function setupPlayer(idTrackList, idSelected) {
 }
 
 async function selectedTrack(props, track) {
-    await setupPlayer(props.playlist.currentPlaylist.trackListId, track.id);
+    await setupPlayer([track.id], track.id);
 
     const action = {type: 'SET_CURRENT_TRACK', track: track};
     props.dispatch(action);
 
 
-    //props.navigation.navigate('Player');
+    props.navigation.navigate('Player');
 }
 
-function PlaylistItem(props) {
+function HistoryItem(props) {
     const [track, setTrack] = useState(null);
 
 
@@ -44,37 +44,21 @@ function PlaylistItem(props) {
         )
     }
 
-    if (props.track.currentTrack && props.track.currentTrack.title == track.title) {
-        return (
-            <TouchableHighlight
-            onPress={() => props.navigation.navigate('Player')}>
-                <View style={styles.horizontalDisplaySelected}>
-                    <Image 
-                    source={{uri :track.artwork}} 
-                    style={styles.icon}/>
-                    <View style={styles.box}>
-                        <Text style={styles.title} numberOfLines={2} ellipsizeMode='tail'>{track.title}</Text>
-                        <Text style={styles.text}>{track.artist}</Text>
-                    </View>
+    return(
+        <TouchableHighlight
+        onPress={() => {
+            selectedTrack(props, track)}}>
+            <View style={styles.horizontalDisplay}>
+                <Image 
+                source={{uri :track.artwork}} 
+                style={styles.icon}/>
+                <View style={styles.box}>
+                    <Text style={styles.title} numberOfLines={2} ellipsizeMode='tail'>{track.title}</Text>
+                    <Text style={styles.text}>{track.artist}</Text>
                 </View>
-            </TouchableHighlight>
-        )
-    } else {
-        return(
-            <TouchableHighlight
-            onPress={() => selectedTrack(props, track)}>
-                <View style={styles.horizontalDisplay}>
-                    <Image 
-                    source={{uri :track.artwork}} 
-                    style={styles.icon}/>
-                    <View style={styles.box}>
-                        <Text style={styles.title} numberOfLines={2} ellipsizeMode='tail'>{track.title}</Text>
-                        <Text style={styles.text}>{track.artist}</Text>
-                    </View>
-                </View>
-            </TouchableHighlight>
-        )   
-    }
+            </View>
+        </TouchableHighlight>
+    )
 }
 
 const styles = StyleSheet.create({
@@ -145,4 +129,4 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
     return state
   }  
-export default connect(mapStateToProps)(PlaylistItem);
+export default connect(mapStateToProps)(HistoryItem);

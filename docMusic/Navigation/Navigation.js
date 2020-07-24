@@ -14,6 +14,7 @@ import SignUpPage from '../components/SignUpPage'
 import PlaylistPage from '../components/PlaylistPage'
 import PlayerPage from '../components/PlayerPage'
 import ResearchPage from '../components/ResearchPage'
+import HistoryPage from '../components/HistoryPage'
 
 function HomeStack() {
   return (
@@ -44,7 +45,7 @@ function HomeNavigator() {
           <Tab.Navigator>
             <Tab.Screen name="Home page" component={HomeStack} />
             <Tab.Screen name="Research" component={ResearchPage} />
-            <Tab.Screen name="player page" component={PlayerPage} />
+            <Tab.Screen name="History" component={HistoryPage} />
           </Tab.Navigator>
       );
   }
