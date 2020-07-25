@@ -26,7 +26,7 @@ async function loginUser(props, newPseudo, newPassword, setInfo) {
             await UserHistoric(answer.access_token);
             await TrackFavorite(answer.access_token);
             await AlbumFavorite(answer.access_token);
-            //console.log("login answer acces token", answer.access_token)
+            console.log("login answer acces token", answer.access_token)
             await TrackUnfavorite(answer.access_token);
 
             const action = {type: 'CONNECTION', accessToken: answer.access_token}
@@ -34,9 +34,10 @@ async function loginUser(props, newPseudo, newPassword, setInfo) {
 
             //console.log("login answer acces token", answer.access_token)
 
+            //setInfo(answer.access_token);
             
 
-            props.navigation.navigate('HomeTab');
+            //props.navigation.navigate('HomeTab');
         } else {
             setInfo(answer.status);
         }

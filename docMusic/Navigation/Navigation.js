@@ -2,6 +2,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {connect} from 'react-redux';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -50,7 +51,8 @@ function HomeNavigator() {
       );
   }
 
-function MyStack() {
+function MyStack(props) {
+
   return (
     <NavigationContainer>
         <Stack.Navigator
@@ -59,32 +61,43 @@ function MyStack() {
               backgroundColor: 'rgb(200, 200, 200)',
             },
           }}>
-          <Stack.Screen 
-          name="Login" 
-          component={LoginPage}
-          options={{ 
-            headerTitle: props => <HeaderLeft {...props} />,
-            headerLeft: null,
-            }} 
-          />
-          <Stack.Screen 
-          name="SignUp" 
-          component={SignUpPage}
-          options={{ 
-            headerTitle: props => <HeaderLeft {...props} />,
-            headerLeft: null,
-            }} 
-          />
-          <Stack.Screen 
-          name="HomeTab" 
-          component={HomeNavigator}
-          options={{ 
-            headerTitle: props => <HeaderLeft {...props} />,
-            headerLeft: null }} 
-          />
+          {
+            props.profil.access_token == null ? (
+              <>
+                <Stack.Screen 
+                name="Login" 
+                component={LoginPage}
+                options={{ 
+                  headerTitle: props => <HeaderLeft {...props} />,
+                  headerLeft: null,
+                  }} 
+                />
+                <Stack.Screen 
+                name="SignUp" 
+                component={SignUpPage}
+                options={{ 
+                  headerTitle: props => <HeaderLeft {...props} />,
+                  headerLeft: null,
+                  }} 
+                />
+              </>
+            ) : (
+              <Stack.Screen 
+              name="HomeTab" 
+              component={HomeNavigator}
+              options={{ 
+                headerTitle: props => <HeaderLeft {...props} />,
+                headerLeft: null }} 
+              />
+            )
+          }
         </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-export default MyStack;
+
+const mapStateToProps = (state) => {
+  return state
+}  
+export default connect(mapStateToProps)(MyStack);
