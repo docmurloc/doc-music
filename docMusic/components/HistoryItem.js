@@ -6,7 +6,7 @@ import {GetRandomTrack, GetTrackById} from '../APIserver/Track';
 import {playAtId} from '../APIsound/play';
 import {remplaceTrack} from '../APIsound/track';
 
-import {StyleSheet, Text, TextInput , View, Image, Button, TouchableHighlight} from "react-native";
+import {StyleSheet, Text, TextInput , View, Image, ActivityIndicator, TouchableHighlight} from "react-native";
 
 async function SetTrackItem(setTrack, id) {
     let answer = await GetTrackById(id);
@@ -39,7 +39,7 @@ function HistoryItem(props) {
         SetTrackItem(setTrack, props.id);
         return (
             <View>
-                <Text>Track not found</Text>
+                <ActivityIndicator size="large" color='rgba(215, 215, 215, 1)' />
             </View>
         )
     }

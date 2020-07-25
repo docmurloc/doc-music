@@ -35,6 +35,7 @@ function HistoryPage(props) {
                     data={createListHistory(props.profil.trackHistoric)}
                     renderItem={({ item }) => <HistoryItem {...props} id={item.id}/>}
                     keyExtractor={item => item.key}
+                    initialNumToRender={5}
                 />
             </View>
         </View>

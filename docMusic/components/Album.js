@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {connect} from 'react-redux';
 import Store from '../Store/configureStore'
 
-import {StyleSheet, Text, TouchableHighlight , View, Image, Button, FlatList} from "react-native";
+import {StyleSheet, Text, TouchableHighlight , View, Image, Button, ActivityIndicator} from "react-native";
 
 import {GetRandomAlbum, GetAlbumById} from '../APIserver/Album';
 import {GetPlaylistById} from '../APIserver/Playlist'
@@ -61,7 +61,7 @@ function Album(props) {
         SetAlbumItem(setAlbum, props.id);
         return (
             <View>
-                <Text>album not found</Text>
+                <ActivityIndicator size="large" color='rgba(215, 215, 215, 1)' />
             </View>
         )
     } else {
