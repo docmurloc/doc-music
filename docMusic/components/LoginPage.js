@@ -44,8 +44,6 @@ function LoginPage(props) {
                           onPress={() => props.navigation.navigate('SignUp')}
                         />
                     </View>
-                    <Text style={styles.text}>Use your google profile</Text>
-                    <Image source={require('../Images/logoGoogle.png')} style={styles.icon} />
                 </View>
             </View>
 
