@@ -90,18 +90,12 @@ function MyStack(props) {
                 <Stack.Screen 
                 name="Login" 
                 component={LoginPage}
-                options={{ 
-                  headerTitle: props => <HeaderLeft {...props} />,
-                  headerLeft: null,
-                  }} 
+                options={{headerShown: false}} 
                 />
                 <Stack.Screen 
                 name="SignUp" 
                 component={SignUpPage}
-                options={{ 
-                  headerTitle: props => <HeaderLeft {...props} />,
-                  headerLeft: null,
-                  }} 
+                options={{headerShown: false}} 
                 />
               </>
             ) : (

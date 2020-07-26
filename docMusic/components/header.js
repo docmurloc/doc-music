@@ -3,6 +3,16 @@ import {connect} from 'react-redux';
 
 import {StyleSheet, Text, View, Image} from "react-native";
 
+import ButtonIcon from './ButtonIcon';
+
+import Store from '../Store/configureStore'
+
+
+function logOut() {
+    const action = {type: 'CLEAN_PROFILE'};
+    Store.dispatch(action);
+}
+
 function HeaderLeft(props) {
     return (
         <View style={styles.horizontalDisplay}>
@@ -10,7 +20,10 @@ function HeaderLeft(props) {
             <View style={styles.box}>
                 <Text style={styles.title}>Doc-Music</Text>
             </View>
-            <Image source={require('../Images/avatar.png')} style={styles.logo}/>
+            <ButtonIcon 
+                icon={require('../Images/logoutIcon.png')} 
+            onPress={logOut}
+            />
         </View>
     );
 }
@@ -44,6 +57,7 @@ const styles = StyleSheet.create({
     horizontalDisplay: {
         //width : "40 %",
         flexDirection: 'row',
+        alignItems: 'center', 
         justifyContent: 'space-between',
         //backgroundColor : "red"
     },

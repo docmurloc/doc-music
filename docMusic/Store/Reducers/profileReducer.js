@@ -18,6 +18,14 @@ const storeProfile = async (value) => {
   }
 }
 
+const deleteProfile = async () => {
+  try {
+    await AsyncStorage.removeItem('cache_profile')
+  } catch (e) {
+    console.log("echec delete profile ", e);
+  }
+}
+
 function idFilterRemover(List, id) {
   return List.filter(
       function(data) {
@@ -127,6 +135,9 @@ function profileReducer(state = initialState, action) {
             ...action.profile,
         }
         return nextState
+      case 'CLEAN_PROFILE':
+        deleteProfile();
+        return initialState;
     default:
       return state
     }
