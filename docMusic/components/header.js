@@ -13,8 +13,10 @@ import TrackPlayer from 'react-native-track-player';
 
 async function logOut() {
     await TrackPlayer.destroy();
-    const action = {type: 'CLEAN_PROFILE'};
+    const action = {type: 'SET_CURRENT_TRACK', track: null};
     Store.dispatch(action);
+    const action2 = {type: 'CLEAN_PROFILE'};
+    Store.dispatch(action2);
 }
 
 function HeaderLeft(props) {
