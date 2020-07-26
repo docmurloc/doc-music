@@ -60,7 +60,7 @@ function profileReducer(state = initialState, action) {
       case 'ADD_HISTORIC':
         nextState = {
             ...state,
-            trackHistoric: [action.trackId, ...state.trackHistoric],
+            trackHistoric: [action.trackId, ...idFilterRemover(state.trackHistoric, action.trackId)],
         }
         storeProfile(nextState);
         return nextState

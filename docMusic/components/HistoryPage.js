@@ -32,9 +32,9 @@ function HistoryPage(props) {
             <Text style={styles.title}>History</Text>
             <View style={styles.box}>
                 <FlatList
-                    data={createListHistory(props.profil.trackHistoric)}
-                    renderItem={({ item }) => <HistoryItem {...props} id={item.id}/>}
-                    keyExtractor={item => item.key}
+                    data={props.profil.trackHistoric}
+                    renderItem={({ item }) => <HistoryItem {...props} id={item}/>}
+                    keyExtractor={item => item}
                     initialNumToRender={5}
                 />
             </View>

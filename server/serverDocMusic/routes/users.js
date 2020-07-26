@@ -28,7 +28,16 @@ router.post('/add_historic', async function(req, res, next) {
   let user = await UserModel.findOne({access_token : req.headers.access_token});
 
   if (user) {
-    await user.updateOne({trackHistoric : [req.body.trackId, ...user.trackHistoric]});
+
+    let arrayHistory = user.trackHistoric;
+
+    arrayHistory = arrayHistory.filter(
+      function(data) {
+        return data != req.body.trackId;
+      }
+    );
+
+    await user.updateOne({trackHistoric : [req.body.trackId, ...arrayHistory]});
     return  res.status(200).send({status : "succes"});
   }
   return res.status(400).send({status : "user not found"});

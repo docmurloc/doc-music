@@ -26,7 +26,7 @@ async function selectedTrack(props, track) {
     props.dispatch(action);
 
 
-    props.navigation.navigate('Home page');
+    props.navigation.navigate('HomePage');
 }
 
 function HistoryItem(props) {
