@@ -7,8 +7,12 @@ import ButtonIcon from './ButtonIcon';
 
 import Store from '../Store/configureStore'
 
+import TrackPlayer from 'react-native-track-player';
 
-function logOut() {
+
+
+async function logOut() {
+    await TrackPlayer.destroy();
     const action = {type: 'CLEAN_PROFILE'};
     Store.dispatch(action);
 }
