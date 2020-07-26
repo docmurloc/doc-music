@@ -3,6 +3,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {connect} from 'react-redux';
+import AsyncStorage from '@react-native-community/async-storage';
+
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -16,6 +18,23 @@ import PlaylistPage from '../components/PlaylistPage'
 import PlayerPage from '../components/PlayerPage'
 import ResearchPage from '../components/ResearchPage'
 import HistoryPage from '../components/HistoryPage'
+
+const getProfilCache = async (props) => {
+  try {
+    let jsonValue = await AsyncStorage.getItem('cache_profile');
+
+    //console.log("profile cache ", jsonValue);
+
+    if (jsonValue) {
+      jsonValue = JSON.parse(jsonValue);
+
+      const action = {type: 'REHYDRATE_PROFILE', profile: jsonValue}
+      props.dispatch(action);
+    }
+  } catch(e) {
+    console.log("echec store profile ", e);
+  }
+}
 
 function HomeStack() {
   return (
@@ -52,6 +71,10 @@ function HomeNavigator() {
   }
 
 function MyStack(props) {
+
+  if (!props.profil.access_token) {
+    getProfilCache(props);
+  }
 
   return (
     <NavigationContainer>
