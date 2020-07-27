@@ -70,7 +70,7 @@ async function trackService() {
         if (track) {
             const store = Store.getState();
             setFavorite(track.id);
-            addUserHistoric(store.profil.access_token, track.id);
+            await addUserHistoric(store.profil.access_token, track.id);
             const action = {type: 'SET_CURRENT_TRACK', track: track};
             Store.dispatch(action);
         }
