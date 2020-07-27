@@ -23,8 +23,6 @@ const getProfilCache = async (props) => {
   try {
     let jsonValue = await AsyncStorage.getItem('cache_profile');
 
-    //console.log("profile cache ", jsonValue);
-
     if (jsonValue) {
       jsonValue = JSON.parse(jsonValue);
 

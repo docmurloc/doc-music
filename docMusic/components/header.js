@@ -1,15 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import {connect} from 'react-redux';
-
 import {StyleSheet, Text, View, Image} from "react-native";
 
 import ButtonIcon from './ButtonIcon';
-
 import Store from '../Store/configureStore'
-
 import TrackPlayer from 'react-native-track-player';
-
-
 
 async function logOut() {
     await TrackPlayer.destroy();
@@ -34,38 +29,15 @@ function HeaderLeft(props) {
     );
 }
 
-
 const styles = StyleSheet.create({
-    container: {
-        flex: 1, 
-        alignItems: 'center', 
-        justifyContent: 'center'
-    },
     box: {
         width : "50%",
-        //flex: 1, 
-        //alignItems: 'center', 
         justifyContent: "space-around",
-        //paddingTop: 10,
-        //backgroundColor : 'rgba(191, 155, 63, 0.5)',
-        
-    },
-    content: {
-        //idth : "100%",
-        margin : 30,
-        flex: 1, 
-        alignItems: 'center', 
-        justifyContent: "space-around",
-        backgroundColor : 'rgba(215, 215, 215, 0.9)',
-        borderRadius: 20
-        
     },
     horizontalDisplay: {
-        //width : "40 %",
         flexDirection: 'row',
         alignItems: 'center', 
         justifyContent: 'space-between',
-        //backgroundColor : "red"
     },
     title: {
         fontSize: 30,

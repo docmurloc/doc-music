@@ -16,8 +16,6 @@ async function GetRandomAlbum() {
 
     answer = await answer.json();
 
-    //console.log("random album ", answer);
-
     saveNewAlbum(answer);
 
     return answer;
@@ -27,12 +25,10 @@ exports.GetRandomAlbum = GetRandomAlbum;
 
 async function GetAlbumById(id) {
 
-    //console.log("GetAlbumById", id)
 
     let answer = getAlbumCacheById(id);
 
     if (answer) {
-        //console.log("answer cache get track by id: ", answer);
         return answer;
     }
 
@@ -47,8 +43,6 @@ async function GetAlbumById(id) {
 
     answer = await answer.json();
 
-    //console.log("GetTrackById result", answer);
-
     saveNewAlbum(answer);
 
     return answer;
@@ -57,7 +51,6 @@ async function GetAlbumById(id) {
 exports.GetAlbumById = GetAlbumById;
 
 async function AlbumFavorite(userToken) {
-    //console.log("get album favorite ", userToken);
 
     fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/albums/favorite', {
         headers: {
@@ -71,7 +64,6 @@ async function AlbumFavorite(userToken) {
         return response.json();
     })
     .then((answer) => {
-        //console.log("answer album favorite", answer);
         const action = {type: 'SET_ALBUM_FAVORITE', albumFavorite: answer.albumFavorite};
         Store.dispatch(action);
         return answer;
@@ -103,10 +95,8 @@ async function addAlbumFavorite(userToken, id) {
     })
     .then((data) => {
         if (data.status == "succes") {
-            console.log("add user Favorite album");
             const action = {type: 'ADD_ALBUM_FAVORITE', trackId: id};
             Store.dispatch(action);
-            console.log("add user Favorite END");
             return true;
         }
         return false;

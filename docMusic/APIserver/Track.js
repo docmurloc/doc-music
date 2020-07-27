@@ -27,12 +27,9 @@ exports.GetRandomTrack = GetRandomTrack;
 
 async function GetTrackById(id) {
 
-    //console.log("GetTrackById", id)
-
     let answer = getTrackCacheById(id);
 
     if (answer) {
-        //console.log("answer cache get track by id: ", answer);
         return answer;
     }
 
@@ -47,10 +44,7 @@ async function GetTrackById(id) {
 
     answer = await answer.json();
 
-    //console.log("GetTrackById result", answer);
-
     saveNewTrack(answer);
-
 
     return answer;
 }
@@ -59,8 +53,6 @@ exports.GetTrackById = GetTrackById;
 
 
 async function GetTrackByTitle(title) {
-
-    console.log("GetTrackByTitle", title)
 
     let answer = await fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/tracks/research', {
         headers: {
@@ -73,15 +65,12 @@ async function GetTrackByTitle(title) {
 
     answer = await answer.json();
 
-    console.log("GetTrackByTitle result", answer);
-
     return answer;
 }
 
 exports.GetTrackByTitle = GetTrackByTitle;
 
 async function TrackFavorite(userToken) {
-    //console.log("get user favorite", userToken);
 
     fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/tracks/favorite', {
         headers: {
@@ -95,7 +84,6 @@ async function TrackFavorite(userToken) {
         return response.json();
     })
     .then((answer) => {
-        //console.log("answer get favorite track", answer);
         const action = {type: 'SET_FAVORITE', trackFavorite: answer.trackFavorite};
         Store.dispatch(action);
         return answer;
@@ -109,8 +97,6 @@ exports.TrackFavorite = TrackFavorite;
 
 async function TrackUnfavorite(userToken) {
 
-    //console.log("get user Unfavorite", userToken);
-
     fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/tracks/unfavorite', {
         headers: {
             'Accept': 'application/json',
@@ -123,8 +109,6 @@ async function TrackUnfavorite(userToken) {
         return response.json();
     })
     .then((answer) => {
-        //console.log("answer get unavorite track", answer);
-
         const action = {type: 'SET_UNFAVORITE', trackUnfavorite: answer.trackUnfavorite};
         Store.dispatch(action);
         return answer;
@@ -156,10 +140,8 @@ async function addTrackFavorite(userToken, id) {
     })
     .then((data) => {
         if (data.status == "succes") {
-            console.log("add user Favorite");
             const action = {type: 'ADD_FAVORITE', trackId: id};
             Store.dispatch(action);
-            console.log("add user Favorite END");
             return true;
         }
         return false;

@@ -35,13 +35,8 @@ function idFilterRemover(List, id) {
 }
 
 function profileReducer(state = initialState, action) {
-
-  //if (action.type == "ADD_ALBUM_FAVORITE") {
-  //  console.log("profile reducer state", state);
-  //  console.log("profile reducer action", action);
-  //  console.log("profile albumFavorite", state.albumFavorite);
-  //}
   let nextState;
+
     switch (action.type) {
       case 'CONNECTION':
         nextState = {
@@ -70,7 +65,6 @@ function profileReducer(state = initialState, action) {
             trackFavorite: action.trackFavorite,
         }
         storeProfile(nextState);
-        //console.log("state after set favorite", nextState);
         return nextState
       case 'ADD_FAVORITE':
         nextState = {
@@ -113,7 +107,6 @@ function profileReducer(state = initialState, action) {
             albumFavorite: action.albumFavorite,
         }
         storeProfile(nextState);
-        //console.log("profile albumFavorite result", nextState);
         return nextState
       case 'ADD_ALBUM_FAVORITE':
         nextState = {

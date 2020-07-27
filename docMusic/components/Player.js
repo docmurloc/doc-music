@@ -1,24 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import {connect} from 'react-redux';
+import {StyleSheet, Text, View} from "react-native";
 
-import {pause, stop} from '../APIsound/pause'
+import {pause} from '../APIsound/pause'
 import {play} from '../APIsound/play'
 import {next, previous} from '../APIsound/skip';
 import {remplaceTrack, randomTrack} from '../APIsound/track'
+
 import MyPlayerBar from './PlayerBar'
-
-
 import PlayerTitle from './PlayerTitle'
 import ButtonSwitch from './ButtonSwitch'
 import PlayButton from './PlayButton'
 import ButtonIcon from './ButtonIcon';
-import * as Progress from 'react-native-progress';
 
-import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView} from "react-native";
 
 
 function Player(props) {
-    const [reponse, setreponse] = useState("");
     return (
         <View style={styles.container}>
             <PlayerTitle/>
@@ -68,76 +65,35 @@ function Player(props) {
                 statusButton= {props.player.loop}
                 />
             </View>
-
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        //flex: 1,
         height : "50%", 
         alignItems: 'center', 
         justifyContent: "space-between",
         padding: 10,
         backgroundColor : 'rgba(215, 215, 215, 1)',
         borderRadius: 15
-
-
-    },
-    textCenter: {
-        //flex: 1,
-        //height : "60%",
-        width: "40%",
-        alignItems: 'center', 
-        //justifyContent: "space-between",
-        //padding: 10,
-        //backgroundColor : 'rgba(191, 155, 63, 0.5)',
-
     },
     box: {
         width : "100%",
-        //flex: 1, 
         alignItems: 'center', 
         justifyContent: "center",
         paddingTop: 10,
-        //backgroundColor : 'red'
-        
-    },
-    content: {
-        //idth : "100%",
-        margin : 30,
-        flex: 1, 
-        justifyContent: "space-around",
-        //backgroundColor : 'rgba(215, 215, 215, 0.9)',
-        borderRadius: 20
-        
     },
     horizontalDisplay: {
         width : "100 %",
         flexDirection: 'row',
         justifyContent: "space-around",
-        //backgroundColor : "green",
         paddingVertical : 5
-    },
-    text: {
-      fontSize: 14,
-      textAlign: "center"
     },
     title: {
         fontSize: 20,
         textAlign: "center"
-      },
-    logo: {
-        width: 200,
-        height: 200,
-        resizeMode: 'contain',
-    },
-    icon: {
-        width: 40,
-        height: 40,
-        resizeMode: 'contain',
-    },
+    }
   });
 
 const mapStateToProps = (state) => {

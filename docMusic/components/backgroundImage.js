@@ -12,7 +12,6 @@ function RandPic() {
       img = require('../Images/wallpaperMusic2.jpg');
     if (nb == 3)
       img = require('../Images/wallpaperMusic2.jpg');
-    //console.log(nb)
     return img;
 }
 

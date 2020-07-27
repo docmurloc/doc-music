@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import {connect} from 'react-redux';
+import {StyleSheet, View} from "react-native";
 
 import Displayer from './Displayer';
 import PlayerOverlay from './PlayerOverlay';
 
-import {IP_SERVER, PORT_SERVER} from '../env';
-
-import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView} from "react-native";
 
 import NetInfo from "@react-native-community/netinfo";
 
@@ -184,13 +182,8 @@ function SetAlbumRandom(nbItem) {
 function HomePage(props) {
     const [randDisplay, setrandDisplay] = useState(SetAlbumRandom(2));
 
-    //console.log("port = ", PORT_SERVER, "ip = ", IP_SERVER);
-
-    //console.log("Home page props ", props.profil.albumFavorite);
-
     const DATA = ['5f06563efff14000085ced8e', '5f065644fff14000085ced90'];
 
-    //props.profil.albumFavorite
     return (
         <View style={styles.container}>
             <Displayer {...props} title={"Favorite"} listItemId={props.profil.albumFavorite}/>
@@ -203,51 +196,8 @@ function HomePage(props) {
 const styles = StyleSheet.create({
     container: {
         flex: 1, 
-        //alignItems: 'center', 
         justifyContent: 'flex-start'
-    },
-    box: {
-        width : "100%",
-        flex: 1, 
-        alignItems: 'center', 
-        justifyContent: "space-around",
-        paddingTop: 10
-        //backgroundColor : 'rgba(191, 155, 63, 0.5)',
-        
-    },
-    content: {
-        //idth : "100%",
-        margin : 30,
-        flex: 1, 
-        alignItems: 'center', 
-        justifyContent: "space-around",
-        backgroundColor : 'rgba(215, 215, 215, 0.9)',
-        borderRadius: 20
-        
-    },
-    horizontalDisplay: {
-        width : "70 %",
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        //backgroundColor : "red"
-    },
-    text: {
-      fontSize: 20,
-    },
-    title: {
-        fontSize: 30,
-        textAlign: "center"
-      },
-    logo: {
-        width: 100,
-        height: 100,
-        resizeMode: 'contain',
-    },
-    icon: {
-        width: 65,
-        height: 65,
-        resizeMode: 'contain',
-    },
+    }
   });
 
 const mapStateToProps = (state) => {

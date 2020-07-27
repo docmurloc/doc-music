@@ -26,18 +26,11 @@ async function loginUser(props, newPseudo, newPassword, setInfo) {
             await UserHistoric(answer.access_token);
             await TrackFavorite(answer.access_token);
             await AlbumFavorite(answer.access_token);
-            console.log("login answer acces token", answer.access_token)
             await TrackUnfavorite(answer.access_token);
 
             const action = {type: 'CONNECTION', accessToken: answer.access_token}
             props.dispatch(action);
 
-            //console.log("login answer acces token", answer.access_token)
-
-            //setInfo(answer.access_token);
-            
-
-            //props.navigation.navigate('HomeTab');
         } else {
             setInfo(answer.status);
         }
@@ -51,14 +44,11 @@ exports.loginUser = loginUser;
 
 async function UserHistoric(userToken) {
 
-    console.log("get user historic");
-
     fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/users/historic', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'access_token' : userToken,
-
         },
         method: 'GET',
     })
@@ -132,10 +122,8 @@ async function addUserFavorite(userToken, id) {
     })
     .then((data) => {
         if (data.status == "succes") {
-            console.log("add user Favorite");
             const action = {type: 'ADD_FAVORITE', trackId: id};
             Store.dispatch(action);
-            console.log("add user Favorite END");
             return true;
         }
         return false;

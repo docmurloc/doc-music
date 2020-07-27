@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import {connect} from 'react-redux';
 
 import {pause, stop} from '../APIsound/pause'
 import {play} from '../APIsound/play'
-import {next, previous} from '../APIsound/skip';
+import {next} from '../APIsound/skip';
 
 
 import PlayButton from './PlayButton'
 import ButtonIcon from './ButtonIcon';
 
 
-import {StyleSheet, Text, TextInput , View, Image, Button, TouchableHighlight} from "react-native";
+import {StyleSheet, Text, View, Image, TouchableHighlight} from "react-native";
 
 
 function PlayerOverlay(props) {
@@ -58,7 +58,6 @@ function PlayerOverlay(props) {
 const styles = StyleSheet.create({
     container: {
         flex: 1, 
-        //alignItems: 'center', 
         justifyContent: 'flex-start',
         backgroundColor : 'rgba(191, 155, 63, 1)',
         position: 'absolute',
@@ -69,33 +68,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center', 
         justifyContent: "space-around",
-
-
     },
     box: {
         width : 130,
-        //flex: 1, 
         alignItems: 'flex-start', 
-        //justifyContent: "space-around",
-        //paddingTop: 10
-        //backgroundColor : 'rgba(191, 155, 63, 0.5)',
-        
-    },
-    content: {
-        //idth : "100%",
-        margin : 30,
-        flex: 1, 
-        alignItems: 'center', 
-        justifyContent: "space-around",
-        backgroundColor : 'rgba(215, 215, 215, 0.9)',
-        borderRadius: 20
-        
-    },
-    horizontalDisplay: {
-        width : "70 %",
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        //backgroundColor : "red"
     },
     text: {
       fontSize: 14,
@@ -109,12 +85,7 @@ const styles = StyleSheet.create({
         width: 65,
         height: 65,
         resizeMode: 'contain',
-    },
-    icon: {
-        width: 65,
-        height: 65,
-        resizeMode: 'contain',
-    },
+    }
   });
 
 const mapStateToProps = (state) => {

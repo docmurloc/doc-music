@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import {connect} from 'react-redux';
 
-import {GetRandomTrack, GetTrackById} from '../APIserver/Track';
+import {GetTrackById} from '../APIserver/Track';
 
 import {playAtId} from '../APIsound/play';
 import {remplaceTrack} from '../APIsound/track';
 
-import {StyleSheet, Text, TextInput , View, Image, ActivityIndicator, TouchableHighlight} from "react-native";
+import {StyleSheet, Text, View, Image, ActivityIndicator, TouchableHighlight} from "react-native";
 
 async function SetTrackItem(setTrack, id) {
     let answer = await GetTrackById(id);
@@ -24,16 +24,10 @@ async function selectedTrack(props, track) {
 
     const action = {type: 'SET_CURRENT_TRACK', track: track};
     props.dispatch(action);
-
-
-    //props.navigation.navigate('Player');
 }
 
 function PlaylistItem(props) {
     const [track, setTrack] = useState(null);
-
-
-    //console.log("track current: ", track);
 
     if (!track) {
         SetTrackItem(setTrack, props.id);
@@ -78,31 +72,11 @@ function PlaylistItem(props) {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        //flex: 1,
-        //height: "30%",
-        //alignItems: 'center', 
-        //justifyContent: 'center',
-        //backgroundColor : 'red'
-    },
     box: {
         width : "80%",
-        //flex: 1, 
         alignItems: 'flex-start', 
         justifyContent: "space-around",
         paddingHorizontal: 15,
-        //backgroundColor : 'rgba(191, 155, 63, 0.5)',
-        
-    },
-    content: {
-        //idth : "100%",
-        margin : 30,
-        flex: 1, 
-        alignItems: 'center', 
-        justifyContent: "space-around",
-        backgroundColor : 'rgba(215, 215, 215, 0.9)',
-        borderRadius: 20
-        
     },
     horizontalDisplay: {
         width : "100 %",
@@ -124,16 +98,6 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 16,
         fontWeight: "bold"
-        //textAlign: "center"
-      },
-    titleView: {
-        //backgroundColor: "green",
-        padding: 10,
-    },
-    logo: {
-        width: 20,
-        height: 20,
-        resizeMode: 'contain',
     },
     icon: {
         width: 50,

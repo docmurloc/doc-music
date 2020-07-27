@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {connect} from 'react-redux';
-import TrackPlayer from 'react-native-track-player';
 
-
-import PlayerTitle from './PlayerTitle'
 import Player from './Player'
 
-import {StyleSheet, Text, TextInput , View, Image, Button, KeyboardAvoidingView} from "react-native";
+import {StyleSheet, Text, View, Image} from "react-native";
 
 
 function PlayerPage(props) {
-    const [event, setEvent] = useState(null);
     
     if (props.track.currentTrack == null) {
         return (
@@ -23,7 +19,6 @@ function PlayerPage(props) {
         <View style={styles.container}>
             <Image source={{uri :props.track.currentTrack.artwork}} style={styles.logo}/>
             <Player/>
-
         </View>
         )
     }
@@ -36,48 +31,11 @@ const styles = StyleSheet.create({
         justifyContent: "space-around",
         padding: 20
     },
-    box: {
-        width : "100%",
-        flex: 1, 
-        alignItems: 'center', 
-        justifyContent: "space-around",
-        paddingTop: 10
-        //backgroundColor : 'rgba(191, 155, 63, 0.5)',
-        
-    },
-    content: {
-        //idth : "100%",
-        margin : 30,
-        flex: 1, 
-        alignItems: 'center', 
-        justifyContent: "space-around",
-        //backgroundColor : 'rgba(215, 215, 215, 0.9)',
-        borderRadius: 20
-        
-    },
-    horizontalDisplay: {
-        width : "70 %",
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        //backgroundColor : "red"
-    },
-    text: {
-      fontSize: 20,
-    },
-    title: {
-        fontSize: 30,
-        textAlign: "center"
-      },
     logo: {
         width: 200,
         height: 200,
         resizeMode: 'contain',
-    },
-    icon: {
-        width: 65,
-        height: 65,
-        resizeMode: 'contain',
-    },
+    }
   });
 
 const mapStateToProps = (state) => {
