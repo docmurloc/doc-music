@@ -141,4 +141,3 @@ async function removeAlbumFavorite(userToken, id) {
 }
 
 exports.removeAlbumFavorite = removeAlbumFavorite;
-

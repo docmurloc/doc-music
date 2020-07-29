@@ -7,10 +7,6 @@ const initialState = {
   };
   
   function playerReducer(state = initialState, action) {
-    if (action.type == "SET_FAVORITE_PLAYER") {
-      console.log("player reducer state", state);
-      console.log("player reducer action", action);
-    }
       let nextState
       switch (action.type) {
         case 'SET_PLAY':
