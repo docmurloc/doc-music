@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-import {IP_SERVER, PORT_SERVER} from '../env';
+const {IP_SERVER, PORT_SERVER} = require('../env');
 
 const baseURLImage = 'http://' + IP_SERVER + ':' + PORT_SERVER + '/image/';
 const baseURLTrack = 'http://' + IP_SERVER + ':' + PORT_SERVER + '/track/';
@@ -52,8 +52,8 @@ router.get('/random', async function(req, res, next) {
         album: track.album,
         genre: track.genre,
         date: track.date,
-        artwork: track.artwork,
-        url: track.url,
+        artwork: baseURLImage + track.artwork,
+        url: baseURLTrack + track.url,
     };
     //await Test.save();
   console.log("get random track");
@@ -71,8 +71,8 @@ router.get('/id', async function(req, res, next) {
         album: track.album,
         genre: track.genre,
         date: track.date,
-        artwork: track.artwork,
-        url: track.url,
+        artwork: baseURLImage + track.artwork,
+        url: baseURLTrack + track.url,
     };
     //console.log("get track:", answer);
     res.status(200).send(answer);
