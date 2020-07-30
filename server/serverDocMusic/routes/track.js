@@ -1,6 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
+import {IP_SERVER, PORT_SERVER} from '../env';
+
+const baseURLImage = 'http://' + IP_SERVER + ':' + PORT_SERVER + '/image/';
+const baseURLTrack = 'http://' + IP_SERVER + ':' + PORT_SERVER + '/track/';
+
 const {
     TrackModel
 } = require("../models/track")
