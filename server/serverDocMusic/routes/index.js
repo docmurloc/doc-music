@@ -9,7 +9,7 @@ const {
 router.get('/', async function (req, res, next) {
  console.log("homePage");
   //res.send('respond with a resource');
-  res.render('index', {
+  res.render('home', {
     title: 'Doc Music'
   });
 });
