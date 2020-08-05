@@ -33,19 +33,19 @@ router.get('/id', async function(req, res, next) {
 
 router.post('/upload', async function(req, res, next) {
 
-  //console.log("register user: ", req);
+  console.log("register upload: ", req.body);
 
-  let image = await ImageModel.findOne({
-      url: req.body.url,
-    });
-
-  if (!image) {
-    image = new ImageModel({
-        url: req.body.url,
-    });
-    await image.save();
-    return  res.status(200).send({status : "succes"});
-  }
+  //let image = await ImageModel.findOne({
+  //    url: req.body.url,
+  //  });
+//
+  //if (!image) {
+  //  image = new ImageModel({
+  //      url: req.body.url,
+  //  });
+  //  await image.save();
+  //  return  res.status(200).send({status : "succes"});
+  //}
   return res.status(400).send({status : "image already exist"});
 });
 
