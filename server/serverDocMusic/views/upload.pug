@@ -30,14 +30,14 @@ html
     </nav>
 
 
-    <form>
+    <form action="/images/upload" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="pictureName">picture name</label>
-            <input type="text" class="form-control" id="pictureName" placeholder="write the name of your picture">
+            <input type="text" class="form-control" id="pictureName" name="picture_name" placeholder="write the name of your picture">
         </div>
         <div class="form-group">
             <label for="pictureSelected">picture file</label>
-            <input type="file" class="form-control-file" id="pictureSelected">
+            <input type="file" class="form-control-file" id="pictureSelected" name="picture_selected" >
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

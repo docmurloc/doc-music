@@ -19,9 +19,9 @@ router.get('/uploadPage', async function (req, res, next) {
   console.log("uploadPage");
    //res.send('respond with a resource');
    res.render('upload', {
-     title: 'Doc Music'
-   });
- });
+    title: 'Doc Music'
+  });
+});
 
  /* GET home page. */
 router.get('/playlistPage', async function (req, res, next) {
