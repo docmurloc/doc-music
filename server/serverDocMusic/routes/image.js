@@ -1,5 +1,8 @@
 var express = require('express');
+const formidable = require('formidable');
 var router = express.Router();
+
+var fs = require('fs');
 
 const {
   ImageModel
@@ -33,7 +36,7 @@ router.get('/id', async function(req, res, next) {
 
 router.post('/upload', async function(req, res, next) {
 
-  console.log("image upload: ", req.headers, req.body);
+  console.log("image upload: ", req.body);
 
   //let image = await ImageModel.findOne({
   //    url: req.body.url,
@@ -45,8 +48,30 @@ router.post('/upload', async function(req, res, next) {
   //  });
   //  await image.save();
     //return  res.status(200).send({status : "succes"});
-    res.render('upload', {
-      title: 'Doc Music'
+    //res.render('upload', {
+    //  title: 'Doc Music'
+    //});
+
+    const form = formidable({ multiples: true });
+
+    form.parse(req, (err, fields, files) => {
+      if (err) {
+        next(err);
+        return;
+      }
+      var nameFile = fields.picture_name;
+      var oldpath = files.picture_selected.path;
+      var newpath = __dirname + '/../public/image/' + nameFile;
+      fs.copyFile(oldpath, newpath, function (err) {
+        if (err) throw err;
+      });
+      fs.unlink( oldpath, function (err) {
+        if (err) throw err;
+      }); 
+      //res.render('upload', {
+      //  title: 'Doc Music'
+      //});
+      res.json({ fields, files });
     });
  
   //}
