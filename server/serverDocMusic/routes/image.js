@@ -2,6 +2,11 @@ var express = require('express');
 const formidable = require('formidable');
 var router = express.Router();
 
+const {IP_SERVER, PORT_SERVER} = require('../env');
+
+const baseURLImage = 'http://' + IP_SERVER + ':' + PORT_SERVER + '/image/';
+
+
 var fs = require('fs');
 
 const {
@@ -54,7 +59,7 @@ router.post('/upload', async function(req, res, next) {
 
     const form = formidable({ multiples: true });
 
-    form.parse(req, (err, fields, files) => {
+    form.parse(req, async (err, fields, files) => {
       if (err) {
         next(err);
         return;
@@ -68,10 +73,19 @@ router.post('/upload', async function(req, res, next) {
       fs.unlink( oldpath, function (err) {
         if (err) throw err;
       }); 
-      //res.render('upload', {
-      //  title: 'Doc Music'
-      //});
-      res.json({ fields, files });
+
+      let image = new ImageModel({
+              url: baseURLImage + nameFile,
+              name: fields.picture_name
+          });
+        
+      await image.save();
+
+
+      res.render('upload', {
+        title: 'Doc Music'
+      });
+      //res.json({ fields, files });
     });
  
   //}

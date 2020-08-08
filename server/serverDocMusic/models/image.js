@@ -6,6 +6,7 @@ var Schema = mongoose.Schema;
 
 var ImageModelSchema = new Schema({
     url: String,
+    name: String
 });
 
 // Compile model from schema
