@@ -29,18 +29,50 @@ html
       </div>
     </nav>
 
+    <h1>Image upload</h1>
 
     <form action="/images/upload" method="post" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="pictureName">picture name</label>
+            <label for="pictureName">name</label>
             <input type="text" class="form-control" id="pictureName" name="picture_name" placeholder="write the name of your picture">
         </div>
         <div class="form-group">
-            <label for="pictureSelected">picture file</label>
+            <label for="pictureSelected">file</label>
             <input type="file" class="form-control-file" id="pictureSelected" name="picture_selected" >
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
+    <h1>track upload</h1>
+
+    <form action="/images/upload" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="trackTitle">name</label>
+            <input type="text" class="form-control" id="trackTitle" name="track_title" placeholder="write the title of your track">
+        </div>
+        <div class="form-group">
+            <label for="trackArtist">artist</label>
+            <input type="text" class="form-control" id="trackArtist" name="track_artist" placeholder="write the artist of your track">
+        </div>
+        <div class="form-group">
+            <label for="trackAlbum">album</label>
+            <input type="text" class="form-control" id="trackAlbum" name="track_album" placeholder="write the album of your track">
+        </div>
+        <div class="form-group">
+            <label for="trackGenre">genre</label>
+            <input type="text" class="form-control" id="trackGenre" name="track_genre" placeholder="write the genre of your track">
+        </div>
+        <div class="form-group">
+            <label for="trackArtwork">artwork</label>
+            <input type="text" class="form-control" id="trackArtwork" name="track_artwork" placeholder="write the artwork of your track">
+        </div>
+        <div class="form-group">
+            <label for="trackSelected">file</label>
+            <input type="file" class="form-control-file" id="trackSelected" name="track_selected" >
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
