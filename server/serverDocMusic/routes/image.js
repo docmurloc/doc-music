@@ -37,7 +37,14 @@ router.get('/id', async function(req, res, next) {
       };
     console.log("get image:", answer);
     res.status(200).send(answer);
-  });
+});
+
+router.get('/all', async function(req, res, next) {
+  let images = await ImageModel.find({});
+
+  console.log("get image all:", images);
+  res.status(200).send(images);
+});
 
 router.post('/upload', async function(req, res, next) {
 
