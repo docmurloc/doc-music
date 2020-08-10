@@ -45,7 +45,7 @@ html
 
     <h1>track upload</h1>
 
-    <form action="/images/upload" method="post" enctype="multipart/form-data">
+    <form action="/tracks/upload" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="trackTitle">name</label>
             <input type="text" class="form-control" id="trackTitle" name="track_title" placeholder="write the title of your track">
@@ -64,7 +64,9 @@ html
         </div>
         <div class="form-group">
             <label for="trackArtwork">artwork</label>
-            <input type="text" class="form-control" id="trackArtwork" name="track_artwork" placeholder="write the artwork of your track">
+            <select class="form-control" id="trackArtwork" name="track_artwork">
+                <option value="">--Please choose an option--</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="trackSelected">file</label>
@@ -77,3 +79,5 @@ html
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="/javascripts/uploadpage.mjs" type="module"></script>
+

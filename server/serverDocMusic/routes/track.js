@@ -1,4 +1,5 @@
 var express = require('express');
+const formidable = require('formidable');
 var router = express.Router();
 
 const {IP_SERVER, PORT_SERVER} = require('../env');
@@ -7,12 +8,18 @@ const baseURLImage = 'http://' + IP_SERVER + ':' + PORT_SERVER + '/image/';
 const baseURLTrack = 'http://' + IP_SERVER + ':' + PORT_SERVER + '/track/';
 
 const {
+  ImageModel
+} = require("../models/image")
+
+const {
     TrackModel
 } = require("../models/track")
 
 const {
   UserModel
 } = require("../models/user")
+
+var fs = require('fs');
 
 
 function getDate() {
@@ -93,28 +100,73 @@ router.get('/research', async function(req, res, next) {
 
 router.post('/upload', async function(req, res, next) {
 
-  //console.log("register user: ", req);
 
-  let track = await TrackModel.findOne({
-    title: req.body.title,
-    artist: req.body.artist,
-    album: req.body.album,
-});
+  const form = formidable({ multiples: true });
 
-  if (!track) {
+  form.parse(req, async (err, fields, files) => {
+    console.log("fields: ", fields, " files: ", files);
+    if (err) {
+      next(err);
+      return;
+    }
+    //res.json({ fields, files });
+
+    let track = await TrackModel.findOne({
+      title: fields.track_title,
+      artist: fields.track_artist,
+      album: fields.track_album,
+    });
+
+    if (track) {
+      return res.status(400).send({status : "track already exist"});
+    }
+
+    var nameFile = fields.track_title;
+    var oldpath = files.track_selected.path;
+    var newpath = __dirname + '/../public/track/' + nameFile;
+    fs.copyFile(oldpath, newpath, function (err) {
+      if (err) throw err;
+    });
+    fs.unlink( oldpath, function (err) {
+      if (err) throw err;
+    });
+
+    let image = await ImageModel.findOne({_id : fields.track_artwork});
+
     track = new TrackModel({
-        title: req.body.title,
-        date: getDate(),
-        artwork: req.body.artwork,
-        artist: req.body.artist,
-        album: req.body.album,
-        genre: req.body.genre,
-        url: req.body.url,
+      title: fields.track_title,
+      date: getDate(),
+      artwork: image ? image.url : null,
+      artist: fields.track_artist,
+      album: fields.track_album,
+      genre: fields.track_genre,
+      url: nameFile,
     });
     await track.save();
     return  res.status(200).send({status : "succes"});
-  }
-  return res.status(400).send({status : "track already exist"});
+
+  });
+
+  //let track = await TrackModel.findOne({
+  //  title: req.body.title,
+  //  artist: req.body.artist,
+  //  album: req.body.album,
+  //});
+
+  //if (!track) {
+  //  track = new TrackModel({
+  //      title: req.body.title,
+  //      date: getDate(),
+  //      artwork: req.body.artwork,
+  //      artist: req.body.artist,
+  //      album: req.body.album,
+  //      genre: req.body.genre,
+  //      url: req.body.url,
+  //  });
+  //  await track.save();
+  //  return  res.status(200).send({status : "succes"});
+  //}
+  //return res.status(400).send({status : "track already exist"});
 });
 
 

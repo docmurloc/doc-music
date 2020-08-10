@@ -20,7 +20,7 @@ router.get('/random', async function(req, res, next) {
 
     const answer = {
         id : image._id,
-        url: image.url,
+        url: baseURLImage + image.url,
     };
     //await Test.save();
   console.log("get random image");
@@ -33,7 +33,7 @@ router.get('/id', async function(req, res, next) {
   
       const answer = {
           id : image._id,
-          url: image.url,
+          url: baseURLImage+ image.url,
       };
     console.log("get image:", answer);
     res.status(200).send(answer);
@@ -42,7 +42,7 @@ router.get('/id', async function(req, res, next) {
 router.get('/all', async function(req, res, next) {
   let images = await ImageModel.find({});
 
-  console.log("get image all:", images);
+  //console.log("get image all:", images);
   res.status(200).send(images);
 });
 
@@ -82,7 +82,7 @@ router.post('/upload', async function(req, res, next) {
       }); 
 
       let image = new ImageModel({
-              url: baseURLImage + nameFile,
+              url: nameFile,
               name: fields.picture_name
           });
         
