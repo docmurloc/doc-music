@@ -75,6 +75,16 @@ router.get('/id', async function(req, res, next) {
     res.status(200).send(answer);
   });
 
+router.get('/all', async function(req, res, next) {
+  let playlists = await PlaylistModel.find({});
+
+  playlists.forEach((image) => {
+    image.artwork = baseURLImage + image.artwork;
+  })
+  //console.log("get image all:", images);
+  res.status(200).send(playlists);
+});
+
 router.post('/upload', async function(req, res, next) {
 
   console.log("register playlist: ", req.body);
