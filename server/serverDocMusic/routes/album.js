@@ -81,7 +81,6 @@ router.post('/upload', async function(req, res, next) {
   let album = await AlbumModel.findOne({
       title: req.body.title,
       artist: req.body.artist,
-      trackListId: req.body.trackListId,
     });
 
   if (!album) {

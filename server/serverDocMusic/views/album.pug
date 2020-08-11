@@ -29,6 +29,38 @@ html
       </div>
     </nav>
 
+    <h1>create album</h1>
+
+    <form action="/albums/upload" method="post">
+        <div class="form-group">
+            <label for="albumTitle">title</label>
+            <input type="text" class="form-control" id="albumTitle" name="album_title" placeholder="write the title of your album">
+        </div>
+        <div class="form-group">
+            <label for="albumAuthor">author</label>
+            <input type="text" class="form-control" id="albumAuthor" name="album_author" placeholder="write the author of your album">
+        </div>
+        <div class="form-group">
+            <label for="albumGenre">genre</label>
+            <input type="text" class="form-control" id="albumGenre" name="album_genre" placeholder="write the genre of your album">
+        </div>
+        <div class="form-group">
+            <label for="albumArtwork">artwork</label>
+            <select class="form-control" id="albumArtwork" name="album_artwork">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="albumPlaylist">List playlist</label>
+            <select class="form-control" id="albumPlaylist" name="album_playlist">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="/javascripts/albumpage.mjs" type="module"></script>
+
