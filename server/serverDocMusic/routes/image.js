@@ -42,6 +42,10 @@ router.get('/id', async function(req, res, next) {
 router.get('/all', async function(req, res, next) {
   let images = await ImageModel.find({});
 
+  images.forEach((image) => {
+    image.url = baseURLImage + image.url;
+  })
+
   //console.log("get image all:", images);
   res.status(200).send(images);
 });

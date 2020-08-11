@@ -85,6 +85,17 @@ router.get('/id', async function(req, res, next) {
     res.status(200).send(answer);
   });
 
+router.get('/all', async function(req, res, next) {
+  let tracks = await TrackModel.find({});
+
+  tracks.forEach((track) => {
+    track.artwork = baseURLImage + track.artwork;
+  })
+
+  console.log("get track all:", tracks);
+  res.status(200).send(tracks);
+});
+
 function escapeRegExp(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 }
@@ -143,30 +154,12 @@ router.post('/upload', async function(req, res, next) {
       url: nameFile,
     });
     await track.save();
-    return  res.status(200).send({status : "succes"});
+    res.render('upload', {
+      title: 'Doc Music'
+    });
+    //return  res.status(200).send({status : "succes"});
 
   });
-
-  //let track = await TrackModel.findOne({
-  //  title: req.body.title,
-  //  artist: req.body.artist,
-  //  album: req.body.album,
-  //});
-
-  //if (!track) {
-  //  track = new TrackModel({
-  //      title: req.body.title,
-  //      date: getDate(),
-  //      artwork: req.body.artwork,
-  //      artist: req.body.artist,
-  //      album: req.body.album,
-  //      genre: req.body.genre,
-  //      url: req.body.url,
-  //  });
-  //  await track.save();
-  //  return  res.status(200).send({status : "succes"});
-  //}
-  //return res.status(400).send({status : "track already exist"});
 });
 
 
