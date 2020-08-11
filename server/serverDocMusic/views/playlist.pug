@@ -29,6 +29,42 @@ html
       </div>
     </nav>
 
+
+    <h1>create playlist</h1>
+
+    <form action="/playlists/upload" method="post">
+        <div class="form-group">
+            <label for="playlistTitle">title</label>
+            <input type="text" class="form-control" id="playlistTitle" name="playlist_title" placeholder="write the title of your playlist">
+        </div>
+        <div class="form-group">
+            <label for="playlistAuthor">author</label>
+            <input type="text" class="form-control" id="playlistAuthor" name="playlist_author" placeholder="write the author of your playlist">
+        </div>
+        <div class="form-group">
+            <label for="playlistAlbum">album</label>
+            <select class="form-control" id="playlistAlbum" name="playlist_album">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="playlistArtwork">artwork</label>
+            <select class="form-control" id="playlistArtwork" name="playlist_artwork">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="playlistTrackList">List track</label>
+            <select class="form-control" id="playlistTrackList" name="playlist_trackList" multiple="multiple">
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+    <script src="/javascripts/playlistpage.mjs" type="module"></script>

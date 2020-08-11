@@ -5,6 +5,13 @@ const {
   PlaylistModel
 } = require("../models/playlist")
 
+const {
+  ImageModel
+} = require("../models/image")
+
+const {IP_SERVER, PORT_SERVER} = require('../env');
+const baseURLImage = 'http://' + IP_SERVER + ':' + PORT_SERVER + '/image/';
+
 
 function getDate() {
     var pad = function (amount, width) {
@@ -43,7 +50,7 @@ router.get('/random', async function(req, res, next) {
         author: playlist.author,
         date: playlist.date,
         album: playlist.album,
-        artwork: playlist.artwork,
+        artwork: baseURLImage + playlist.artwork,
         trackListId: playlist.trackListId,
     };
     //await Test.save();
@@ -61,7 +68,7 @@ router.get('/id', async function(req, res, next) {
         author: playlist.author,
         album: playlist.album,
         date: playlist.date,
-        artwork: playlist.artwork,
+        artwork: baseURLImage + playlist.artwork,
         trackListId: playlist.trackListId,
     };
     console.log("get playlist:", answer);
@@ -72,25 +79,28 @@ router.post('/upload', async function(req, res, next) {
 
   console.log("register playlist: ", req.body);
 
+  let image = req.body.playlist_artwork ? await ImageModel.findOne({_id : req.body.playlist_artwork}) : null;
+
+
   let playlist = await PlaylistModel.findOne({
-    title: req.body.title,
-    artwork: req.body.artwork,
-    author: req.body.author,
-    trackListId: req.body.trackListId,
-});
+    title: req.body.playlist_title,
+    author: req.body.playlist_author,
+  });
 
   if (!playlist) {
     playlist = new PlaylistModel({
-        title: req.body.title,
-        author: req.body.author,
+        title: req.body.playlist_title,
+        author: req.body.playlist_author,
+        album: req.body.album,
         date: getDate(),
-        artwork: req.body.artwork,
-        trackListId: req.body.trackListId,
+        artwork: image ? image.url : null,
+        trackListId: req.body.playlist_trackList,
     });
     await playlist.save();
-    return  res.status(200).send({status : "succes"});
   }
-  return res.status(400).send({status : "playlist already exist"});
+  return res.render('playlist', {
+    title: 'Doc Music'
+  });
 });
 
 module.exports = router;
