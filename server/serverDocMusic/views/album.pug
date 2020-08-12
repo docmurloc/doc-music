@@ -59,6 +59,24 @@ html
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
+    <h1>Link album to playlist</h1>
+
+    <form action="/albums/link" method="post">
+        <div class="form-group">
+            <label for="albumToLink">List Album</label>
+            <select class="form-control" id="albumToLink" name="album_to_link">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="PlaylistToLink">List playlist</label>
+            <select class="form-control" id="PlaylistToLink" name="playlist_to_link">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

@@ -17,6 +17,10 @@ const {
   ImageModel
 } = require("../models/image")
 
+const {
+  TrackModel
+} = require("../models/track")
+
 const {IP_SERVER, PORT_SERVER} = require('../env');
 const baseURLImage = 'http://' + IP_SERVER + ':' + PORT_SERVER + '/image/';
 
@@ -91,9 +95,33 @@ router.get('/all', async function(req, res, next) {
   albums.forEach((album) => {
     album.artwork = baseURLImage + album.artwork;
   })
-  console.log("get album all:", albums);
+  //console.log("get album all:", albums);
   res.status(200).send(albums);
 });
+
+async function linkAlbumPlaylist(idAlbum, idPlaylist) {
+
+  let album = idAlbum ? await AlbumModel.findOne({_id : idAlbum}) : null;
+  let playlist = idPlaylist ? await PlaylistModel.findOne({_id : idPlaylist}) : null;
+
+  if (album && playlist) {
+    playlist.album = req.body.album_to_link;
+    album.playListId = req.body.playlist_to_link;
+
+    if(playlist.trackListId) {
+      playlist.trackListId.forEach(async (trackID) => {
+        let track = await TrackModel.findOne({_id : trackID});
+
+        track.album = req.body.album_to_link;
+        await track.save();
+      })
+    }
+
+    await album.save();
+    await playlist.save();
+  }
+
+}
 
 router.post('/upload', async function(req, res, next) {
 
@@ -118,6 +146,17 @@ router.post('/upload', async function(req, res, next) {
     });
     await album.save();
   }
+  return res.render('album', {
+    title: 'Doc Music'
+  });
+});
+
+router.post('/link', async function(req, res, next) {
+
+  console.log("link album and playlist: ", req.body);
+
+  await linkAlbumPlaylist(req.body.album_to_link, req.body.playlist_to_link);
+
   return res.render('album', {
     title: 'Doc Music'
   });
