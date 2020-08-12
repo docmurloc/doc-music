@@ -90,6 +90,7 @@ router.get('/all', async function(req, res, next) {
 
   tracks.forEach((track) => {
     track.artwork = baseURLImage + track.artwork;
+    track.url = baseURLTrack + track.url;
   })
 
   console.log("get track all:", tracks);

@@ -4,12 +4,14 @@ import {GetAllTrack} from './API/track.mjs';
 
 function createCardTrack(data) {
     //console.log(data);
-    const result = '<div class="card" style="width: 18rem;">' +
+    const result = '<div class="card" style="width: 22rem;">' +
     '<img class="card-img-top" src="'+ data.artwork + '" alt="Card image cap">' +
         '<div class="card-body">' +
-          '<h5 class="card-title">' + data.title +'</h5>'
-          '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card\'s content.</p>' +
-          '<a href="#" class="btn btn-primary">Go somewhere</a>' +
+          '<h5 class="card-title">' + data.title + ' - ' + data.genre +'</h5>' +
+            '<audio controls>' +
+            '<source src="' + data.url +'" type="audio/mpeg">' +
+            'Your browser does not support the audio element.' +
+            '</audio>' +
         '</div>' +
     '</div>';
 
