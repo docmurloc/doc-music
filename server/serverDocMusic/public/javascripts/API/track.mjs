@@ -1,13 +1,7 @@
-//import {IP_SERVER, PORT_SERVER} from '../../env.js';
-
-const IP_SERVER =  '89.87.94.17';
-const PORT_SERVER = '3000';
-
-
 
 export async function GetAllTrack() {
 
-    let answer = await fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/tracks/all', {
+    let answer = await fetch('/tracks/all', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',

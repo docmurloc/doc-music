@@ -1,13 +1,7 @@
-//import {IP_SERVER, PORT_SERVER} from '../../env.js';
-
-const IP_SERVER =  '89.87.94.17';
-const PORT_SERVER = '3000';
-
-
 
 export async function GetAllAlbum() {
 
-    let answer = await fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/albums/all', {
+    let answer = await fetch('/albums/all', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
