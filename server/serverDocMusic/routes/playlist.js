@@ -101,7 +101,7 @@ router.post('/upload', async function(req, res, next) {
     playlist = new PlaylistModel({
         title: req.body.playlist_title,
         author: req.body.playlist_author,
-        album: req.body.album,
+        album: req.body.playlist_album,
         date: getDate(),
         artwork: image ? image.url : null,
         trackListId: req.body.playlist_trackList,
