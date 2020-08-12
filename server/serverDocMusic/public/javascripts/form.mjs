@@ -1,6 +1,8 @@
 import {GetAllImages} from './API/image.mjs';
 import {GetAllTrack} from './API/track.mjs';
-import {GetAllPlaylist} from './API/playlist.mjs'
+import {GetAllPlaylist} from './API/playlist.mjs';
+import {GetAllAlbum} from './API/album.mjs';
+
 
 //const {GetAllImages} = require('./API/image.js');
 
@@ -30,11 +32,11 @@ function createTrackOptionForm(data) {
 }
 
 export async function loadTrackOption(element) {
-    const dataImageArray = await GetAllTrack();
+    const dataTrackArray = await GetAllTrack();
     let i = 0;
 
-    for (i = 0; i < dataImageArray.length; i++) {
-        $(element).append(createTrackOptionForm(dataImageArray[i]));
+    for (i = 0; i < dataTrackArray.length; i++) {
+        $(element).append(createTrackOptionForm(dataTrackArray[i]));
     }
 }
 
@@ -47,10 +49,27 @@ function createPlaylistOptionForm(data) {
 }
 
 export async function loadPlaylistOption(element) {
-    const dataImageArray = await GetAllPlaylist();
+    const dataPlaylistArray = await GetAllPlaylist();
     let i = 0;
 
-    for (i = 0; i < dataImageArray.length; i++) {
-        $(element).append(createPlaylistOptionForm(dataImageArray[i]));
+    for (i = 0; i < dataPlaylistArray.length; i++) {
+        $(element).append(createPlaylistOptionForm(dataPlaylistArray[i]));
+    }
+}
+
+function createAlbumOptionForm(data) {
+    const result = '<option value="'+ data._id +'">'+ data.title +'</option>'
+    //console.log(result);
+
+
+    return result;
+}
+
+export async function loadAlbumOption(element) {
+    const dataAlbumArray = await GetAllAlbum();
+    let i = 0;
+
+    for (i = 0; i < dataAlbumArray.length; i++) {
+        $(element).append(createAlbumOptionForm(dataAlbumArray[i]));
     }
 }
