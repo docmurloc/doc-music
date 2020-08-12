@@ -9,6 +9,17 @@ const {
   UserModel
 } = require("../models/user")
 
+const {
+  PlaylistModel
+} = require("../models/playlist")
+
+const {
+  ImageModel
+} = require("../models/image")
+
+const {IP_SERVER, PORT_SERVER} = require('../env');
+const baseURLImage = 'http://' + IP_SERVER + ':' + PORT_SERVER + '/image/';
+
 
 function getDate() {
     var pad = function (amount, width) {
@@ -44,7 +55,7 @@ router.get('/random', async function(req, res, next) {
         id : album._id,
         title: album.title,
         artist: album.artist,
-        artwork: album.artwork,
+        artwork: baseURLImage + album.artwork,
         date: album.date,
         genre: album.genre,
         playListId: album.playListId,
@@ -65,7 +76,7 @@ router.get('/id', async function(req, res, next) {
       id : album._id,
       title: album.title,
       artist: album.artist,
-      artwork: album.artwork,
+      artwork: baseURLImage + album.artwork,
       date: album.date,
       genre: album.genre,
       playListId: album.playListId,
@@ -76,26 +87,30 @@ router.get('/id', async function(req, res, next) {
 
 router.post('/upload', async function(req, res, next) {
 
-  //console.log("register user: ", req);
+  console.log("register album: ", req.body);
+
+  let image = req.body.album_artwork ? await ImageModel.findOne({_id : req.body.album_artwork}) : null;
+
 
   let album = await AlbumModel.findOne({
-      title: req.body.title,
-      artist: req.body.artist,
+      title: req.body.album_title,
+      artist: req.body.album_author,
     });
 
   if (!album) {
     album = new AlbumModel({
-        title: req.body.title,
-        artist: req.body.artist,
-        artwork: req.body.artwork,
+        title: req.body.album_title,
+        artist: req.body.album_author,
+        artwork: image ? image.url : null,
         date: getDate(),
-        genre: req.body.genre,
-        playListId: req.body.playListId,
+        genre: req.body.album_genre,
+        playListId: req.body.album_playlist,
     });
     await album.save();
-    return  res.status(200).send({status : "succes"});
   }
-  return res.status(400).send({status : "album already exist"});
+  return res.render('album', {
+    title: 'Doc Music'
+  });
 });
 
 router.post('/add_favorite', async function(req, res, next) {
