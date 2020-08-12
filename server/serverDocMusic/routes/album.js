@@ -85,9 +85,19 @@ router.get('/id', async function(req, res, next) {
   res.status(200).send(answer);
 });
 
+router.get('/all', async function(req, res, next) {
+  let albums = await AlbumModel.find({});
+
+  albums.forEach((album) => {
+    album.artwork = baseURLImage + album.artwork;
+  })
+  console.log("get album all:", albums);
+  res.status(200).send(albums);
+});
+
 router.post('/upload', async function(req, res, next) {
 
-  console.log("register album: ", req.body);
+  //console.log("register album: ", req.body);
 
   let image = req.body.album_artwork ? await ImageModel.findOne({_id : req.body.album_artwork}) : null;
 
