@@ -10,6 +10,18 @@ const baseURLImage = 'http://' + IP_SERVER + ':' + PORT_SERVER + '/image/';
 var fs = require('fs');
 
 const {
+  AlbumModel
+} = require("../models/album")
+
+const {
+  PlaylistModel
+} = require("../models/playlist")
+
+const {
+  TrackModel
+} = require("../models/track")
+
+const {
   ImageModel
 } = require("../models/image")
 
@@ -101,6 +113,83 @@ router.post('/upload', async function(req, res, next) {
  
   //}
   //return res.status(400).send({status : "image already exist"});
+});
+
+
+router.post('/mod', async function(req, res, next) {
+
+  //console.log("image change: ", req.body);
+
+  let image = req.body.picture_to_change ? await ImageModel.findOne({_id : req.body.picture_to_change}) : null;
+
+  if (image) {
+    image.name = req.body.picture_rename;
+    await image.save();
+  }
+
+  res.render('upload', {
+    title: 'Doc Music'
+  });
+ 
+});
+
+router.post('/delete', async function(req, res, next) {
+
+  //console.log("image delete: ", req.body);
+
+  let image = req.body.picture_to_delete ? await ImageModel.findOne({_id : req.body.picture_to_delete}) : null;
+
+  //console.log("imgae found = ", image);
+
+
+  if (image) {
+
+
+    let albums = await AlbumModel.find({artwork: image.url});
+    let playlists = await PlaylistModel.find({artwork: image.url});
+    let tracks = await TrackModel.find({artwork: image.url});
+
+    albums.forEach((album) => {
+      album.artwork = null;
+      album.save();
+
+    })
+
+    //console.log("save change in albums");
+
+    playlists.forEach((playlist) => {
+      playlist.artwork = null;
+      playlist.save();
+
+    })
+
+    //console.log("save change in playlists");
+
+    tracks.forEach((track) => {
+      track.artwork = null;
+      track.save();
+
+    })
+
+    //console.log("save change in tracks");
+
+    const pathImage = __dirname + '/../public/image/' + image.url;
+
+    //await ImageModel.deleteOne({_id : req.body.pictureToDelete});
+    await image.remove();
+
+    //console.log("delete image in database");
+
+
+    fs.unlink(pathImage, function (err) {
+      console.log("try to delete "+ pathImage + "error :",err)
+    }); 
+  }
+
+  res.render('upload', {
+    title: 'Doc Music'
+  });
+ 
 });
 
 module.exports = router;

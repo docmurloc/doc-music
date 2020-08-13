@@ -23,7 +23,7 @@ const {
 
 const {IP_SERVER, PORT_SERVER} = require('../env');
 const baseURLImage = 'http://' + IP_SERVER + ':' + PORT_SERVER + '/image/';
-
+const missingImage = '404.png';
 
 function getDate() {
     var pad = function (amount, width) {
@@ -59,7 +59,7 @@ router.get('/random', async function(req, res, next) {
         id : album._id,
         title: album.title,
         artist: album.artist,
-        artwork: baseURLImage + album.artwork,
+        artwork: album.artwork ? baseURLImage + album.artwork : baseURLImage + missingImage,
         date: album.date,
         genre: album.genre,
         playListId: album.playListId,
@@ -80,7 +80,7 @@ router.get('/id', async function(req, res, next) {
       id : album._id,
       title: album.title,
       artist: album.artist,
-      artwork: baseURLImage + album.artwork,
+      artwork: album.artwork ? baseURLImage + album.artwork : baseURLImage + missingImage,
       date: album.date,
       genre: album.genre,
       playListId: album.playListId,
@@ -93,7 +93,7 @@ router.get('/all', async function(req, res, next) {
   let albums = await AlbumModel.find({});
 
   albums.forEach((album) => {
-    album.artwork = baseURLImage + album.artwork;
+    album.artwork = album.artwork ? baseURLImage + album.artwork : baseURLImage + missingImage;
   })
   //console.log("get album all:", albums);
   res.status(200).send(albums);

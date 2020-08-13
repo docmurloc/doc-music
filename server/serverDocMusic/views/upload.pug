@@ -29,7 +29,7 @@ html
       </div>
     </nav>
 
-    <h1>Image upload</h1>
+    <h1>Image to upload</h1>
 
     <form action="/images/upload" method="post" enctype="multipart/form-data">
         <div class="form-group">
@@ -39,6 +39,34 @@ html
         <div class="form-group">
             <label for="pictureSelected">file</label>
             <input type="file" class="form-control-file" id="pictureSelected" name="picture_selected" >
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <h1>Image to change</h1>
+
+    <form action="/images/mod" method="post">
+        <div class="form-group">
+            <label for="pictureToChange">picture selected</label>
+            <select class="form-control" id="pictureToChange" name="picture_to_change">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="pictureRename">new name</label>
+            <input type="text" class="form-control" id="pictureRename" name="picture_rename" placeholder="write the new name of your picture">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <h1>Image to delete</h1>
+
+    <form action="/images/delete" method="post">
+        <div class="form-group">
+            <label for="pictureToDelete">picture selected</label>
+            <select class="form-control" id="pictureToDelete" name="picture_to_delete">
+                <option value="">--Please choose an option--</option>
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

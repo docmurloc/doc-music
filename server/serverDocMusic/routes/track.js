@@ -6,6 +6,8 @@ const {IP_SERVER, PORT_SERVER} = require('../env');
 
 const baseURLImage = 'http://' + IP_SERVER + ':' + PORT_SERVER + '/image/';
 const baseURLTrack = 'http://' + IP_SERVER + ':' + PORT_SERVER + '/track/';
+const missingImage = '404.png';
+
 
 const {
   ImageModel
@@ -59,7 +61,7 @@ router.get('/random', async function(req, res, next) {
         album: track.album,
         genre: track.genre,
         date: track.date,
-        artwork: baseURLImage + track.artwork,
+        artwork: track.artwork ? baseURLImage + track.artwork : baseURLImage + missingImage,
         url: baseURLTrack + track.url,
     };
     //await Test.save();
@@ -78,7 +80,7 @@ router.get('/id', async function(req, res, next) {
         album: track.album,
         genre: track.genre,
         date: track.date,
-        artwork: baseURLImage + track.artwork,
+        artwork: track.artwork ? baseURLImage + track.artwork : baseURLImage + missingImage,
         url: baseURLTrack + track.url,
     };
     //console.log("get track:", answer);
@@ -89,7 +91,7 @@ router.get('/all', async function(req, res, next) {
   let tracks = await TrackModel.find({});
 
   tracks.forEach((track) => {
-    track.artwork = baseURLImage + track.artwork;
+    track.artwork = track.artwork ? baseURLImage + track.artwork : baseURLImage + missingImage;
     track.url = baseURLTrack + track.url;
   })
 

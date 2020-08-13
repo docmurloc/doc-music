@@ -11,6 +11,8 @@ const {
 
 const {IP_SERVER, PORT_SERVER} = require('../env');
 const baseURLImage = 'http://' + IP_SERVER + ':' + PORT_SERVER + '/image/';
+const missingImage = '404.png';
+
 
 
 function getDate() {
@@ -50,7 +52,7 @@ router.get('/random', async function(req, res, next) {
         author: playlist.author,
         date: playlist.date,
         album: playlist.album,
-        artwork: baseURLImage + playlist.artwork,
+        artwork: playlist.artwork ? baseURLImage + playlist.artwork : baseURLImage + missingImage,
         trackListId: playlist.trackListId,
     };
     //await Test.save();
@@ -68,7 +70,7 @@ router.get('/id', async function(req, res, next) {
         author: playlist.author,
         album: playlist.album,
         date: playlist.date,
-        artwork: baseURLImage + playlist.artwork,
+        artwork: playlist.artwork ? baseURLImage + playlist.artwork : baseURLImage + missingImage,
         trackListId: playlist.trackListId,
     };
     console.log("get playlist:", answer);
@@ -78,8 +80,8 @@ router.get('/id', async function(req, res, next) {
 router.get('/all', async function(req, res, next) {
   let playlists = await PlaylistModel.find({});
 
-  playlists.forEach((image) => {
-    image.artwork = baseURLImage + image.artwork;
+  playlists.forEach((playlist) => {
+    playlist.artwork = playlist.artwork ? baseURLImage + playlist.artwork : baseURLImage + missingImage;
   })
   //console.log("get image all:", images);
   res.status(200).send(playlists);
