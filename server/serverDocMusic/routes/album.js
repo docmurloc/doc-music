@@ -105,8 +105,8 @@ async function linkAlbumPlaylist(idAlbum, idPlaylist) {
   let playlist = idPlaylist ? await PlaylistModel.findOne({_id : idPlaylist}) : null;
 
   if (album && playlist) {
-    playlist.album = req.body.album_to_link;
-    album.playListId = req.body.playlist_to_link;
+    playlist.album = idAlbum;
+    album.playListId = idPlaylist;
 
     if(playlist.trackListId) {
       playlist.trackListId.forEach(async (trackID) => {

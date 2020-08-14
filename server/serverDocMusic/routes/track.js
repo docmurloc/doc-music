@@ -95,7 +95,9 @@ router.get('/all', async function(req, res, next) {
     track.url = baseURLTrack + track.url;
   })
 
-  console.log("get track all:", tracks);
+  console.log("base URL " + baseURLImage);
+
+  //console.log("get track all:", tracks);
   res.status(200).send(tracks);
 });
 

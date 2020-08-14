@@ -24,7 +24,8 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-
+// 192.168.1.40 waren
+// 192.168.1.36 pierre
 //penser à ouvrir le port sur le pc sinon les connections seront refuser
 server.listen('3000', '192.168.1.36');
 server.on('error', onError);

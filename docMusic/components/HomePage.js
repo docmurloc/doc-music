@@ -182,7 +182,7 @@ function SetAlbumRandom(nbItem) {
 function HomePage(props) {
     const [randDisplay, setrandDisplay] = useState(SetAlbumRandom(2));
 
-    const DATA = ['5f06563efff14000085ced8e', '5f065644fff14000085ced90'];
+    const DATA = ['5f06563efff14000085ced8e', '5f065644fff14000085ced90', '5f3402061e4d3f39bf90c006'];
 
     return (
         <View style={styles.container}>

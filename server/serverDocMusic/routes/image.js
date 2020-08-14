@@ -54,6 +54,8 @@ router.get('/id', async function(req, res, next) {
 router.get('/all', async function(req, res, next) {
   let images = await ImageModel.find({});
 
+  console.log("base URL ", baseURLImage);
+
   images.forEach((image) => {
     image.url = baseURLImage + image.url;
   })
@@ -175,7 +177,6 @@ router.post('/delete', async function(req, res, next) {
 
     const pathImage = __dirname + '/../public/image/' + image.url;
 
-    //await ImageModel.deleteOne({_id : req.body.pictureToDelete});
     await image.remove();
 
     //console.log("delete image in database");
