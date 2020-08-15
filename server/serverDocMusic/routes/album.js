@@ -69,6 +69,39 @@ router.get('/random', async function(req, res, next) {
 });
 
 
+router.get('/randomList', async function(req, res, next) {
+
+  console.log("get random list album", req.headers);
+
+  if (req.headers.nbrand < 1) {
+    res.status(400).send([]);
+  }
+
+  let nbAlbum = await AlbumModel.count();
+
+  let answer = [];
+  let randomList = [];
+
+  let random = 0;
+  let album = null;
+
+
+  while (answer.length < req.headers.nbrand && answer.length < nbAlbum) {
+
+    random = Math.floor(Math.random() * nbAlbum);
+
+    if (!randomList.includes(random)) {
+      album = await AlbumModel.findOne().skip(random);
+      answer.push(album._id);
+      randomList.push(random);
+    }
+  }
+
+  console.log("randomList result ", answer);
+  res.status(200).send(answer);
+});
+
+
 router.get('/id', async function(req, res, next) {
 
   console.log("get id album", req.headers.id);

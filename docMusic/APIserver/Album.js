@@ -23,6 +23,25 @@ async function GetRandomAlbum() {
 
 exports.GetRandomAlbum = GetRandomAlbum;
 
+async function GetRandomListAlbum(lengthList) {
+
+    let answer = await fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/albums/randomList', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'nbrand' : lengthList
+        },
+        method: 'GET',
+    })
+
+    answer = await answer.json();
+
+
+    return answer;
+}
+
+exports.GetRandomListAlbum = GetRandomListAlbum;
+
 async function GetAlbumById(id) {
 
 
