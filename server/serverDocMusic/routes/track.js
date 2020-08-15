@@ -167,6 +167,31 @@ router.post('/upload', async function(req, res, next) {
   });
 });
 
+router.post('/mod', async function(req, res, next) {
+
+  //console.log("image change: ", req.body);
+
+  let track = req.body.track_to_change ? await TrackModel.findOne({_id : req.body.track_to_change}) : null;
+
+  if (track) {
+
+    let image = await ImageModel.findOne({_id : req.body.track_artwork_to_change});
+
+
+    track.title = req.body.track_title_to_change;
+    track.artwork = image ? image.url : null;
+    track.artist = req.body.track_artist_to_change;
+    track.album = req.body.track_album_to_change;
+    track.genre = req.body.track_genre_to_change;
+    await track.save();
+  }
+
+  res.render('upload', {
+    title: 'Doc Music'
+  });
+ 
+});
+
 
 router.post('/add_favorite', async function(req, res, next) {
 
