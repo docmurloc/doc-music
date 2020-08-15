@@ -162,6 +162,33 @@ router.post('/link', async function(req, res, next) {
   });
 });
 
+router.post('/mod', async function(req, res, next) {
+
+  //console.log("image change: ", req.body);
+
+  let album = req.body.album_to_change ? await AlbumModel.findOne({_id : req.body.album_to_change}) : null;
+
+  if (album) {
+
+    let image = req.body.album_artwork_to_change ? await ImageModel.findOne({_id : req.body.album_artwork_to_change}) : null;
+
+    album.title = req.body.album_title_to_change;
+    album.artist = req.body.album_author_to_change;
+    album.artwork = image ? image.url : null;
+    album.genre = req.body.album_genre_to_change;
+    album.playListId = req.body.album_playlist_to_change;
+    await album.save();
+
+    await linkAlbumPlaylist(req.body.album_to_change, req.body.album_playlist_to_change);
+
+  }
+
+  res.render('album', {
+    title: 'Doc Music'
+  });
+ 
+});
+
 router.post('/add_favorite', async function(req, res, next) {
 
   console.log("add favorite: ", req.body.trackId);
