@@ -115,4 +115,29 @@ router.post('/upload', async function(req, res, next) {
   });
 });
 
+router.post('/mod', async function(req, res, next) {
+
+  //console.log("image change: ", req.body);
+
+  let playlist = req.body.playlist_to_change ? await PlaylistModel.findOne({_id : req.body.playlist_to_change}) : null;
+
+  if (playlist) {
+
+    let image = await ImageModel.findOne({_id : req.body.playlist_artwork_to_change});
+
+
+    playlist.title = req.body.playlist_title_to_change;
+    playlist.artwork = image ? image.url : null;
+    playlist.author = req.body.playlist_author_to_change;
+    playlist.album = req.body.playlist_album_to_change;
+    playlist.trackListId = req.body.playlist_trackList_to_change;
+    await playlist.save();
+  }
+
+  res.render('upload', {
+    title: 'Doc Music'
+  });
+ 
+});
+
 module.exports = router;
