@@ -77,6 +77,54 @@ html
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
+    <h1>update album</h1>
+
+    <form action="/albums/mod" method="post">
+        <div class="form-group">
+            <label for="albumToChange">album selected</label>
+            <select class="form-control" id="albumToChange" name="album_to_change">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="albumTitleToChange">title</label>
+            <input type="text" class="form-control" id="albumTitleToChange" name="album_title_to_change" placeholder="write the new title of your album">
+        </div>
+        <div class="form-group">
+            <label for="albumAuthorToChange">author</label>
+            <input type="text" class="form-control" id="albumAuthorToChange" name="album_author_to_change" placeholder="write the new author of your album">
+        </div>
+        <div class="form-group">
+            <label for="albumGenreToChange">genre</label>
+            <input type="text" class="form-control" id="albumGenreToChange" name="album_genre_to_change" placeholder="write the new genre of your album">
+        </div>
+        <div class="form-group">
+            <label for="albumArtworkToChange">artwork</label>
+            <select class="form-control" id="albumArtworkToChange" name="album_artwork_to_change">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="albumPlaylistToChange">List playlist</label>
+            <select class="form-control" id="albumPlaylistToChange" name="album_playlist_to_change">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <h1>delete album</h1>
+
+    <form action="/albums/delete" method="post">
+        <div class="form-group">
+            <label for="albumToDelete">album selected</label>
+            <select class="form-control" id="albumToDelete" name="album_to_delete">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
