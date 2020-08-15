@@ -18,6 +18,10 @@ const {
 } = require("../models/track")
 
 const {
+  PlaylistModel
+} = require("../models/playlist")
+
+const {
   UserModel
 } = require("../models/user")
 
@@ -192,6 +196,50 @@ router.post('/mod', async function(req, res, next) {
  
 });
 
+router.post('/delete', async function(req, res, next) {
+
+  //console.log("image delete: ", req.body);
+
+  let track = req.body.track_to_delete ? await TrackModel.findOne({_id : req.body.track_to_delete}) : null;
+
+  //console.log("imgae found = ", image);
+
+
+  if (track) {
+
+
+    let playlists = await PlaylistModel.find({});
+
+
+    playlists.forEach((playlist) => {
+      playlist.trackListId.filter((id) => {
+        return id != req.body.track_to_delete;
+      });
+      playlist.save();
+
+    })
+
+    //console.log("save change in playlists");
+
+
+
+    const pathTrack = __dirname + '/../public/track/' + track.url;
+
+    await track.remove();
+
+    //console.log("delete image in database");
+
+
+    fs.unlink(pathTrack, function (err) {
+      console.log("try to delete "+ pathTrack + "error :",err)
+    }); 
+  }
+
+  res.render('upload', {
+    title: 'Doc Music'
+  });
+ 
+});
 
 router.post('/add_favorite', async function(req, res, next) {
 
