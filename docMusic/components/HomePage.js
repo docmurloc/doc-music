@@ -22,7 +22,7 @@ function HomePage(props) {
         }, []);
 
     if (!randDisplay) {
-        GetRandomListAlbum(1).then((result) => {
+        GetRandomListAlbum(5).then((result) => {
             setrandDisplay(result);
             console.log("result random ", result);
         });

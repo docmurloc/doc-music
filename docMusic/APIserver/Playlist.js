@@ -38,8 +38,12 @@ async function GetPlaylistById(id) {
         method: 'GET',
     })
 
+    if (answer.status == 404) {
+        return null;
+    }
+    
     answer = await answer.json();
-
+    
     saveNewPlaylist(answer);
 
     return answer;

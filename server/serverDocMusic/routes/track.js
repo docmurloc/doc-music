@@ -158,7 +158,7 @@ router.post('/upload', async function(req, res, next) {
       date: getDate(),
       artwork: image ? image.url : null,
       artist: fields.track_artist,
-      album: fields.track_album,
+      album: fields.track_album ? fields.track_album : null,
       genre: fields.track_genre,
       url: nameFile,
     });
@@ -185,7 +185,7 @@ router.post('/mod', async function(req, res, next) {
     track.title = req.body.track_title_to_change;
     track.artwork = image ? image.url : null;
     track.artist = req.body.track_artist_to_change;
-    track.album = req.body.track_album_to_change;
+    track.album = req.body.track_album_to_change ? req.body.track_album_to_change : null;
     track.genre = req.body.track_genre_to_change;
     await track.save();
   }

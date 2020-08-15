@@ -66,7 +66,9 @@ router.get('/random', async function(req, res, next) {
 
 router.get('/id', async function(req, res, next) {
 
-    let playlist = await PlaylistModel.findOne({_id : req.headers.id});
+    console.log("id album ", req.headers.id == true);
+
+    let playlist = req.headers.id != 'null' ? await PlaylistModel.findOne({_id : req.headers.id}) : null;
 
     if (playlist) {
         const answer = {
@@ -81,7 +83,7 @@ router.get('/id', async function(req, res, next) {
       console.log("get playlist:", answer);
       res.status(200).send(answer);
     } else {
-      res.status(404).send("playlist not found");
+      res.status(404).send({error : "playlist not found"});
     }
   });
 
@@ -111,7 +113,7 @@ router.post('/upload', async function(req, res, next) {
     playlist = new PlaylistModel({
         title: req.body.playlist_title,
         author: req.body.playlist_author,
-        album: req.body.playlist_album,
+        album: req.body.playlist_album ? req.body.playlist_album : null,
         date: getDate(),
         artwork: image ? image.url : null,
         trackListId: req.body.playlist_trackList,
@@ -137,7 +139,7 @@ router.post('/mod', async function(req, res, next) {
     playlist.title = req.body.playlist_title_to_change;
     playlist.artwork = image ? image.url : null;
     playlist.author = req.body.playlist_author_to_change;
-    playlist.album = req.body.playlist_album_to_change;
+    playlist.album = req.body.playlist_album_to_change ? req.body.playlist_album_to_change : null;
     playlist.trackListId = req.body.playlist_trackList_to_change;
     await playlist.save();
   }

@@ -71,7 +71,7 @@ router.get('/random', async function(req, res, next) {
 
 router.get('/randomList', async function(req, res, next) {
 
-  console.log("get random list album", req.headers);
+  //console.log("get random list album", req.headers);
 
   if (req.headers.nbrand < 1) {
     res.status(400).send([]);
@@ -175,7 +175,7 @@ router.post('/upload', async function(req, res, next) {
         artwork: image ? image.url : null,
         date: getDate(),
         genre: req.body.album_genre,
-        playListId: req.body.album_playlist,
+        playListId: req.body.album_playlist ? req.body.album_playlist : null,
     });
     await album.save();
   }
@@ -209,7 +209,7 @@ router.post('/mod', async function(req, res, next) {
     album.artist = req.body.album_author_to_change;
     album.artwork = image ? image.url : null;
     album.genre = req.body.album_genre_to_change;
-    album.playListId = req.body.album_playlist_to_change;
+    album.playListId = req.body.album_playlist_to_change ? req.body.album_playlist_to_change : null;
     await album.save();
 
     await linkAlbumPlaylist(req.body.album_to_change, req.body.album_playlist_to_change);
