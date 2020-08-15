@@ -61,6 +61,55 @@ html
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
+    <h1>change playlist</h1>
+
+    <form action="/playlists/mod" method="post">
+        <div class="form-group">
+            <label for="playlistToChange">playlist selected</label>
+            <select class="form-control" id="playlistToChange" name="playlist_to_change">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="playlistTitleToChange">title</label>
+            <input type="text" class="form-control" id="playlistTitleToChange" name="playlist_title_to_change" placeholder="write the new title of your playlist">
+        </div>
+        <div class="form-group">
+            <label for="playlistAuthorToChange">author</label>
+            <input type="text" class="form-control" id="playlistAuthorToChange" name="playlist_author_to_change" placeholder="write the new author of your playlist">
+        </div>
+        <div class="form-group">
+            <label for="playlistAlbumToChange">album</label>
+            <select class="form-control" id="playlistAlbumToChange" name="playlist_album_to_change">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="playlistArtworkToChange">artwork</label>
+            <select class="form-control" id="playlistArtworkToChange" name="playlist_artwork_to_change">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="playlistTrackListToChange">List track</label>
+            <select class="form-control" id="playlistTrackListToChange" name="playlist_trackList_to_change" multiple="multiple">
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <h1>delete playlist</h1>
+
+    <form action="/playlists/delete" method="post">
+        <div class="form-group">
+            <label for="playlistToDelete">playlist selected</label>
+            <select class="form-control" id="playlistToDelete" name="playlist_to_delete">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
