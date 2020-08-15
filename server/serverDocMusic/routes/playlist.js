@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 const {
+  AlbumModel
+} = require("../models/album")
+
+const {
   PlaylistModel
 } = require("../models/playlist")
 
@@ -63,18 +67,22 @@ router.get('/random', async function(req, res, next) {
 router.get('/id', async function(req, res, next) {
 
     let playlist = await PlaylistModel.findOne({_id : req.headers.id});
-  
-      const answer = {
-        id : playlist._id,
-        title: playlist.title,
-        author: playlist.author,
-        album: playlist.album,
-        date: playlist.date,
-        artwork: playlist.artwork ? baseURLImage + playlist.artwork : baseURLImage + missingImage,
-        trackListId: playlist.trackListId,
-    };
-    console.log("get playlist:", answer);
-    res.status(200).send(answer);
+
+    if (playlist) {
+        const answer = {
+          id : playlist._id,
+          title: playlist.title,
+          author: playlist.author,
+          album: playlist.album,
+          date: playlist.date,
+          artwork: playlist.artwork ? baseURLImage + playlist.artwork : baseURLImage + missingImage,
+          trackListId: playlist.trackListId,
+      };
+      console.log("get playlist:", answer);
+      res.status(200).send(answer);
+    } else {
+      res.status(404).send("playlist not found");
+    }
   });
 
 router.get('/all', async function(req, res, next) {
@@ -134,7 +142,37 @@ router.post('/mod', async function(req, res, next) {
     await playlist.save();
   }
 
-  res.render('upload', {
+  res.render('playlist', {
+    title: 'Doc Music'
+  });
+ 
+});
+
+router.post('/delete', async function(req, res, next) {
+
+
+  let playlist = req.body.playlist_to_delete ? await PlaylistModel.findOne({_id : req.body.playlist_to_delete}) : null;
+
+
+  if (playlist) {
+
+
+    let albums = await AlbumModel.find({playListId: req.body.playlist_to_delete});
+
+    albums.forEach((album) => {
+      album.playListId = null;
+      album.save();
+
+    })
+
+    //console.log("save change in albums");
+
+    await playlist.remove();
+
+    //console.log("delete image in database");
+  }
+
+  res.render('playlist', {
     title: 'Doc Music'
   });
  
