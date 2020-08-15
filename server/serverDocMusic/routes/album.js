@@ -189,6 +189,48 @@ router.post('/mod', async function(req, res, next) {
  
 });
 
+router.post('/delete', async function(req, res, next) {
+
+  //console.log("image delete: ", req.body);
+
+  let album = req.body.album_to_delete ? await AlbumModel.findOne({_id : req.body.album_to_delete}) : null;
+
+  //console.log("imgae found = ", image);
+
+
+  if (album) {
+
+
+    let playlists = await PlaylistModel.find({album: req.body.album_to_delete});
+    let tracks = await TrackModel.find({album: req.body.album_to_delete});
+
+    playlists.forEach((playlist) => {
+      playlist.album = null;
+      playlist.save();
+
+    })
+
+    //console.log("save change in playlists");
+
+    tracks.forEach((track) => {
+      track.album = null;
+      track.save();
+
+    })
+
+    //console.log("save change in tracks");
+
+    await album.remove();
+
+    //console.log("delete image in database");
+  }
+
+  res.render('album', {
+    title: 'Doc Music'
+  });
+ 
+});
+
 router.post('/add_favorite', async function(req, res, next) {
 
   console.log("add favorite: ", req.body.trackId);
