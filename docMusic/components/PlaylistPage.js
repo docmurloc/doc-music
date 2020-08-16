@@ -12,7 +12,7 @@ import {remplaceTrack, randomTrack} from '../APIsound/track'
 
 function PlaylistPage(props) {
 
-    console.log("props playlist page playlist = ", props.playlist)
+    //console.log("props playlist page playlist = ", props.playlist)
 
 
       if (!props.playlist || !props.playlist.currentPlaylist || !props.playlist.currentPlaylist.trackListId) {
