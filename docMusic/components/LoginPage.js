@@ -35,7 +35,10 @@ function LoginPage(props) {
                     <View style={styles.horizontalDisplay}>
                         <Button
                         title="LOGIN"
-                        onPress={() => loginUser(props, pseudo, password, setInfo)}
+                        onPress={() => {
+                            console.log("login");
+                            loginUser(props, pseudo, password, setInfo)
+                        }}
                         />
                         <Button
                           title="SIGN UP"

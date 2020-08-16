@@ -7,6 +7,8 @@ import {AlbumFavorite} from './Album'
 
 async function loginUser(props, newPseudo, newPassword, setInfo) {
 
+    console.log("IP server = ", IP_SERVER, "port server = ", PORT_SERVER);
+
     fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/users/login', {
         headers: {
             'Accept': 'application/json',
