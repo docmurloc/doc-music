@@ -14,10 +14,10 @@ router.post('/register', async function(req, res, next) {
 
   let token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 
-  console.log("token = ", token);
+  //console.log("token = ", token);
 
 
-  if (!user) {
+  if (!user && req.body.pseudo && req.body.password) {
     user = new UserModel({
       pseudo: req.body.pseudo,
       password: req.body.password,

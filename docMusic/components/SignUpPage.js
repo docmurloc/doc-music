@@ -43,7 +43,13 @@ function SignUpPage(props) {
           <View style={styles.horizontalDisplay}>
             <Button
               title="REGISTER"
-              onPress={() => registerUser(props, pseudo, password, setInfo)}
+              onPress={() => {
+                if (password === confirmpassword) {
+                  registerUser(props, pseudo, password, setInfo)
+                } else {
+                  setInfo('Password != confirm password');
+                }
+              }}
             />
             <Button
               title="SIGN IN"

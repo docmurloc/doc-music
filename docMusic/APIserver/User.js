@@ -4,7 +4,8 @@ import {TrackFavorite, TrackUnfavorite} from './Track';
 import {AlbumFavorite} from './Album';
 
 async function loginUser(props, newPseudo, newPassword, setInfo) {
-  console.log('IP server = ', IP_SERVER, 'port server = ', PORT_SERVER);
+    console.log('IP server = ', IP_SERVER, 'port server = ', PORT_SERVER);
+    console.log('pseudo = ', newPseudo, 'password = ', newPassword);
 
   fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/users/login', {
     headers: {

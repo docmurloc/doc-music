@@ -97,14 +97,14 @@ router.get('/randomList', async function(req, res, next) {
     }
   }
 
-  console.log("randomList result ", answer);
+  //console.log("randomList result ", answer);
   res.status(200).send(answer);
 });
 
 
 router.get('/id', async function(req, res, next) {
 
-  console.log("get id album", req.headers.id);
+  //console.log("get id album", req.headers.id);
 
 
   let album = await AlbumModel.findOne({_id : req.headers.id});
