@@ -7,42 +7,7 @@ import {StyleSheet, Text, TextInput, View, Button} from 'react-native';
 
 import BackgroundImage from './backgroundImage';
 
-async function registerUser(props, newPseudo, newPassword, setInfo) {
-  const test = await NetInfo.fetch();
-  //
-  console.log('testrequest :', test);
-
-  const bodyRequest = JSON.stringify({
-    pseudo: newPseudo,
-    password: newPassword,
-  });
-
-  fetch('http://89.87.94.17:3000/users/register', {
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    method: 'post',
-    body: bodyRequest,
-  })
-    .then((response) => {
-      return response.json();
-    })
-    .then((lol) => {
-      setInfo(lol.status);
-      if (lol.status === 'succes') {
-        props.navigation.navigate('Home');
-      }
-      console.log(lol);
-      //return json;
-    })
-    .catch((error) => {
-      console.error('error :', error);
-    });
-  //props.navigation.navigate('Home');
-
-  //console.log("fetch request :", response);
-}
+import {registerUser} from '../APIserver/User';
 
 function SignUpPage(props) {
   const [pseudo, setPseudo] = useState('');

@@ -38,6 +38,47 @@ async function loginUser(props, newPseudo, newPassword, setInfo) {
 
 exports.loginUser = loginUser;
 
+async function registerUser(props, newPseudo, newPassword, setInfo) {
+  
+    const bodyRequest = JSON.stringify({
+      pseudo: newPseudo,
+      password: newPassword,
+    });
+  
+    fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/users/register', {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'post',
+      body: bodyRequest,
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then( async (answer) => {
+        setInfo(answer.status);
+        if (answer.status === 'succes') {
+            await UserHistoric(answer.access_token);
+        await TrackFavorite(answer.access_token);
+        await AlbumFavorite(answer.access_token);
+        await TrackUnfavorite(answer.access_token);
+
+        const action = {type: 'CONNECTION', accessToken: answer.access_token};
+        props.dispatch(action);
+        }
+        //return json;
+      })
+      .catch((error) => {
+        console.error('error :', error);
+      });
+    //props.navigation.navigate('Home');
+  
+    //console.log("fetch request :", response);
+  }
+
+exports.registerUser = registerUser;
+
 async function UserHistoric(userToken) {
   fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/users/historic', {
     headers: {
