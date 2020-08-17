@@ -4,8 +4,6 @@ import {TrackFavorite, TrackUnfavorite} from './Track';
 import {AlbumFavorite} from './Album';
 
 async function loginUser(props, newPseudo, newPassword, setInfo) {
-  console.log('IP server = ', IP_SERVER, 'port server = ', PORT_SERVER);
-  console.log('pseudo = ', newPseudo, 'password = ', newPassword);
 
   fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/users/login', {
     headers: {
@@ -67,14 +65,10 @@ async function registerUser(props, newPseudo, newPassword, setInfo) {
         const action = {type: 'CONNECTION', accessToken: answer.access_token};
         props.dispatch(action);
       }
-      //return json;
     })
     .catch((error) => {
       console.error('error :', error);
     });
-  //props.navigation.navigate('Home');
-
-  //console.log("fetch request :", response);
 }
 
 exports.registerUser = registerUser;

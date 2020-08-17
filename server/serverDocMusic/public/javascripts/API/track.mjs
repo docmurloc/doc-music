@@ -11,6 +11,5 @@ export async function GetAllTrack() {
 
     answer = await answer.json();
 
-    //console.log(answer);
     return answer;
 }

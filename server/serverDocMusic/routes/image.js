@@ -34,8 +34,6 @@ router.get('/random', async function(req, res, next) {
         id : image._id,
         url: baseURLImage + image.url,
     };
-    //await Test.save();
-  console.log("get random image");
   res.status(200).send(answer);
 });
 
@@ -47,40 +45,20 @@ router.get('/id', async function(req, res, next) {
           id : image._id,
           url: baseURLImage+ image.url,
       };
-    console.log("get image:", answer);
     res.status(200).send(answer);
 });
 
 router.get('/all', async function(req, res, next) {
   let images = await ImageModel.find({});
 
-  console.log("base URL ", baseURLImage);
-
   images.forEach((image) => {
     image.url = baseURLImage + image.url;
   })
 
-  //console.log("get image all:", images);
   res.status(200).send(images);
 });
 
 router.post('/upload', async function(req, res, next) {
-
-  console.log("image upload: ", req.body);
-
-  //let image = await ImageModel.findOne({
-  //    url: req.body.url,
-  //  });
-//
-  //if (!image) {
-  //  image = new ImageModel({
-  //      url: req.body.url,
-  //  });
-  //  await image.save();
-    //return  res.status(200).send({status : "succes"});
-    //res.render('upload', {
-    //  title: 'Doc Music'
-    //});
 
     const form = formidable({ multiples: true });
 
@@ -110,17 +88,11 @@ router.post('/upload', async function(req, res, next) {
       res.render('upload', {
         title: 'Doc Music'
       });
-      //res.json({ fields, files });
-    });
- 
-  //}
-  //return res.status(400).send({status : "image already exist"});
+    }); 
 });
 
 
 router.post('/mod', async function(req, res, next) {
-
-  //console.log("image change: ", req.body);
 
   let image = req.body.picture_to_change ? await ImageModel.findOne({_id : req.body.picture_to_change}) : null;
 
@@ -137,12 +109,7 @@ router.post('/mod', async function(req, res, next) {
 
 router.post('/delete', async function(req, res, next) {
 
-  //console.log("image delete: ", req.body);
-
   let image = req.body.picture_to_delete ? await ImageModel.findOne({_id : req.body.picture_to_delete}) : null;
-
-  //console.log("imgae found = ", image);
-
 
   if (image) {
 
@@ -157,15 +124,11 @@ router.post('/delete', async function(req, res, next) {
 
     })
 
-    //console.log("save change in albums");
-
     playlists.forEach((playlist) => {
       playlist.artwork = null;
       playlist.save();
 
     })
-
-    //console.log("save change in playlists");
 
     tracks.forEach((track) => {
       track.artwork = null;
@@ -173,14 +136,9 @@ router.post('/delete', async function(req, res, next) {
 
     })
 
-    //console.log("save change in tracks");
-
     const pathImage = __dirname + '/../public/image/' + image.url;
 
     await image.remove();
-
-    //console.log("delete image in database");
-
 
     fs.unlink(pathImage, function (err) {
       console.log("try to delete "+ pathImage + "error :",err)
