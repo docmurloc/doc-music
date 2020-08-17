@@ -1,23 +1,22 @@
 import TrackPlayer from 'react-native-track-player';
 
-import Store from '../Store/configureStore'
-
+import Store from '../Store/configureStore';
 
 async function play() {
-    await TrackPlayer.play();
+  await TrackPlayer.play();
 
-    const action = {type: 'SET_PLAY', status: true};
-    Store.dispatch(action);
+  const action = {type: 'SET_PLAY', status: true};
+  Store.dispatch(action);
 }
 
 exports.play = play;
 
 async function playAtId(id) {
-    await TrackPlayer.skip(id);
-    await TrackPlayer.play();
+  await TrackPlayer.skip(id);
+  await TrackPlayer.play();
 
-    const action = {type: 'SET_PLAY', status: true};
-    Store.dispatch(action);
+  const action = {type: 'SET_PLAY', status: true};
+  Store.dispatch(action);
 }
 
 exports.playAtId = playAtId;
