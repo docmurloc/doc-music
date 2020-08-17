@@ -32,6 +32,14 @@ You need to have react-native, node, docker and docker-compose
 
     npx react-native run-android --variant=release
 
+### environement
+
+You can change the default value at './docMusic/env.js'
+
+    IP_SERVER : ip to access server
+
+    PORT_SERVER : port to access server
+
 
 ## Server and website
 
@@ -42,6 +50,22 @@ You need to have react-native, node, docker and docker-compose
     npm start
 
 go to your browser at 'http://127.0.0.1:3000/'
+
+### environement
+
+You can change the default value at './server/serverDocMusic/env.js'
+
+    PORT_LISTEN : port where the server listen
+
+    IP_ADDRESS_LISTEN : ip where the server listen
+
+    PORT_SERVER : port give by the server to access data
+
+    IP_SERVER : ip give by the server to access data
+
+#### exemple
+your server listen to IP_ADDRESS_LISTEN at PORT_LISTEN but to access to your server from outside your  computer you have to go at 'http://' + IP_SERVER + ':' + 'PORT_SERVER' + '/'
+
 
 ## DataBase
 

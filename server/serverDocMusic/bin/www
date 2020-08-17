@@ -10,6 +10,8 @@ var http = require('http');
 const https = require('https');
 const fs = require('fs');
 
+const {IP_ADDRESS_LISTEN, PORT_LISTEN} = require('../env');
+
 const options = {
   key: fs.readFileSync('key.pem'),
   cert: fs.readFileSync('cert.pem')
@@ -20,8 +22,8 @@ const options = {
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
-var addr = process.env.IP_ADDRESS || '127.0.0.1';
+var port = normalizePort(PORT_LISTEN);
+var addr = IP_ADDRESS_LISTEN;
 app.set('port', port);
 
 /**
