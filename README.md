@@ -77,3 +77,9 @@ check your database in your browser at 'http://localhost:8082/'
 
 
 # Learn More
+
+[API server](https://github.com/facebook/create-react-app)
+
+[API sound](https://github.com/facebook/create-react-app)
+
+[cache management](https://github.com/facebook/create-react-app)

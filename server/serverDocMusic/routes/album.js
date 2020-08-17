@@ -101,8 +101,6 @@ router.get('/randomList', async function(req, res, next) {
 
 router.get('/id', async function(req, res, next) {
 
-
-
   let album = await AlbumModel.findOne({_id : req.headers.id});
 
     const answer = {

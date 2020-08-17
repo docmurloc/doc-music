@@ -7,7 +7,8 @@ is running on 'http://' + IP_SERVER + ':' + PORT_SERVER + '/'.
 
 Open endpoints require no Authentication.
 
-* [Login]() : `GET /users/login`
+* [GET Login]() : `GET /users/login`
+* [POST register]() : `POST /users/register`
 
 ## Endpoints that require Authentication
 
@@ -38,6 +39,23 @@ Endpoints to access album data of the server.
 
 * [GET album by id]() : `GET /albums/id`
 * [GET random album]() : `GET /albums/random`
+* [GET List random id album]() : `GET /albums/randomList`
+* [GET List of all album]() : `GET /albums/all`
+* [POST upload album]() : `POST /albums/upload`
+* [POST link album to playlist]() : `POST /albums/link`
+* [POST change album data]() : `POST /albums/mod`
+* [POST delete album]() : `POST /albums/delete`
+
+### Image related
+
+Endpoints to access image data of the server.
+
+* [GET image by id]() : `GET /images/id`
+* [GET list of all image]() : `GET /images/all`
+* [POST upload image]() : `POST /images/upload`
+* [POST change image data]() : `POST /images/mod`
+* [POST delete image]() : `POST /images/delete`
+
 
 ### Playlist related
 
@@ -45,6 +63,10 @@ Endpoints to access playlist data of the server.
 
 * [GET playlist by id]() : `GET /playlists/id`
 * [GET random playlist]() : `GET /playlists/random`
+* [GET list of all playlist]() : `GET /playlists/all`
+* [POST upload playlist]() : `POST /playlists/upload`
+* [POST change playlist data]() : `POST /playlists/mod`
+* [POST delete playlist]() : `POST /playlists/delete`
 
 
 ### Track related
@@ -54,3 +76,8 @@ Endpoints to access track data of the server.
 * [GET track by id]() : `GET /tracks/id`
 * [GET track by title]() : `GET /tracks/research`
 * [GET random track]() : `GET /tracks/random`
+* [GET list of all track]() : `GET /tracks/all`
+* [GET track by title]() : `GET /tracks/research`
+* [POST upload track]() : `POST /tracks/upload`
+* [POST change track data]() : `POST /tracks/mod`
+* [POST delete track]() : `POST /tracks/delete`
