@@ -2,6 +2,13 @@
 
 This project is the creation of a small music streaming application with the back and front end.
 
+![Signe UP page](/documentation/image/signe_up.jpg)
+![home page](/documentation/image/home.jpg)
+![history page](/documentation/image/history.jpg)
+![research page](/documentation/image/research.jpg)
+![playlist page](/documentation/image/playlist.jpg)
+![player page](/documentation/image/player.jpg)
+
 # Installation
 
 You need to have react-native, node, docker and docker-compose
@@ -78,8 +85,8 @@ check your database in your browser at 'http://localhost:8082/'
 
 # Learn More
 
-[API server](https://github.com/facebook/create-react-app)
+[API server](https://github.com/docmurloc/doc-music/tree/master/documentation/APIserver)
 
-[API sound](https://github.com/facebook/create-react-app)
+[API sound](https://github.com/docmurloc/doc-music/tree/master/documentation/APIsound)
 
-[cache management](https://github.com/facebook/create-react-app)
+[mobile cache management](https://github.com/docmurloc/doc-music/tree/master/documentation/cache)
