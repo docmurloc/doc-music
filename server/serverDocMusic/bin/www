@@ -21,6 +21,7 @@ const options = {
  */
 
 var port = normalizePort(process.env.PORT || '3000');
+var addr = process.env.IP_ADDRESS || '127.0.0.1';
 app.set('port', port);
 
 /**
@@ -37,10 +38,10 @@ var server = http.createServer(app);
 // 192.168.1.40 waren
 // 192.168.1.36 pierre
 //penser à ouvrir le port sur le pc sinon les connections seront refuser
-server.listen('3000', '192.168.1.36');
+server.listen(port, addr);
 server.on('error', onError);
 server.on('listening', onListening);
-//serverHTTPS.listen('3000', '192.168.1.36');
+//serverHTTPS.listen(port, addr);
 //serverHTTPS.on('error', onError);
 //serverHTTPS.on('listening', onListening);
 

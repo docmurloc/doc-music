@@ -1,4 +1,4 @@
-const IP_SERVER = process.env['IP_SERVER'] || '89.87.94.17';
+const IP_SERVER = process.env['IP_SERVER'] || '127.0.0.1';
 
 // 84.99.125.230 waren
 // 89.87.94.17 pierre
