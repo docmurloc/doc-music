@@ -9,5 +9,4 @@ $( document ).ready(function() {
     loadTrackCard("#TrackDisplayer");
     loadPlaylistCard('#PlaylistDisplayer');
     loadAlbumCard('#AlbumDisplayer');
-    console.log( "ready!" );
 });

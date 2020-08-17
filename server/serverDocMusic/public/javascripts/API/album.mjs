@@ -11,6 +11,5 @@ export async function GetAllAlbum() {
 
     answer = await answer.json();
 
-    //console.log(answer);
     return answer;
 }

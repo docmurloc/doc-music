@@ -12,7 +12,5 @@ export async function GetAllImages() {
 
     answer = await answer.json();
 
-    //console.log(answer);
     return answer;
 }
-//module.exports.GetAllImages = GetAllImages;

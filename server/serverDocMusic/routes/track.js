@@ -68,8 +68,6 @@ router.get('/random', async function(req, res, next) {
         artwork: track.artwork ? baseURLImage + track.artwork : baseURLImage + missingImage,
         url: baseURLTrack + track.url,
     };
-    //await Test.save();
-  console.log("get random track");
   res.status(200).send(answer);
 });
 
@@ -87,7 +85,6 @@ router.get('/id', async function(req, res, next) {
         artwork: track.artwork ? baseURLImage + track.artwork : baseURLImage + missingImage,
         url: baseURLTrack + track.url,
     };
-    //console.log("get track:", answer);
     res.status(200).send(answer);
   });
 
@@ -99,9 +96,6 @@ router.get('/all', async function(req, res, next) {
     track.url = baseURLTrack + track.url;
   })
 
-  console.log("base URL " + baseURLImage);
-
-  //console.log("get track all:", tracks);
   res.status(200).send(tracks);
 });
 
@@ -124,12 +118,10 @@ router.post('/upload', async function(req, res, next) {
   const form = formidable({ multiples: true });
 
   form.parse(req, async (err, fields, files) => {
-    console.log("fields: ", fields, " files: ", files);
     if (err) {
       next(err);
       return;
     }
-    //res.json({ fields, files });
 
     let track = await TrackModel.findOne({
       title: fields.track_title,
@@ -166,14 +158,10 @@ router.post('/upload', async function(req, res, next) {
     res.render('upload', {
       title: 'Doc Music'
     });
-    //return  res.status(200).send({status : "succes"});
-
   });
 });
 
 router.post('/mod', async function(req, res, next) {
-
-  //console.log("image change: ", req.body);
 
   let track = req.body.track_to_change ? await TrackModel.findOne({_id : req.body.track_to_change}) : null;
 
@@ -198,12 +186,7 @@ router.post('/mod', async function(req, res, next) {
 
 router.post('/delete', async function(req, res, next) {
 
-  //console.log("image delete: ", req.body);
-
   let track = req.body.track_to_delete ? await TrackModel.findOne({_id : req.body.track_to_delete}) : null;
-
-  //console.log("imgae found = ", image);
-
 
   if (track) {
 
@@ -219,16 +202,9 @@ router.post('/delete', async function(req, res, next) {
 
     })
 
-    //console.log("save change in playlists");
-
-
-
     const pathTrack = __dirname + '/../public/track/' + track.url;
 
     await track.remove();
-
-    //console.log("delete image in database");
-
 
     fs.unlink(pathTrack, function (err) {
       console.log("try to delete "+ pathTrack + "error :",err)
@@ -243,8 +219,6 @@ router.post('/delete', async function(req, res, next) {
 
 router.post('/add_favorite', async function(req, res, next) {
 
-  console.log("add favorite: ", req.body.trackId);
-
   let user = await UserModel.findOne({access_token : req.headers.access_token});
 
   if (user) {
@@ -256,8 +230,6 @@ router.post('/add_favorite', async function(req, res, next) {
 
 router.post('/add_unfavorite', async function(req, res, next) {
 
-  //console.log("register user: ", req);
-
   let user = await UserModel.findOne({access_token : req.headers.access_token});
 
   if (user) {
@@ -268,8 +240,6 @@ router.post('/add_unfavorite', async function(req, res, next) {
 });
 
 router.post('/rem_favorite', async function(req, res, next) {
-
-  //console.log("register user: ", req);
 
   let user = await UserModel.findOne({access_token : req.headers.access_token});
 
@@ -289,8 +259,6 @@ router.post('/rem_favorite', async function(req, res, next) {
 
 router.post('/rem_unfavorite', async function(req, res, next) {
 
-  //console.log("register user: ", req);
-
   let user = await UserModel.findOne({access_token : req.headers.access_token});
 
   if (user) {
@@ -309,8 +277,6 @@ router.post('/rem_unfavorite', async function(req, res, next) {
 
 router.get('/unfavorite', async function(req, res, next) {
 
-  //console.log("register user: ", req);
-
   let user = await UserModel.findOne({access_token : req.headers.access_token});
 
   if (user) {
@@ -320,8 +286,6 @@ router.get('/unfavorite', async function(req, res, next) {
 });
 
 router.get('/favorite', async function(req, res, next) {
-
-  //console.log("register user: ", req);
 
   let user = await UserModel.findOne({access_token : req.headers.access_token});
 

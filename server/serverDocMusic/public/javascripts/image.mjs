@@ -3,7 +3,6 @@ import {GetAllImages} from './API/image.mjs';
 //const {GetAllImages} = require('./API/image.js');
 
 function createCardImage(data) {
-    //console.log(data);
     const result = '<div class="card" style="width: 18rem;">' +
     '<img class="card-img-top" src="'+ data.url + '" alt="Card image cap">' +
         '<div class="card-body">' +

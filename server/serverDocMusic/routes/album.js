@@ -64,14 +64,12 @@ router.get('/random', async function(req, res, next) {
         genre: album.genre,
         playListId: album.playListId,
     };
-    //await Test.save();
   res.status(200).send(answer);
 });
 
 
 router.get('/randomList', async function(req, res, next) {
 
-  //console.log("get random list album", req.headers);
 
   if (req.headers.nbrand < 1) {
     res.status(400).send([]);
@@ -97,14 +95,12 @@ router.get('/randomList', async function(req, res, next) {
     }
   }
 
-  //console.log("randomList result ", answer);
   res.status(200).send(answer);
 });
 
 
 router.get('/id', async function(req, res, next) {
 
-  //console.log("get id album", req.headers.id);
 
 
   let album = await AlbumModel.findOne({_id : req.headers.id});
@@ -118,7 +114,6 @@ router.get('/id', async function(req, res, next) {
       genre: album.genre,
       playListId: album.playListId,
   };
-  //console.log("get album:", answer);
   res.status(200).send(answer);
 });
 
@@ -128,7 +123,6 @@ router.get('/all', async function(req, res, next) {
   albums.forEach((album) => {
     album.artwork = album.artwork ? baseURLImage + album.artwork : baseURLImage + missingImage;
   })
-  //console.log("get album all:", albums);
   res.status(200).send(albums);
 });
 
@@ -158,7 +152,6 @@ async function linkAlbumPlaylist(idAlbum, idPlaylist) {
 
 router.post('/upload', async function(req, res, next) {
 
-  //console.log("register album: ", req.body);
 
   let image = req.body.album_artwork ? await ImageModel.findOne({_id : req.body.album_artwork}) : null;
 
@@ -186,7 +179,6 @@ router.post('/upload', async function(req, res, next) {
 
 router.post('/link', async function(req, res, next) {
 
-  console.log("link album and playlist: ", req.body);
 
   await linkAlbumPlaylist(req.body.album_to_link, req.body.playlist_to_link);
 
@@ -197,7 +189,6 @@ router.post('/link', async function(req, res, next) {
 
 router.post('/mod', async function(req, res, next) {
 
-  //console.log("image change: ", req.body);
 
   let album = req.body.album_to_change ? await AlbumModel.findOne({_id : req.body.album_to_change}) : null;
 
@@ -224,11 +215,9 @@ router.post('/mod', async function(req, res, next) {
 
 router.post('/delete', async function(req, res, next) {
 
-  //console.log("image delete: ", req.body);
 
   let album = req.body.album_to_delete ? await AlbumModel.findOne({_id : req.body.album_to_delete}) : null;
 
-  //console.log("imgae found = ", image);
 
 
   if (album) {
@@ -243,7 +232,6 @@ router.post('/delete', async function(req, res, next) {
 
     })
 
-    //console.log("save change in playlists");
 
     tracks.forEach((track) => {
       track.album = null;
@@ -251,11 +239,9 @@ router.post('/delete', async function(req, res, next) {
 
     })
 
-    //console.log("save change in tracks");
 
     await album.remove();
 
-    //console.log("delete image in database");
   }
 
   res.render('album', {
@@ -266,7 +252,6 @@ router.post('/delete', async function(req, res, next) {
 
 router.post('/add_favorite', async function(req, res, next) {
 
-  console.log("add favorite: ", req.body.trackId);
 
   let user = await UserModel.findOne({access_token : req.headers.access_token});
 
@@ -280,7 +265,6 @@ router.post('/add_favorite', async function(req, res, next) {
 
 router.post('/rem_favorite', async function(req, res, next) {
 
-  //console.log("register user: ", req);
 
   let user = await UserModel.findOne({access_token : req.headers.access_token});
 
@@ -300,7 +284,6 @@ router.post('/rem_favorite', async function(req, res, next) {
 
 router.get('/favorite', async function(req, res, next) {
 
-  //console.log("album favorite: ", req.headers);
 
   let user = await UserModel.findOne({access_token : req.headers.access_token});
 

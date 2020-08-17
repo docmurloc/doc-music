@@ -8,13 +8,11 @@ const {
 
 router.post('/register', async function(req, res, next) {
 
-  //console.log("register user: ", req);
 
   let user = await UserModel.findOne({pseudo : req.body.pseudo});
 
   let token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 
-  //console.log("token = ", token);
 
 
   if (!user && req.body.pseudo && req.body.password) {
@@ -55,13 +53,10 @@ router.post('/add_historic', async function(req, res, next) {
 
 router.get('/login', async function(req, res, next) {
 
-  //console.log("register user: ", req);
 
   let user = await UserModel.findOne({pseudo : req.headers.pseudo, password : req.headers.password});
 
   let token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-
-  console.log("token = ", token);
 
   if (user) {
 
@@ -72,8 +67,6 @@ router.get('/login', async function(req, res, next) {
 });
 
 router.get('/historic', async function(req, res, next) {
-
-  //console.log("register user: ", req);
 
   let user = await UserModel.findOne({access_token : req.headers.access_token});
 

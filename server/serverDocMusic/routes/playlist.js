@@ -59,14 +59,10 @@ router.get('/random', async function(req, res, next) {
         artwork: playlist.artwork ? baseURLImage + playlist.artwork : baseURLImage + missingImage,
         trackListId: playlist.trackListId,
     };
-    //await Test.save();
-  console.log("get random playlist");
   res.status(200).send(answer);
 });
 
 router.get('/id', async function(req, res, next) {
-
-    console.log("id album ", req.headers.id == true);
 
     let playlist = req.headers.id != 'null' ? await PlaylistModel.findOne({_id : req.headers.id}) : null;
 
@@ -80,7 +76,6 @@ router.get('/id', async function(req, res, next) {
           artwork: playlist.artwork ? baseURLImage + playlist.artwork : baseURLImage + missingImage,
           trackListId: playlist.trackListId,
       };
-      console.log("get playlist:", answer);
       res.status(200).send(answer);
     } else {
       res.status(404).send({error : "playlist not found"});
@@ -93,13 +88,11 @@ router.get('/all', async function(req, res, next) {
   playlists.forEach((playlist) => {
     playlist.artwork = playlist.artwork ? baseURLImage + playlist.artwork : baseURLImage + missingImage;
   })
-  //console.log("get image all:", images);
   res.status(200).send(playlists);
 });
 
 router.post('/upload', async function(req, res, next) {
 
-  console.log("register playlist: ", req.body);
 
   let image = req.body.playlist_artwork ? await ImageModel.findOne({_id : req.body.playlist_artwork}) : null;
 
@@ -127,7 +120,6 @@ router.post('/upload', async function(req, res, next) {
 
 router.post('/mod', async function(req, res, next) {
 
-  console.log("playlist change: ", req.body);
 
   let playlist = req.body.playlist_to_change ? await PlaylistModel.findOne({_id : req.body.playlist_to_change}) : null;
 
@@ -167,11 +159,9 @@ router.post('/delete', async function(req, res, next) {
 
     })
 
-    //console.log("save change in albums");
 
     await playlist.remove();
 
-    //console.log("delete image in database");
   }
 
   res.render('playlist', {

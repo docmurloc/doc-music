@@ -3,7 +3,6 @@ import {GetAllPlaylist} from './API/playlist.mjs';
 //const {GetAllImages} = require('./API/image.js');
 
 function createCardPlaylist(data) {
-    //console.log(data);
     const result = '<div class="card" style="width: 18rem;">' +
     '<img class="card-img-top" src="'+ data.artwork  + '" alt="Card image cap">' +
         '<div class="card-body">' +

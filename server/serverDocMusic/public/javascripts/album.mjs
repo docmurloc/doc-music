@@ -3,7 +3,6 @@ import {GetAllAlbum} from './API/album.mjs';
 //const {GetAllImages} = require('./API/image.js');
 
 function createCardAlbum(data) {
-    //console.log(data);
     const result = '<div class="card" style="width: 18rem;">' +
     '<img class="card-img-top" src="'+ data.artwork + '" alt="Card image cap">' +
         '<div class="card-body">' +

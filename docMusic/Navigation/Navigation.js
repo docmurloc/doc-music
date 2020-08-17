@@ -59,7 +59,6 @@ function HomeNavigator() {
 }
 
 function MyStack(props) {
-  console.log('access token =', props.profil.access_token);
 
   if (!props.profil.access_token) {
     getProfilCache(props);

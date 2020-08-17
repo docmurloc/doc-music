@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
 
-import NetInfo from '@react-native-community/netinfo';
-
 import {StyleSheet, Text, TextInput, View, Button} from 'react-native';
 
 import BackgroundImage from './backgroundImage';
@@ -45,7 +43,7 @@ function SignUpPage(props) {
               title="REGISTER"
               onPress={() => {
                 if (password === confirmpassword) {
-                  registerUser(props, pseudo, password, setInfo)
+                  registerUser(props, pseudo, password, setInfo);
                 } else {
                   setInfo('Password != confirm password');
                 }

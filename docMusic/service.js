@@ -57,12 +57,6 @@ async function trackService() {
     })
 
     TrackPlayer.addEventListener('playback-queue-ended', async (data) => {
-        //let track = await TrackPlayer.getTrack(data.nextTrack);
-
-        //console.log("track end:", data);
-
-        //const action = {type: 'SET_CURRENT_TRACK', track: track};
-        //Store.dispatch(action);
     })
     
 };

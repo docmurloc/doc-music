@@ -10,7 +10,4 @@ $( document ).ready( async function() {
     await loadAlbumOption("#trackAlbumToChange");
     await loadImageOption("#trackArtworkToChange");
     await loadTrackOption("#trackToDelete");
-
-
-    console.log( "ready!" );
 });

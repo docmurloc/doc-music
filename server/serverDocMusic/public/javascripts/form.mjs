@@ -8,7 +8,6 @@ import {GetAllAlbum} from './API/album.mjs';
 
 function createImageOptionForm(data) {
     const result = '<option value="'+ data._id +'">'+ data.name +'</option>'
-    //console.log(result);
 
 
     return result;
@@ -25,7 +24,6 @@ export async function loadImageOption(element) {
 
 function createTrackOptionForm(data) {
     const result = '<option value="'+ data._id +'">'+ data.title +'</option>'
-    //console.log(result);
 
 
     return result;
@@ -42,8 +40,6 @@ export async function loadTrackOption(element) {
 
 function createPlaylistOptionForm(data) {
     const result = '<option value="'+ data._id +'">'+ data.title +'</option>'
-    //console.log(result);
-
 
     return result;
 }
@@ -59,8 +55,6 @@ export async function loadPlaylistOption(element) {
 
 function createAlbumOptionForm(data) {
     const result = '<option value="'+ data._id +'">'+ data.title +'</option>'
-    //console.log(result);
-
 
     return result;
 }

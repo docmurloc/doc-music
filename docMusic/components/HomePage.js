@@ -16,7 +16,6 @@ function HomePage(props) {
 
     GetRandomListAlbum(5).then((result) => {
       setrandDisplay(result);
-      console.log('result random ', result);
       setRefreshing(false);
     });
   }, []);
@@ -24,7 +23,6 @@ function HomePage(props) {
   if (!randDisplay) {
     GetRandomListAlbum(5).then((result) => {
       setrandDisplay(result);
-      console.log('result random ', result);
     });
     return <View />;
   }

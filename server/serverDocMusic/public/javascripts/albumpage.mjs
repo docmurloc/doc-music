@@ -12,8 +12,6 @@ $( document ).ready( async function() {
     await loadImageOption("#albumArtworkToChange");
     await loadPlaylistOption("#albumPlaylistToChange");
 
-
     await loadAlbumOption("#albumToDelete");
 
-    console.log( "ready!" );
 });

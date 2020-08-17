@@ -15,5 +15,4 @@ $( document ).ready( async function() {
 
     $('#playlistTrackList').select2();
     $('#playlistTrackListToChange').select2();
-    console.log( "ready!" );
 });

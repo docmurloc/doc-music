@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     paddingTop: 10,
-    //backgroundColor : 'rgba(191, 155, 63, 0.5)',
   },
   title: {
     fontSize: 30,

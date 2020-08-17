@@ -34,7 +34,6 @@ function LoginPage(props) {
             <Button
               title="LOGIN"
               onPress={() => {
-                console.log('login');
                 loginUser(props, pseudo, password, setInfo);
               }}
             />

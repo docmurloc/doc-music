@@ -3,7 +3,6 @@ import {GetAllTrack} from './API/track.mjs';
 //const {GetAllImages} = require('./API/image.js');
 
 function createCardTrack(data) {
-    //console.log(data);
     const result = '<div class="card" style="width: 22rem;">' +
     '<img class="card-img-top" src="'+ data.artwork + '" alt="Card image cap">' +
         '<div class="card-body">' +
