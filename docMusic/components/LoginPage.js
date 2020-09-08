@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {StyleSheet, Text, TextInput, View, Button} from 'react-native';
 
-import {loginUser} from '../APIserver/User';
+import ButtonSimple from './ButtonSimple'
 
-import BackgroundImage from './backgroundImage';
+import {loginUser} from '../APIserver/User';
 
 function LoginPage(props) {
   const [pseudo, setPseudo] = useState('');
@@ -13,37 +13,35 @@ function LoginPage(props) {
 
   return (
     <View style={styles.container}>
-      <BackgroundImage />
-      <View style={styles.box}>
-        <View style={styles.content}>
-          <Text style={styles.title}>Your music at your fingertips</Text>
+        <View style={styles.empty}></View>
+        <View style={styles.box}>
+          <Text style={styles.textButton}>Sign up</Text>
           <Text style={styles.title}>{Info}</Text>
           <TextInput
             style={styles.textInput}
             placeholder="Pseudo"
+            placeholderTextColor = 'rgba(169, 169, 169, 1)'
             onChangeText={(text) => setPseudo(text)}
             value={pseudo}
           />
           <TextInput
             style={styles.textInput}
             placeholder="Password"
+            placeholderTextColor = 'rgba(169, 169, 169, 1)'
             onChangeText={(text) => setPassword(text)}
             value={password}
           />
-          <View style={styles.horizontalDisplay}>
-            <Button
-              title="LOGIN"
+        </View>
+        <View style={styles.content}>
+            <ButtonSimple
+              style={styles.Button}
+              styleText={styles.textButton}
+              text="Enter"
               onPress={() => {
                 loginUser(props, pseudo, password, setInfo);
               }}
             />
-            <Button
-              title="SIGN UP"
-              onPress={() => props.navigation.navigate('SignUp')}
-            />
-          </View>
         </View>
-      </View>
     </View>
   );
 }
@@ -53,24 +51,28 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'rgba(52, 52, 52, 1)',
+
+
   },
   box: {
-    width: '100%',
+    width: "70%",
+    margin: 10,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around',
     paddingTop: 10,
+    //backgroundColor: 'rgba(255, 52, 52, 1)',
+
   },
   content: {
     margin: 30,
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-around',
-    backgroundColor: 'rgba(215, 215, 215, 0.9)',
-    borderRadius: 20,
+    justifyContent: 'flex-end',
+  //backgroundColor: 'rgba(52, 255, 52, 1)',
   },
   horizontalDisplay: {
-    width: '70 %',
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
@@ -80,8 +82,31 @@ const styles = StyleSheet.create({
   },
   textInput: {
     height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
+    width: "100%",
+    textAlign: 'center',
+    backgroundColor: 'rgba(38, 38, 38, 1)',
+    color: 'rgba(169, 169, 169, 1)',
+
+
+  },
+  Button: {
+    //alignItems: 'center',
+    //justifyContent: 'center',
+    padding: 15,
+    borderRadius: 10,
+    //backgroundColor: 'rgba(100, 100, 100, 1)',  
+  },
+  textButton: {
+    fontSize: 20,
+    color: 'rgba(169, 169, 169, 1)',
+  },
+  empty: {
+    margin: 10,
+    flex: 0.5,
+    //alignItems: 'center',
+    //justifyContent: 'space-around',
+    //backgroundColor: 'rgba(52, 52, 255, 1)',
+
   },
 });
 
