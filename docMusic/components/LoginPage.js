@@ -15,18 +15,18 @@ function LoginPage(props) {
     <View style={styles.container}>
         <View style={styles.empty}></View>
         <View style={styles.box}>
-          <Text style={styles.textButton}>Sign up</Text>
+          <Text style={styles.textButton}>Log in</Text>
           <Text style={styles.title}>{Info}</Text>
           <TextInput
             style={styles.textInput}
-            placeholder="Pseudo"
+            placeholder="username"
             placeholderTextColor = 'rgba(169, 169, 169, 1)'
             onChangeText={(text) => setPseudo(text)}
             value={pseudo}
           />
           <TextInput
             style={styles.textInput}
-            placeholder="Password"
+            placeholder="password"
             placeholderTextColor = 'rgba(169, 169, 169, 1)'
             onChangeText={(text) => setPassword(text)}
             value={password}
