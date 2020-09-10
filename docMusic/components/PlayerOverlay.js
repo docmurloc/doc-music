@@ -27,7 +27,6 @@ function PlayerOverlay(props) {
             <Text style={styles.title} ellipsizeMode={'tail'} numberOfLines={2}>
               {props.track.currentTrack.title}
             </Text>
-            <Text style={styles.text}>{props.track.currentTrack.artist}</Text>
           </View>
         </TouchableHighlight>
         <PlayButton
@@ -48,11 +47,13 @@ function PlayerOverlay(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(191, 155, 63, 1)',
+    backgroundColor: 'rgba(188, 187, 182, 1)',
+    borderRadius: 30  ,
     position: 'absolute',
     left: 0,
     bottom: 0,
     width: '100%',
+    paddingHorizontal: 15,
     height: 75,
     flexDirection: 'row',
     alignItems: 'center',
@@ -66,13 +67,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   title: {
-    fontSize: 15,
+    fontSize: 20,
     textAlign: 'left',
     fontWeight: 'bold',
   },
   logo: {
-    width: 65,
-    height: 65,
+    width: 50,
+    height: 50,
     resizeMode: 'contain',
   },
 });
