@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {StyleSheet, Text, View} from 'react-native';
 
 import ButtonSwitch from './ButtonSwitch';
+import CustomText from './CustomText';
 
 import {
   addTrackFavorite,
@@ -74,9 +75,15 @@ function PlayerTitle(props) {
         statusButton={props.player.unfavorite}
       />
       <View style={styles.box}>
-        <Text style={styles.title} ellipsizeMode={'tail'} numberOfLines={3}>
+        <CustomText style={styles.title} ellipsizeMode={'tail'} numberOfLines={2}>
           {props.track.currentTrack.title}
-        </Text>
+        </CustomText>
+        <CustomText style={styles.text} ellipsizeMode={'tail'} numberOfLines={1}>
+          {props.track.currentTrack.artist}
+        </CustomText>
+        <CustomText style={styles.text} ellipsizeMode={'tail'} numberOfLines={1}>
+          {props.playlist.currentPlaylist.title}
+        </CustomText>
       </View>
       <ButtonSwitch
         iconOff={require('../Images/likeOff.png')}
@@ -98,20 +105,26 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-around',
-    padding: 5,
+    //padding: 5,
     flexDirection: 'row',
   },
   box: {
-    width: '40%',
+    width: '70%',
     alignItems: 'center',
     justifyContent: 'space-around',
     paddingTop: 10,
+    //backgroundColor: 'red'
   },
   title: {
     fontSize: 20,
     textAlign: 'center',
-    fontWeight: 'bold',
+    //fontWeight: 'bold',
+    color: 'rgba(173, 173, 173, 1)'
   },
+  text: {
+    color: 'rgba(173, 173, 173, 1)',
+    fontSize: 15,
+  }
 });
 
 const mapStateToProps = (state) => {

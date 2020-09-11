@@ -30,11 +30,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around',
-    padding: 20,
+    padding: 30,
+    backgroundColor: 'rgba(52,52,52,1)'
   },
   logo: {
-    width: 200,
-    height: 200,
+    width: 300,
+    height: 300,
     resizeMode: 'contain',
   },
 });

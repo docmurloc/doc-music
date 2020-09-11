@@ -18,7 +18,6 @@ function Player(props) {
     <View style={styles.container}>
       <PlayerTitle />
       <View style={styles.box}>
-        <Text style={styles.title}>{props.track.currentTrack.artist}</Text>
         <MyPlayerBar />
       </View>
       <View style={styles.horizontalDisplay}>
@@ -76,10 +75,10 @@ const styles = StyleSheet.create({
   container: {
     height: '50%',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     padding: 10,
-    backgroundColor: 'rgba(215, 215, 215, 1)',
-    borderRadius: 15,
+    //backgroundColor: 'rgba(215, 215, 215, 1)',
+    //borderRadius: 15,
   },
   box: {
     width: '100%',
@@ -96,6 +95,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     textAlign: 'center',
+    color: 'rgba(173, 173, 173, 1)'
   },
 });
 

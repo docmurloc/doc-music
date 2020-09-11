@@ -24,11 +24,6 @@ class MyPlayerBar extends TrackPlayer.ProgressComponent {
           color={'black'}
           height={10}
         />
-        <View style={styles.textCenter}>
-          <Text style={styles.text}>
-            {convertSecondeToMinSec(this.state.position)}
-          </Text>
-        </View>
       </View>
     );
   }
