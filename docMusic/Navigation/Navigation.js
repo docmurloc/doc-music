@@ -53,6 +53,7 @@ function HomeStack() {
 function HomeNavigator() {
   return (
     <Tab.Navigator
+    
     screenOptions={({ route }) => ({
       tabBarIcon: ({ focused, color, size }) => {
 
@@ -99,8 +100,12 @@ function HomeNavigator() {
       },
     })}
     tabBarOptions={{
-      activeTintColor: 'tomato',
-      inactiveTintColor: 'gray',
+      activeTintColor: '#000',
+      inactiveTintColor: '#000',
+      style: {
+        backgroundColor: 'rgba(250, 248, 240, 1)',
+        color: "green"
+      }
     }}
     >
       <Tab.Screen name="Library" component={HomeStack} />
