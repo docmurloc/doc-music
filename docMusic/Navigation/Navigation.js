@@ -1,4 +1,5 @@
 import React from 'react';
+import {Image} from 'react-native'
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -42,19 +43,70 @@ function HomeStack() {
           backgroundColor: 'rgb(200, 200, 200)',
         },
       }}>
-      <Stack.Screen name="HomePage" component={HomePage} />
-      <Stack.Screen name="playlist" component={PlaylistPage} />
-      <Stack.Screen name="Player" component={PlayerPage} />
+      <Stack.Screen name="HomePage" component={HomePage} options={{headerShown: false}}/>
+      <Stack.Screen name="playlist" component={PlaylistPage} options={{headerShown: false}}/>
+      <Stack.Screen name="Player" component={PlayerPage} options={{headerShown: false}}/>
     </Stack.Navigator>
   );
 }
 
 function HomeNavigator() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home page" component={HomeStack} />
-      <Tab.Screen name="Research" component={ResearchPage} />
-      <Tab.Screen name="History" component={HistoryPage} />
+    <Tab.Navigator
+    screenOptions={({ route }) => ({
+      tabBarIcon: ({ focused, color, size }) => {
+
+        const iconStyle = {
+          width: size,
+          height: size,
+          resizeMode: 'contain',
+        }
+
+        //console.log("route ", route);
+        //console.log("Focused ", focused);
+        //console.log("color ", color);
+        //console.log("size ", size);
+
+        if (route.name === 'Library') {
+          return (
+            <Image
+            source={require('../Images/library.png')}
+            style={iconStyle}
+            />
+          )
+        } else if (route.name === 'For you') {
+          return (
+            <Image
+            source={require('../Images/forYou.png')}
+            style={iconStyle}
+            />
+          )
+        } else if (route.name === 'Browse') {
+          return (
+            <Image
+            source={require('../Images/browse.png')}
+            style={iconStyle}
+            />
+          )
+        } else if (route.name === 'Search') {
+          return (
+            <Image
+            source={require('../Images/search.png')}
+            style={iconStyle}
+            />
+          )
+        }
+      },
+    })}
+    tabBarOptions={{
+      activeTintColor: 'tomato',
+      inactiveTintColor: 'gray',
+    }}
+    >
+      <Tab.Screen name="Library" component={HomeStack} />
+      <Tab.Screen name="For you" component={ResearchPage} />
+      <Tab.Screen name="Browse" component={HistoryPage} />
+      <Tab.Screen name="Search" component={HistoryPage} />
     </Tab.Navigator>
   );
 }
@@ -95,10 +147,7 @@ function MyStack(props) {
           <Stack.Screen
             name="HomeTab"
             component={HomeNavigator}
-            options={{
-              headerTitle: (propsHeader) => <HeaderLeft {...propsHeader} />,
-              headerLeft: null,
-            }}
+            options={{headerShown: false}}
           />
         )}
       </Stack.Navigator>
