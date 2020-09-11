@@ -3,8 +3,11 @@ import {connect} from 'react-redux';
 import {StyleSheet, View, ScrollView, RefreshControl} from 'react-native';
 
 import Displayer from './Displayer';
+import DisplayerCustom from './DisplayerCustom';
+import Album from './Album';
 import PlayerOverlay from './PlayerOverlay';
 import HeaderPage from './HeaderPage';
+import ButtonSimple from './ButtonSimple';
 
 import {GetRandomListAlbum} from '../APIserver/Album';
 
@@ -38,10 +41,57 @@ function HomePage(props) {
       title={'Library'}
       icon={require('../Images/browse.png')}
       />
-      <Displayer
+      <ButtonSimple
+      text={'Playlists'}
+      style={styles.button}
+      styleText={styles.text}
+      />
+      <ButtonSimple
+      text={'Artists'}
+      style={styles.button}
+      styleText={styles.text}
+      />
+      <ButtonSimple
+      text={'Albums'}
+      style={styles.button}
+      styleText={styles.text}
+      />
+      <ButtonSimple
+      text={'Songs'}
+      style={styles.button}
+      styleText={styles.text}
+      />
+      <ButtonSimple
+      text={'Downloaded Music'}
+      style={styles.button}
+      styleText={styles.text}
+      />
+      <DisplayerCustom
         {...props}
         title={'Favorite'}
         listItemId={props.profil.albumFavorite}
+        horizontal={true}
+        renderItem={({item}) => <Album {...props} id={item} />}
+        keyExtractor={(item) => item}
+
+      />
+      <DisplayerCustom
+        {...props}
+        title={'Recently Played'}
+        listItemId={props.profil.albumFavorite}
+        horizontal={true}
+        renderItem={({item}) => <Album {...props} id={item} />}
+        keyExtractor={(item) => item}
+
+      />
+      <DisplayerCustom
+        {...props}
+        title={'Top Playlist'}
+        listItemId={props.profil.albumFavorite}
+        horizontal={true}
+        renderItem={({item}) => <Album {...props} id={item} />}
+        keyExtractor={(item) => item}
+
       />
       <Displayer {...props} title={'Random'} listItemId={randDisplay} />
       <PlayerOverlay {...props} />
@@ -51,10 +101,20 @@ function HomePage(props) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    //flex: 1,
     justifyContent: 'flex-start',
     backgroundColor: 'rgba(227, 224, 215, 1)',
   },
+  button: {
+    borderStyle: 'solid',
+    borderBottomWidth: 2,
+    marginHorizontal: 15,
+    borderColor: 'rgba(169, 168, 163, 1)',
+    marginTop: 20,
+  },
+  text: {
+    fontSize: 30,
+  }
 });
 
 const mapStateToProps = (state) => {

@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {StyleSheet, View} from 'react-native';
 
-import ButtonSimple from './ButtonSimple'
+import ButtonSimple from './ButtonSimple';
+
 
 function FirstPage(props) {
   

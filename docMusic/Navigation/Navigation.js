@@ -104,7 +104,6 @@ function HomeNavigator() {
       inactiveTintColor: '#000',
       style: {
         backgroundColor: 'rgba(250, 248, 240, 1)',
-        color: "green"
       }
     }}
     >

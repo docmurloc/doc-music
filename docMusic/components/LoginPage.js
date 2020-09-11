@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {StyleSheet, Text, TextInput, View, Button} from 'react-native';
 
-import ButtonSimple from './ButtonSimple'
+import ButtonSimple from './ButtonSimple';
+import CustomText from './CustomText';
+
 
 import {loginUser} from '../APIserver/User';
 
@@ -15,8 +17,8 @@ function LoginPage(props) {
     <View style={styles.container}>
         <View style={styles.empty}></View>
         <View style={styles.box}>
-          <Text style={styles.textButton}>Log in</Text>
-          <Text style={styles.title}>{Info}</Text>
+          <CustomText style={styles.textButton}>Log in</CustomText>
+          <CustomText style={styles.title}>{Info}</CustomText>
           <TextInput
             style={styles.textInput}
             placeholder="username"

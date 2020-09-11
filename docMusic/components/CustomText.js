@@ -3,8 +3,7 @@ import {connect} from 'react-redux';
 import {StyleSheet, Image, View, Text} from 'react-native';
 
 function CustomText(props) {
-    console.log("custom ", props.style.fontWeight);
-    if (props.style.fontWeight && props.style.fontWeight == 'bold') {
+    if (props.style && props.style.fontWeight == 'bold') {
         const newStyle = {
             ...props.style,
             fontWeight : 'normal'

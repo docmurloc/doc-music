@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {StyleSheet, Text, TouchableHighlight} from 'react-native';
 
+import CustomText from './CustomText';
+
+
 function ButtonSimple(props) {
   
     return (
@@ -10,7 +13,7 @@ function ButtonSimple(props) {
       onPress={() => {
           props.onPress();
       }}>
-        <Text style={props.styleText}>{props.text}</Text>
+        <CustomText style={props.styleText}>{props.text}</CustomText>
       </TouchableHighlight>
     );
   }

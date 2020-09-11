@@ -1,17 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import Album from './Album';
 import CustomText from './CustomText'
 
 
 import {StyleSheet, Text, View, FlatList} from 'react-native';
 
-function Displayer(props) {
+function DisplayerCustom(props) {
   if (!props.listItemId || props.listItemId.length <= 0) {
     return (
       <CustomText>
-        <Text>No album to display</Text>
+        <Text>No Item to display</Text>
       </CustomText>
     );
   }
@@ -22,16 +21,17 @@ function Displayer(props) {
         <CustomText style={styles.title}>{props.title}</CustomText>
       </View>
       <FlatList
-        horizontal={true}
-        //numColumns={2}
+        horizontal={props.horizontal || false}
+        numColumns={props.numColumns || 1}
         data={props.listItemId}
-        renderItem={({item}) => <Album {...props} id={item} />}
-        keyExtractor={(item) => item}
+        renderItem={props.renderItem}
+        keyExtractor={props.keyExtractor}
       />
     </View>
   );
 }
-
+//({item}) => <Album {...props} id={item} />
+//(item) => item
 const styles = StyleSheet.create({
   title: {
     fontSize: 30,
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   return state;
 };
-export default connect(mapStateToProps)(Displayer);
+export default connect(mapStateToProps)(DisplayerCustom);
