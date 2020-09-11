@@ -11,7 +11,7 @@ import ButtonSimple from './ButtonSimple';
 
 import {GetRandomListAlbum} from '../APIserver/Album';
 
-function HomePage(props) {
+function BrowsePage(props) {
   const [randDisplay, setrandDisplay] = useState(null);
   const [refreshing, setRefreshing] = useState(null);
 
@@ -38,37 +38,66 @@ function HomePage(props) {
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }>
       <HeaderPage
-      title={'Library'}
-      icon={require('../Images/library.png')}
-      />
-      <ButtonSimple
-      text={'Playlists'}
-      style={styles.button}
-      styleText={styles.text}
-      />
-      <ButtonSimple
-      text={'Artists'}
-      style={styles.button}
-      styleText={styles.text}
-      />
-      <ButtonSimple
-      text={'Albums'}
-      style={styles.button}
-      styleText={styles.text}
-      />
-      <ButtonSimple
-      text={'Songs'}
-      style={styles.button}
-      styleText={styles.text}
-      />
-      <ButtonSimple
-      text={'Downloaded Music'}
-      style={styles.button}
-      styleText={styles.text}
+      title={'Browse'}
+      icon={require('../Images/browse.png')}
       />
       <DisplayerCustom
         {...props}
         title={'Recently Added'}
+        listItemId={props.profil.albumFavorite}
+        horizontal={true}
+        renderItem={({item}) => <Album {...props} id={item} />}
+        keyExtractor={(item) => item}
+
+      />
+      <DisplayerCustom
+        {...props}
+        title={'Popular'}
+        listItemId={props.profil.albumFavorite}
+        horizontal={true}
+        renderItem={({item}) => <Album {...props} id={item} />}
+        keyExtractor={(item) => item}
+
+      />
+      <DisplayerCustom
+        {...props}
+        title={'New Releases'}
+        listItemId={props.profil.albumFavorite}
+        horizontal={true}
+        renderItem={({item}) => <Album {...props} id={item} />}
+        keyExtractor={(item) => item}
+
+      />
+      <DisplayerCustom
+        {...props}
+        title={'Dance'}
+        listItemId={props.profil.albumFavorite}
+        horizontal={true}
+        renderItem={({item}) => <Album {...props} id={item} />}
+        keyExtractor={(item) => item}
+
+      />
+      <DisplayerCustom
+        {...props}
+        title={'Rock'}
+        listItemId={props.profil.albumFavorite}
+        horizontal={true}
+        renderItem={({item}) => <Album {...props} id={item} />}
+        keyExtractor={(item) => item}
+
+      />
+      <DisplayerCustom
+        {...props}
+        title={'Jazz'}
+        listItemId={props.profil.albumFavorite}
+        horizontal={true}
+        renderItem={({item}) => <Album {...props} id={item} />}
+        keyExtractor={(item) => item}
+
+      />
+      <DisplayerCustom
+        {...props}
+        title={'Genres'}
         listItemId={props.profil.albumFavorite}
         horizontal={true}
         renderItem={({item}) => <Album {...props} id={item} />}
@@ -102,4 +131,4 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   return state;
 };
-export default connect(mapStateToProps)(HomePage);
+export default connect(mapStateToProps)(BrowsePage);

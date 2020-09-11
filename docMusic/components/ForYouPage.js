@@ -11,7 +11,7 @@ import ButtonSimple from './ButtonSimple';
 
 import {GetRandomListAlbum} from '../APIserver/Album';
 
-function HomePage(props) {
+function ForYouPage(props) {
   const [randDisplay, setrandDisplay] = useState(null);
   const [refreshing, setRefreshing] = useState(null);
 
@@ -38,37 +38,30 @@ function HomePage(props) {
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }>
       <HeaderPage
-      title={'Library'}
-      icon={require('../Images/library.png')}
-      />
-      <ButtonSimple
-      text={'Playlists'}
-      style={styles.button}
-      styleText={styles.text}
-      />
-      <ButtonSimple
-      text={'Artists'}
-      style={styles.button}
-      styleText={styles.text}
-      />
-      <ButtonSimple
-      text={'Albums'}
-      style={styles.button}
-      styleText={styles.text}
-      />
-      <ButtonSimple
-      text={'Songs'}
-      style={styles.button}
-      styleText={styles.text}
-      />
-      <ButtonSimple
-      text={'Downloaded Music'}
-      style={styles.button}
-      styleText={styles.text}
+      title={'For you'}
+      icon={require('../Images/forYou.png')}
       />
       <DisplayerCustom
         {...props}
-        title={'Recently Added'}
+        title={'Favorite'}
+        listItemId={props.profil.albumFavorite}
+        horizontal={true}
+        renderItem={({item}) => <Album {...props} id={item} />}
+        keyExtractor={(item) => item}
+
+      />
+      <DisplayerCustom
+        {...props}
+        title={'Recently Played'}
+        listItemId={props.profil.albumFavorite}
+        horizontal={true}
+        renderItem={({item}) => <Album {...props} id={item} />}
+        keyExtractor={(item) => item}
+
+      />
+      <DisplayerCustom
+        {...props}
+        title={'Top Playlist'}
         listItemId={props.profil.albumFavorite}
         horizontal={true}
         renderItem={({item}) => <Album {...props} id={item} />}
@@ -102,4 +95,4 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   return state;
 };
-export default connect(mapStateToProps)(HomePage);
+export default connect(mapStateToProps)(ForYouPage);

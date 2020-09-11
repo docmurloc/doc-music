@@ -19,6 +19,8 @@ import PlayerPage from '../components/PlayerPage';
 import ResearchPage from '../components/ResearchPage';
 import HistoryPage from '../components/HistoryPage';
 import FirstPage from '../components/Firstpage';
+import ForYouPage from '../components/ForYouPage';
+import BrowsePage from '../components/BrowsePage';
 
 const getProfilCache = async (props) => {
   try {
@@ -108,9 +110,9 @@ function HomeNavigator() {
     }}
     >
       <Tab.Screen name="Library" component={HomeStack} />
-      <Tab.Screen name="For you" component={ResearchPage} />
-      <Tab.Screen name="Browse" component={HistoryPage} />
-      <Tab.Screen name="Search" component={HistoryPage} />
+      <Tab.Screen name="For you" component={ForYouPage} />
+      <Tab.Screen name="Browse" component={BrowsePage} />
+      <Tab.Screen name="Search" component={ResearchPage} />
     </Tab.Navigator>
   );
 }

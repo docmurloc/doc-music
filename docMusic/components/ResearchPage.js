@@ -5,6 +5,8 @@ import ResearchBar from './ResearchBar';
 import {GetTrackByTitle} from '../APIserver/Track';
 import ResearchItem from './ResearchItem';
 import PlayerOverlay from './PlayerOverlay';
+import HeaderPage from './HeaderPage';
+
 
 import {StyleSheet, Text, View, FlatList} from 'react-native';
 
@@ -24,6 +26,10 @@ function ResearchPage(props) {
 
   return (
     <View style={styles.container}>
+      <HeaderPage
+      title={'Search'}
+      icon={require('../Images/search.png')}
+      />
       <ResearchBar onPress={setresearch} />
       <Text style={styles.title}>Result</Text>
       <FlatList
@@ -39,8 +45,9 @@ function ResearchPage(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    //alignItems: 'center',
+    //justifyContent: 'flex-start',
+    backgroundColor: 'rgba(227, 224, 215, 1)',
   },
   title: {
     fontSize: 30,
