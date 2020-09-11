@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {StyleSheet, Image, View, Text} from 'react-native';
 
+import CustomText from './CustomText'
+
 function HeaderPage(props) {
   return (
     <View style={styles.box}>
@@ -11,7 +13,7 @@ function HeaderPage(props) {
                 style={styles.icon}
             />
         </View>
-        <Text style={styles.text}>{props.title}</Text>
+        <CustomText style={styles.text}>{props.title}</CustomText>
     </View>
   );
 }

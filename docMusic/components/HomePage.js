@@ -4,6 +4,7 @@ import {StyleSheet, View, ScrollView, RefreshControl} from 'react-native';
 
 import Displayer from './Displayer';
 import PlayerOverlay from './PlayerOverlay';
+import HeaderPage from './HeaderPage';
 
 import {GetRandomListAlbum} from '../APIserver/Album';
 
@@ -33,6 +34,10 @@ function HomePage(props) {
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }>
+      <HeaderPage
+      title={'Library'}
+      icon={require('../Images/browse.png')}
+      />
       <Displayer
         {...props}
         title={'Favorite'}
@@ -48,6 +53,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
+    backgroundColor: 'rgba(227, 224, 215, 1)',
   },
 });
 
