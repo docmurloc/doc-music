@@ -2,22 +2,24 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import Album from './Album';
+import CustomText from './CustomText'
+
 
 import {StyleSheet, Text, View, FlatList} from 'react-native';
 
 function Displayer(props) {
   if (!props.listItemId || props.listItemId.length <= 0) {
     return (
-      <View>
+      <CustomText>
         <Text>No album to display</Text>
-      </View>
+      </CustomText>
     );
   }
 
   return (
     <View>
       <View style={styles.titleView}>
-        <Text style={styles.title}>{props.title}</Text>
+        <CustomText style={styles.title}>{props.title}</CustomText>
       </View>
       <FlatList
         horizontal={true}
