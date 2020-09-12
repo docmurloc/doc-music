@@ -38,8 +38,6 @@ async function GetRecentListAlbum() {
 
   answer = await answer.json();
 
-  console.log("result recentListAlbum ", answer);
-
   return answer;
 }
 

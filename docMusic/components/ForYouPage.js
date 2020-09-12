@@ -7,13 +7,15 @@ import DisplayerCustom from './DisplayerCustom';
 import Album from './Album';
 import PlayerOverlay from './PlayerOverlay';
 import HeaderPage from './HeaderPage';
+import HistoryItem from './HistoryItem';
 import ButtonSimple from './ButtonSimple';
 
-import {GetRandomListAlbum} from '../APIserver/Album';
+import {GetRandomListAlbum, GetTopListAlbum} from '../APIserver/Album';
 
 function ForYouPage(props) {
-  const [randDisplay, setrandDisplay] = useState(null);
-  const [refreshing, setRefreshing] = useState(null);
+    const [randDisplay, setrandDisplay] = useState(null);
+    const [topDisplay, setTopDisplay] = useState(null);
+    const [refreshing, setRefreshing] = useState(null);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
@@ -27,6 +29,13 @@ function ForYouPage(props) {
   if (!randDisplay) {
     GetRandomListAlbum(5).then((result) => {
       setrandDisplay(result);
+    });
+    return <View />;
+  }
+
+  if (!topDisplay) {
+    GetTopListAlbum().then((result) => {
+        setTopDisplay(result);
     });
     return <View />;
   }
@@ -53,22 +62,21 @@ function ForYouPage(props) {
       <DisplayerCustom
         {...props}
         title={'Recently Played'}
-        listItemId={props.profil.albumFavorite}
+        listItemId={props.profil.trackHistoric}
         horizontal={true}
-        renderItem={({item}) => <Album {...props} id={item} />}
+        renderItem={({item}) => <HistoryItem {...props} id={item} />}
         keyExtractor={(item) => item}
 
       />
       <DisplayerCustom
         {...props}
         title={'Top Playlist'}
-        listItemId={props.profil.albumFavorite}
+        listItemId={topDisplay}
         horizontal={true}
-        renderItem={({item}) => <Album {...props} id={item} />}
-        keyExtractor={(item) => item}
+        renderItem={({item}) => <Album {...props} id={item._id} />}
+        keyExtractor={(item) => item._id}
 
       />
-      <Displayer {...props} title={'Random'} listItemId={randDisplay} />
       <PlayerOverlay {...props} />
     </ScrollView>
   );

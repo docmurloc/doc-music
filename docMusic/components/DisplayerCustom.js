@@ -17,6 +17,12 @@ function DisplayerCustom(props) {
 
   return (
     <View>
+        {props.horizontal ? 
+            <View style={styles.titleView}>
+                <CustomText style={styles.title}>{props.title}</CustomText>
+            </View> 
+            :
+             <></>}
       <FlatList
         refreshControl={
             props.refreshControl
@@ -24,10 +30,12 @@ function DisplayerCustom(props) {
         ListHeaderComponent={
             <>
                 {props.ListHeaderComponent ? props.ListHeaderComponent : <></>}
+                {!props.horizontal ? 
                 <View style={styles.titleView}>
                     <CustomText style={styles.title}>{props.title}</CustomText>
-                </View>
-
+                </View> 
+                : 
+                <></>}
             </>
         }
         horizontal={props.horizontal || false}

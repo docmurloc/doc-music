@@ -14,6 +14,9 @@ import {
 import {GetRandomAlbum, GetAlbumById} from '../APIserver/Album';
 import {GetPlaylistById} from '../APIserver/Playlist';
 
+import CustomText from './CustomText'
+
+
 async function SetAlbumItem(setAlbum, id = null) {
   let answer = null;
 
@@ -64,10 +67,10 @@ function Album(props) {
         <View style={styles.content}>
           <Image source={{uri: album.artwork}} style={styles.logo} />
           <View style={styles.content2}>
-            <Text style={styles.title}>{album.title}</Text>
-            <Text style={styles.text} numberOfLines={2} ellipsizeMode="tail">
+            <CustomText style={styles.title}>{album.title}</CustomText>
+            <CustomText style={styles.text} numberOfLines={2} ellipsizeMode="tail">
               {album.genre} {album.artist}
-            </Text>
+            </CustomText>
           </View>
         </View>
       </TouchableHighlight>
@@ -80,7 +83,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   content: {
-    width: 130,
+    width: 180,
     padding: 5,
     alignItems: 'center',
     justifyContent: 'space-around',
@@ -96,8 +99,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   logo: {
-    width: 100,
-    height: 100,
+    width: 150,
+    height: 150,
     resizeMode: 'contain',
   },
 });

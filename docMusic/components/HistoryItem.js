@@ -15,6 +15,9 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
+import CustomText from './CustomText'
+
+
 async function SetTrackItem(setTrack, id) {
   let answer = await GetTrackById(id);
 
@@ -32,7 +35,7 @@ async function selectedTrack(props, track) {
   const action = {type: 'SET_CURRENT_TRACK', track: track};
   props.dispatch(action);
 
-  props.navigation.navigate('HomePage');
+  //props.navigation.navigate('HomePage');
 }
 
 function HistoryItem(props) {
@@ -55,10 +58,10 @@ function HistoryItem(props) {
       <View style={styles.horizontalDisplay}>
         <Image source={{uri: track.artwork}} style={styles.icon} />
         <View style={styles.box}>
-          <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">
+          <CustomText style={styles.title} numberOfLines={2} ellipsizeMode="tail">
             {track.title}
-          </Text>
-          <Text style={styles.text}>{track.artist}</Text>
+          </CustomText>
+          <CustomText style={styles.text}>{track.artist}</CustomText>
         </View>
       </View>
     </TouchableHighlight>
@@ -67,17 +70,19 @@ function HistoryItem(props) {
 
 const styles = StyleSheet.create({
   box: {
-    width: '80%',
+    width: 200,
     alignItems: 'flex-start',
     justifyContent: 'space-around',
     paddingHorizontal: 15,
   },
   horizontalDisplay: {
-    width: '100 %',
+    width: 300,
     padding: 10,
+    //marginLeft : 10,
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'flex-start',
-    backgroundColor: 'rgba(215, 215, 215, 1)',
+    //backgroundColor: 'rgba(215, 215, 215, 1)',
   },
   text: {
     fontSize: 16,
@@ -87,8 +92,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   icon: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
     resizeMode: 'contain',
   },
 });

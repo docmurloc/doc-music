@@ -26,7 +26,6 @@ function HomePage(props) {
   if (!recentDisplay) {
     GetRecentListAlbum().then((result) => {
       setrecentDisplay(result);
-      console.log("result ", result);
     });
     return <View />;
   }
