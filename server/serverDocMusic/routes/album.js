@@ -63,6 +63,7 @@ router.get('/random', async function(req, res, next) {
         date: album.date,
         genre: album.genre,
         playListId: album.playListId,
+        like: album.like
     };
   res.status(200).send(answer);
 });
@@ -111,12 +112,40 @@ router.get('/id', async function(req, res, next) {
       date: album.date,
       genre: album.genre,
       playListId: album.playListId,
+      like: album.like,
   };
   res.status(200).send(answer);
 });
 
 router.get('/all', async function(req, res, next) {
   let albums = await AlbumModel.find({});
+
+  albums.forEach((album) => {
+    album.artwork = album.artwork ? baseURLImage + album.artwork : baseURLImage + missingImage;
+  })
+  res.status(200).send(albums);
+});
+
+router.get('/recent', async function(req, res, next) {
+  let albums = await AlbumModel.find().sort({ _id: -1 }).limit(6);
+
+  albums.forEach((album) => {
+    album.artwork = album.artwork ? baseURLImage + album.artwork : baseURLImage + missingImage;
+  })
+  res.status(200).send(albums);
+});
+
+router.get('/top', async function(req, res, next) {
+  let albums = await AlbumModel.find().sort({ like: -1 }).limit(6);
+
+  albums.forEach((album) => {
+    album.artwork = album.artwork ? baseURLImage + album.artwork : baseURLImage + missingImage;
+  })
+  res.status(200).send(albums);
+});
+
+router.get('/genre', async function(req, res, next) {
+  let albums = await AlbumModel.find({genre : req.headers.genre}).sort({ _id: -1 }).limit(6);
 
   albums.forEach((album) => {
     album.artwork = album.artwork ? baseURLImage + album.artwork : baseURLImage + missingImage;
@@ -167,6 +196,7 @@ router.post('/upload', async function(req, res, next) {
         date: getDate(),
         genre: req.body.album_genre,
         playListId: req.body.album_playlist ? req.body.album_playlist : null,
+        like: 0,
     });
     await album.save();
   }

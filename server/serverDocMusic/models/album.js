@@ -11,6 +11,7 @@ var AlbumModelSchema = new Schema({
     date: String,
     genre: String,
     playListId: String,
+    like: Number,
 });
 
 // Compile model from schema
