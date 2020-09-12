@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import Draggable from 'react-native-draggable';
 
 import {pause, stop} from '../APIsound/pause';
 import {play} from '../APIsound/play';
@@ -13,14 +14,15 @@ import {StyleSheet, Text, View, Image, TouchableHighlight} from 'react-native';
 function PlayerOverlay(props) {
   if (props.track.currentTrack) {
     return (
+      <Draggable x={0} y={500}>
       <View style={styles.container}>
-        <TouchableHighlight onPress={() => props.navigation.navigate('Player')}>
+        <View onPress={() => props.navigation.navigate('Player')}>
           <Image
             source={{uri: props.track.currentTrack.artwork}}
             style={styles.logo}
           />
-        </TouchableHighlight>
-        <TouchableHighlight
+        </View>
+        <View
           style={styles.box}
           onPress={() => props.navigation.navigate('Player')}>
           <View>
@@ -28,7 +30,7 @@ function PlayerOverlay(props) {
               {props.track.currentTrack.title}
             </Text>
           </View>
-        </TouchableHighlight>
+        </View>
         <PlayButton
           iconOff={require('../Images/playIcon.png')}
           onPressOff={play}
@@ -38,6 +40,7 @@ function PlayerOverlay(props) {
         <ButtonIcon icon={require('../Images/nextArrow.png')} onPress={next} />
         <ButtonIcon icon={require('../Images/crossIcon.png')} onPress={stop} />
       </View>
+      </Draggable>
     );
   } else {
     return <View />;
@@ -46,12 +49,12 @@ function PlayerOverlay(props) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    //flex: 1,
     backgroundColor: 'rgba(188, 187, 182, 1)',
     borderRadius: 30  ,
-    position: 'absolute',
-    left: 0,
-    bottom: 0,
+    //position: 'absolute',
+    //left: 0,
+    //bottom: 0,
     width: '100%',
     paddingHorizontal: 15,
     height: 75,
