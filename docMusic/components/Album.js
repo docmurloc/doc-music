@@ -81,6 +81,7 @@ function Album(props) {
 const styles = StyleSheet.create({
   content2: {
     padding: 5,
+    width: 150,
   },
   content: {
     width: 180,
