@@ -24,6 +24,63 @@ async function GetRandomAlbum() {
 
 exports.GetRandomAlbum = GetRandomAlbum;
 
+async function GetRecentListAlbum() {
+  let answer = await fetch(
+    'http://' + IP_SERVER + ':' + PORT_SERVER + '/albums/randomList',
+    {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'GET',
+    },
+  );
+
+  answer = await answer.json();
+
+  return answer;
+}
+
+exports.GetRecentListAlbum = GetRecentListAlbum;
+
+async function GetTopListAlbum() {
+  let answer = await fetch(
+    'http://' + IP_SERVER + ':' + PORT_SERVER + '/albums/randomList',
+    {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'GET',
+    },
+  );
+
+  answer = await answer.json();
+
+  return answer;
+}
+
+exports.GetTopListAlbum = GetTopListAlbum;
+
+async function GetListAlbumByGenre() {
+  let answer = await fetch(
+    'http://' + IP_SERVER + ':' + PORT_SERVER + '/albums/randomList',
+    {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'GET',
+    },
+  );
+
+  answer = await answer.json();
+
+  return answer;
+}
+
+exports.GetListAlbumByGenre = GetListAlbumByGenre;
+
 async function GetRandomListAlbum(lengthList) {
   let answer = await fetch(
     'http://' + IP_SERVER + ':' + PORT_SERVER + '/albums/randomList',
