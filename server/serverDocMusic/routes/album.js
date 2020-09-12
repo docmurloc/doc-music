@@ -127,7 +127,7 @@ router.get('/all', async function(req, res, next) {
 });
 
 router.get('/recent', async function(req, res, next) {
-  let albums = await AlbumModel.find().sort({ _id: -1 }).limit(6);
+  let albums = await AlbumModel.find().limit(6);
 
   albums.forEach((album) => {
     album.artwork = album.artwork ? baseURLImage + album.artwork : baseURLImage + missingImage;

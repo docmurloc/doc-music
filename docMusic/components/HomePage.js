@@ -1,83 +1,88 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import {StyleSheet, View, ScrollView, RefreshControl} from 'react-native';
+import {StyleSheet, View, RefreshControl} from 'react-native';
 
-import Displayer from './Displayer';
 import DisplayerCustom from './DisplayerCustom';
 import Album from './Album';
 import PlayerOverlay from './PlayerOverlay';
 import HeaderPage from './HeaderPage';
 import ButtonSimple from './ButtonSimple';
 
-import {GetRandomListAlbum} from '../APIserver/Album';
+import {GetRecentListAlbum} from '../APIserver/Album';
 
 function HomePage(props) {
-  const [randDisplay, setrandDisplay] = useState(null);
+  const [recentDisplay, setrecentDisplay] = useState(null);
   const [refreshing, setRefreshing] = useState(null);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
 
-    GetRandomListAlbum(5).then((result) => {
-      setrandDisplay(result);
+    GetRecentListAlbum().then((result) => {
+      setrecentDisplay(result);
       setRefreshing(false);
     });
   }, []);
 
-  if (!randDisplay) {
-    GetRandomListAlbum(5).then((result) => {
-      setrandDisplay(result);
+  if (!recentDisplay) {
+    GetRecentListAlbum().then((result) => {
+      setrecentDisplay(result);
+      console.log("result ", result);
     });
     return <View />;
   }
 
   return (
-    <ScrollView
-      contentContainerStyle={styles.container}
-      refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-      }>
-      <HeaderPage
-      title={'Library'}
-      icon={require('../Images/library.png')}
-      />
-      <ButtonSimple
-      text={'Playlists'}
-      style={styles.button}
-      styleText={styles.text}
-      />
-      <ButtonSimple
-      text={'Artists'}
-      style={styles.button}
-      styleText={styles.text}
-      />
-      <ButtonSimple
-      text={'Albums'}
-      style={styles.button}
-      styleText={styles.text}
-      />
-      <ButtonSimple
-      text={'Songs'}
-      style={styles.button}
-      styleText={styles.text}
-      />
-      <ButtonSimple
-      text={'Downloaded Music'}
-      style={styles.button}
-      styleText={styles.text}
-      />
+    <View
+      style={styles.container}
+      >
       <DisplayerCustom
         {...props}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }  
+        ListHeaderComponent={
+          <>
+            <HeaderPage
+            title={'Library'}
+            icon={require('../Images/library.png')}
+            />
+            <ButtonSimple
+            text={'Playlists'}
+            style={styles.button}
+            styleText={styles.text}
+            />
+            <ButtonSimple
+            text={'Artists'}
+            style={styles.button}
+            styleText={styles.text}
+            />
+            <ButtonSimple
+            text={'Albums'}
+            style={styles.button}
+            styleText={styles.text}
+            />
+            <ButtonSimple
+            text={'Songs'}
+            style={styles.button}
+            styleText={styles.text}
+            />
+            <ButtonSimple
+            text={'Downloaded Music'}
+            style={styles.button}
+            styleText={styles.text}
+            />
+          </>
+        }
         title={'Recently Added'}
-        listItemId={props.profil.albumFavorite}
-        horizontal={true}
-        renderItem={({item}) => <Album {...props} id={item} />}
-        keyExtractor={(item) => item}
+        listItemId={recentDisplay}
+        horizontal={false}
+        numColumns={2}
+        renderItem={({item}) => <Album {...props} id={item._id} />}
+        keyExtractor={(item) => item._id}
 
       />
-      <Displayer {...props} title={'Random'} listItemId={randDisplay} />
       <PlayerOverlay {...props} />
-    </ScrollView>
+    </View>
   );
 }
 

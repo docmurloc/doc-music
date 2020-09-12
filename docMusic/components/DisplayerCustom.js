@@ -17,10 +17,19 @@ function DisplayerCustom(props) {
 
   return (
     <View>
-      <View style={styles.titleView}>
-        <CustomText style={styles.title}>{props.title}</CustomText>
-      </View>
       <FlatList
+        refreshControl={
+            props.refreshControl
+        }
+        ListHeaderComponent={
+            <>
+                {props.ListHeaderComponent ? props.ListHeaderComponent : <></>}
+                <View style={styles.titleView}>
+                    <CustomText style={styles.title}>{props.title}</CustomText>
+                </View>
+
+            </>
+        }
         horizontal={props.horizontal || false}
         numColumns={props.numColumns || 1}
         data={props.listItemId}

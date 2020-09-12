@@ -26,7 +26,7 @@ exports.GetRandomAlbum = GetRandomAlbum;
 
 async function GetRecentListAlbum() {
   let answer = await fetch(
-    'http://' + IP_SERVER + ':' + PORT_SERVER + '/albums/randomList',
+    'http://' + IP_SERVER + ':' + PORT_SERVER + '/albums/recent',
     {
       headers: {
         Accept: 'application/json',
@@ -38,6 +38,8 @@ async function GetRecentListAlbum() {
 
   answer = await answer.json();
 
+  console.log("result recentListAlbum ", answer);
+
   return answer;
 }
 
@@ -45,7 +47,7 @@ exports.GetRecentListAlbum = GetRecentListAlbum;
 
 async function GetTopListAlbum() {
   let answer = await fetch(
-    'http://' + IP_SERVER + ':' + PORT_SERVER + '/albums/randomList',
+    'http://' + IP_SERVER + ':' + PORT_SERVER + '/albums/top',
     {
       headers: {
         Accept: 'application/json',
@@ -62,13 +64,14 @@ async function GetTopListAlbum() {
 
 exports.GetTopListAlbum = GetTopListAlbum;
 
-async function GetListAlbumByGenre() {
+async function GetListAlbumByGenre(genreAlbum) {
   let answer = await fetch(
-    'http://' + IP_SERVER + ':' + PORT_SERVER + '/albums/randomList',
+    'http://' + IP_SERVER + ':' + PORT_SERVER + '/albums/genre',
     {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
+        genre : genreAlbum
       },
       method: 'GET',
     },
