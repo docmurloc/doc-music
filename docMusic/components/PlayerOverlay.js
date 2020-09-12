@@ -16,12 +16,12 @@ function PlayerOverlay(props) {
     return (
       <Draggable x={0} y={500}>
       <View style={styles.container}>
-        <View onPress={() => props.navigation.navigate('Player')}>
+        <TouchableHighlight onPress={() => props.navigation.navigate('Player')}>
           <Image
             source={{uri: props.track.currentTrack.artwork}}
             style={styles.logo}
           />
-        </View>
+        </TouchableHighlight>
         <View
           style={styles.box}
           onPress={() => props.navigation.navigate('Player')}>

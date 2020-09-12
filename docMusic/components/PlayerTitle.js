@@ -81,9 +81,6 @@ function PlayerTitle(props) {
         <CustomText style={styles.text} ellipsizeMode={'tail'} numberOfLines={1}>
           {props.track.currentTrack.artist}
         </CustomText>
-        <CustomText style={styles.text} ellipsizeMode={'tail'} numberOfLines={1}>
-          {props.playlist.currentPlaylist.title}
-        </CustomText>
       </View>
       <ButtonSwitch
         iconOff={require('../Images/likeOff.png')}
@@ -118,7 +115,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     textAlign: 'center',
-    //fontWeight: 'bold',
+    fontWeight: 'bold',
     color: 'rgba(173, 173, 173, 1)'
   },
   text: {
