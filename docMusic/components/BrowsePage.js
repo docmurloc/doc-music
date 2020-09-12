@@ -43,33 +43,6 @@ function BrowsePage(props) {
       />
       <DisplayerCustom
         {...props}
-        title={'Recently Added'}
-        listItemId={props.profil.albumFavorite}
-        horizontal={true}
-        renderItem={({item}) => <Album {...props} id={item} />}
-        keyExtractor={(item) => item}
-
-      />
-      <DisplayerCustom
-        {...props}
-        title={'Popular'}
-        listItemId={props.profil.albumFavorite}
-        horizontal={true}
-        renderItem={({item}) => <Album {...props} id={item} />}
-        keyExtractor={(item) => item}
-
-      />
-      <DisplayerCustom
-        {...props}
-        title={'New Releases'}
-        listItemId={props.profil.albumFavorite}
-        horizontal={true}
-        renderItem={({item}) => <Album {...props} id={item} />}
-        keyExtractor={(item) => item}
-
-      />
-      <DisplayerCustom
-        {...props}
         title={'Dance'}
         listItemId={props.profil.albumFavorite}
         horizontal={true}
@@ -95,16 +68,6 @@ function BrowsePage(props) {
         keyExtractor={(item) => item}
 
       />
-      <DisplayerCustom
-        {...props}
-        title={'Genres'}
-        listItemId={props.profil.albumFavorite}
-        horizontal={true}
-        renderItem={({item}) => <Album {...props} id={item} />}
-        keyExtractor={(item) => item}
-
-      />
-      <Displayer {...props} title={'Random'} listItemId={randDisplay} />
       <PlayerOverlay {...props} />
     </ScrollView>
   );

@@ -70,7 +70,7 @@ function ForYouPage(props) {
       />
       <DisplayerCustom
         {...props}
-        title={'Top Playlist'}
+        title={'Top Album'}
         listItemId={topDisplay}
         horizontal={true}
         renderItem={({item}) => <Album {...props} id={item._id} />}
