@@ -3,10 +3,12 @@ import {connect} from 'react-redux';
 
 import ResearchBar from './ResearchBar';
 import {GetTrackByTitle} from '../APIserver/Track';
+import {GetAlbumByTitle} from '../APIserver/Album';
 import ResearchItem from './ResearchItem';
 import PlayerOverlay from './PlayerOverlay';
 import HeaderPage from './HeaderPage';
 import CustomText from './CustomText';
+import AlbumItem from './albumItem';
 import DisplayerCustom from './DisplayerCustom';
 
 import {StyleSheet, Text, View, FlatList} from 'react-native';
@@ -18,12 +20,14 @@ function ResearchPage(props) {
     async function getTitle(newResearch) {
       if (newResearch) {
         setResult(await GetTrackByTitle(newResearch));
+        setAlbum(await GetAlbumByTitle(newResearch));
       }
     }
     getTitle(research);
   }, [research]);
 
   const [result, setResult] = useState(null);
+  const [album, setAlbum] = useState(null);
 
   return (
     <View style={styles.container}>
@@ -54,9 +58,9 @@ function ResearchPage(props) {
         {...props}
         style={styles.FlatList}
         title={'Albums'}
-        listItemId={result}
+        listItemId={album}
         horizontal={false}
-        renderItem={({item}) => <ResearchItem {...props} id={item._id} />}
+        renderItem={({item}) => <AlbumItem {...props} id={item._id} />}
         keyExtractor={(item) => item._id}
       />
       <PlayerOverlay {...props} />
@@ -77,7 +81,8 @@ const styles = StyleSheet.create({
     //textAlign: 'center',
   },
   FlatList: {
-    height: 150,
+    height: 130,
+    marginTop: 10,
   }
 });
 

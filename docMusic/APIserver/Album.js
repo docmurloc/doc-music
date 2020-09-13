@@ -145,6 +145,8 @@ async function GetAlbumByTitle(title) {
 
   answer = await answer.json();
 
+  console.log("result album by title ", answer);
+
   return answer;
 }
 
