@@ -232,9 +232,11 @@ router.post('/delete', async function(req, res, next) {
 router.post('/add_favorite', async function(req, res, next) {
 
   let user = await UserModel.findOne({access_token : req.headers.access_token});
+  let track = await TrackModel.findOne({_id : req.body.trackId});
 
   if (user) {
     await user.updateOne({trackFavorite : [req.body.trackId, ...user.trackFavorite]});
+    await track.updateOne({like: track.like + 1})
     return  res.status(200).send({status : "succes"});
   }
   return res.status(400).send({status : "user not found"});
@@ -243,9 +245,12 @@ router.post('/add_favorite', async function(req, res, next) {
 router.post('/add_unfavorite', async function(req, res, next) {
 
   let user = await UserModel.findOne({access_token : req.headers.access_token});
+  let track = await TrackModel.findOne({_id : req.body.trackId});
+
 
   if (user) {
     await user.updateOne({trackUnfavorite : [req.body.trackId, ...user.trackUnfavorite]});
+    await track.updateOne({like: track.like - 1})
     return  res.status(200).send({status : "succes"});
   }
   return res.status(400).send({status : "user not found"});
@@ -254,6 +259,8 @@ router.post('/add_unfavorite', async function(req, res, next) {
 router.post('/rem_favorite', async function(req, res, next) {
 
   let user = await UserModel.findOne({access_token : req.headers.access_token});
+  let track = await TrackModel.findOne({_id : req.body.trackId});
+
 
   if (user) {
     let arrayFavorite = user.trackFavorite;
@@ -264,6 +271,7 @@ router.post('/rem_favorite', async function(req, res, next) {
       }
     );
     await user.updateOne({trackFavorite : arrayFavorite});
+    await track.updateOne({like: track.like - 1})
     return  res.status(200).send({status : "succes"});
   }
   return res.status(400).send({status : "user not found"});
@@ -272,6 +280,8 @@ router.post('/rem_favorite', async function(req, res, next) {
 router.post('/rem_unfavorite', async function(req, res, next) {
 
   let user = await UserModel.findOne({access_token : req.headers.access_token});
+  let track = await TrackModel.findOne({_id : req.body.trackId});
+
 
   if (user) {
     let arrayUnfavorite = user.trackUnfavorite;
@@ -282,6 +292,7 @@ router.post('/rem_unfavorite', async function(req, res, next) {
       }
     );
     await user.updateOne({trackUnfavorite : arrayUnfavorite});
+    await track.updateOne({like: track.like + 1})
     return  res.status(200).send({status : "succes"});
   }
   return res.status(400).send({status : "user not found"});
