@@ -126,6 +126,19 @@ router.get('/all', async function(req, res, next) {
   res.status(200).send(albums);
 });
 
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+}
+
+router.get('/research', async function(req, res, next) {
+
+    const titleString = escapeRegExp(req.headers.title);
+
+    let albumResult = await AlbumModel.find({title : new RegExp('^.*'+titleString+'.*$', "i")}).limit(6);
+  
+    res.status(200).send(albumResult);
+});
+
 router.get('/recent', async function(req, res, next) {
   let albums = await AlbumModel.find().limit(6);
 

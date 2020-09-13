@@ -130,6 +130,26 @@ async function GetAlbumById(id) {
 
 exports.GetAlbumById = GetAlbumById;
 
+async function GetAlbumByTitle(title) {
+  let answer = await fetch(
+    'http://' + IP_SERVER + ':' + PORT_SERVER + '/albums/research',
+    {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        title: title,
+      },
+      method: 'GET',
+    },
+  );
+
+  answer = await answer.json();
+
+  return answer;
+}
+
+exports.GetAlbumByTitle = GetAlbumByTitle;
+
 async function AlbumFavorite(userToken) {
   fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/albums/favorite', {
     headers: {

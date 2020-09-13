@@ -107,7 +107,7 @@ router.get('/research', async function(req, res, next) {
 
     const titleString = escapeRegExp(req.headers.title);
 
-    let trackResult = await TrackModel.find({title : new RegExp('^.*'+titleString+'.*$', "i")}).limit(10);
+    let trackResult = await TrackModel.find({title : new RegExp('^.*'+titleString+'.*$', "i")}).limit(6);
   
     res.status(200).send(trackResult);
 });

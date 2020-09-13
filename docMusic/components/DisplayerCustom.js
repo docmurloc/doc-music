@@ -9,9 +9,8 @@ import {StyleSheet, Text, View, FlatList} from 'react-native';
 function DisplayerCustom(props) {
   if (!props.listItemId || props.listItemId.length <= 0) {
     return (
-      <CustomText>
-        <Text>No Item to display</Text>
-      </CustomText>
+      <View>
+      </View>
     );
   }
 
