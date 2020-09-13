@@ -65,6 +65,7 @@ function PlaylistPage(props) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    backgroundColor: 'rgba(227, 224, 215, 1)',
   },
   box: {
     alignItems: 'center',

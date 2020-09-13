@@ -21,7 +21,7 @@ class MyPlayerBar extends TrackPlayer.ProgressComponent {
           progress={this.getProgress()}
           buffered={this.getBufferedProgress()}
           width={300}
-          color={'black'}
+          color={'rgba(173, 173, 173, 1)'}
           height={10}
         />
       </View>

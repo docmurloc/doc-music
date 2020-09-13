@@ -91,6 +91,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingVertical: 5,
+    backgroundColor: 'rgba(173, 173, 173, 1)',
+    borderRadius: 20,
   },
   title: {
     fontSize: 20,

@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   box: {
-    width: '70%',
+    width: '60%',
     alignItems: 'center',
     justifyContent: 'space-around',
     paddingTop: 10,
