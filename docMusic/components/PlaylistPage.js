@@ -66,14 +66,16 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     backgroundColor: 'rgba(227, 224, 215, 1)',
+    height: '100%'
   },
   box: {
     alignItems: 'center',
     justifyContent: 'space-around',
-    height: '67%',
+    height: '60%',
+
   },
   box2: {
-    height: '33%',
+    height: '40%',
     alignItems: 'center',
     justifyContent: 'space-around',
   },
