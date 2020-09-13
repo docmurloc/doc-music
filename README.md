@@ -2,12 +2,15 @@
 
 This project is the creation of a small music streaming application with the back and front end.
 
-![Signe UP page](/documentation/image/signe_up.jpg)
-![home page](/documentation/image/home.jpg)
-![history page](/documentation/image/history.jpg)
-![research page](/documentation/image/research.jpg)
-![playlist page](/documentation/image/playlist.jpg)
-![player page](/documentation/image/player.jpg)
+![First page](/documentation/image/first.jpg)
+![log in](/documentation/image/log_in.jpg)
+![sign up](/documentation/image/sign_up.jpg)
+![library](/documentation/image/library.jpg)
+![for you](/documentation/image/forYou.jpg)
+![browse](/documentation/image/browse.jpg)
+![search](/documentation/image/search.jpg)
+![playlist](/documentation/image/playlist.jpg)
+![player](/documentation/image/player.jpg)
 
 # Installation
 

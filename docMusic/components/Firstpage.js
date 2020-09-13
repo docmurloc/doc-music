@@ -25,12 +25,6 @@ function FirstPage(props) {
             />
         </View>
         <View style={styles.content}>
-            <ButtonSimple
-            style={styles.Button}
-            styleText={styles.textButton}
-            text="Skip"
-            onPress={() => props.navigation.navigate('Login')}
-            />
         </View>
       </View>
     );
