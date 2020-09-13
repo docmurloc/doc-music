@@ -12,6 +12,10 @@ This project is the creation of a small music streaming application with the bac
 ![playlist](/documentation/image/playlist.jpg)
 ![player](/documentation/image/player.jpg)
 
+# Contributors
+
+mobil front end design : Chine WINONA YAHBA
+
 # Installation
 
 You need to have react-native, node, docker and docker-compose
