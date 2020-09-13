@@ -65,11 +65,6 @@ function HomePage(props) {
             style={styles.button}
             styleText={styles.text}
             />
-            <ButtonSimple
-            text={'Downloaded Music'}
-            style={styles.button}
-            styleText={styles.text}
-            />
           </>
         }
         title={'Recently Added'}

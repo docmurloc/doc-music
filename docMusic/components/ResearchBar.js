@@ -13,7 +13,8 @@ function ResearchBar(props) {
         <View style={styles.box}>
           <TextInput
             style={styles.textInput}
-            placeholder="Title"
+            placeholder="Artist, track, album...."
+            placeholderTextColor = 'rgba(169, 169, 169, 1)'
             onChangeText={(text) => setresearch(text)}
             value={research}
           />
@@ -37,12 +38,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   horizontalDisplay: {
-    width: '70 %',
+    width: '100 %',
     flexDirection: 'row',
     alignItems: 'center',
   },
   textInput: {
     height: 40,
+    backgroundColor: 'rgba(38, 38, 38, 1)',
+    color: 'rgba(169, 169, 169, 1)',
     borderColor: 'gray',
     borderWidth: 1,
   },
