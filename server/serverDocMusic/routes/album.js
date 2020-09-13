@@ -295,9 +295,11 @@ router.post('/add_favorite', async function(req, res, next) {
 
 
   let user = await UserModel.findOne({access_token : req.headers.access_token});
+  let album = await AlbumModel.findOne({_id : req.body.trackId});
 
   if (user) {
     await user.updateOne({albumFavorite : [req.body.trackId, ...user.albumFavorite]});
+    await album.updateOne({like: album.like + 1});
     return  res.status(200).send({status : "succes"});
   }
   return res.status(400).send({status : "user not found"});
@@ -308,6 +310,8 @@ router.post('/rem_favorite', async function(req, res, next) {
 
 
   let user = await UserModel.findOne({access_token : req.headers.access_token});
+  let album = await AlbumModel.findOne({_id : req.body.trackId});
+
 
   if (user) {
     let arrayFavorite = user.albumFavorite;
@@ -318,6 +322,8 @@ router.post('/rem_favorite', async function(req, res, next) {
       }
     );
     await user.updateOne({albumFavorite : arrayFavorite});
+    await album.updateOne({like: album.like - 1});
+
     return  res.status(200).send({status : "succes"});
   }
   return res.status(400).send({status : "user not found"});
