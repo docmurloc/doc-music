@@ -9,24 +9,108 @@ import PlayerOverlay from './PlayerOverlay';
 import HeaderPage from './HeaderPage';
 import ButtonSimple from './ButtonSimple';
 
-import {GetRandomListAlbum} from '../APIserver/Album';
+import {GetRandomListAlbum, GetListAlbumByGenre} from '../APIserver/Album';
 
 function BrowsePage(props) {
-  const [randDisplay, setrandDisplay] = useState(null);
-  const [refreshing, setRefreshing] = useState(null);
+    const [randDisplay, setrandDisplay] = useState(null);
 
-  const onRefresh = React.useCallback(() => {
+    const [pop, setPop] = useState(null);
+    const [jazz, setJazz] = useState(null);
+    const [rock, setRock] = useState(null);
+    const [blues, setBlues] = useState(null);
+    const [house, setHouse] = useState(null);
+    const [indie, setIndie] = useState(null);
+    const [metal, setMetal] = useState(null);
+    const [classical, setClassical] = useState(null);
+    const [dance, setDance] = useState(null);
+    const [kpop, setkpop] = useState(null);
+
+    const [refreshing, setRefreshing] = useState(null);
+
+  const onRefresh = React.useCallback( async () => {
     setRefreshing(true);
 
     GetRandomListAlbum(5).then((result) => {
       setrandDisplay(result);
-      setRefreshing(false);
     });
+    setPop(await GetListAlbumByGenre("Pop"));
+
+    setRefreshing(false);
   }, []);
 
   if (!randDisplay) {
     GetRandomListAlbum(5).then((result) => {
       setrandDisplay(result);
+    });
+    return <View />;
+  }
+
+  if (pop === null) {
+    GetListAlbumByGenre("Pop").then((result) => {
+        setPop(result);
+    });
+    return <View />;
+  }
+
+  if (jazz === null) {
+    GetListAlbumByGenre("Jazz").then((result) => {
+        setJazz(result);
+    });
+    return <View />;
+  }
+
+  if (rock === null) {
+    GetListAlbumByGenre("Rock").then((result) => {
+        setRock(result);
+    });
+    return <View />;
+  }
+
+  if (blues === null) {
+    GetListAlbumByGenre("Blues").then((result) => {
+        setBlues(result);
+    });
+    return <View />;
+  }
+
+  if (house === null) {
+    GetListAlbumByGenre("House").then((result) => {
+        setHouse(result);
+    });
+    return <View />;
+  }
+
+  if (indie === null) {
+    GetListAlbumByGenre("Indie").then((result) => {
+        setIndie(result);
+    });
+    return <View />;
+  }
+
+  if (metal === null) {
+    GetListAlbumByGenre("Metal").then((result) => {
+        setMetal(result);
+    });
+    return <View />;
+  }
+
+  if (classical === null) {
+    GetListAlbumByGenre("Classical").then((result) => {
+        setClassical(result);
+    });
+    return <View />;
+  }
+
+  if (dance === null) {
+    GetListAlbumByGenre("Dance").then((result) => {
+        setDance(result);
+    });
+    return <View />;
+  }
+
+  if (kpop === null) {
+    GetListAlbumByGenre("K-pop").then((result) => {
+        setkpop(result);
     });
     return <View />;
   }
@@ -44,91 +128,91 @@ function BrowsePage(props) {
       <DisplayerCustom
         {...props}
         title={'Pop'}
-        listItemId={props.profil.albumFavorite}
+        listItemId={pop}
         horizontal={true}
-        renderItem={({item}) => <Album {...props} id={item} />}
-        keyExtractor={(item) => item}
+        renderItem={({item}) => <Album {...props} id={item._id} />}
+        keyExtractor={(item) => item._id}
 
       />
       <DisplayerCustom
         {...props}
         title={'Jazz'}
-        listItemId={props.profil.albumFavorite}
+        listItemId={jazz}
         horizontal={true}
-        renderItem={({item}) => <Album {...props} id={item} />}
-        keyExtractor={(item) => item}
+        renderItem={({item}) => <Album {...props} id={item._id} />}
+        keyExtractor={(item) => item._id}
 
       />
       <DisplayerCustom
         {...props}
         title={'Rock'}
-        listItemId={props.profil.albumFavorite}
+        listItemId={rock}
         horizontal={true}
-        renderItem={({item}) => <Album {...props} id={item} />}
-        keyExtractor={(item) => item}
+        renderItem={({item}) => <Album {...props} id={item._id} />}
+        keyExtractor={(item) => item._id}
 
       />
       <DisplayerCustom
         {...props}
         title={'Blues'}
-        listItemId={props.profil.albumFavorite}
+        listItemId={blues}
         horizontal={true}
-        renderItem={({item}) => <Album {...props} id={item} />}
-        keyExtractor={(item) => item}
+        renderItem={({item}) => <Album {...props} id={item._id} />}
+        keyExtractor={(item) => item._id}
 
       />
       <DisplayerCustom
         {...props}
         title={'House'}
-        listItemId={props.profil.albumFavorite}
+        listItemId={house}
         horizontal={true}
-        renderItem={({item}) => <Album {...props} id={item} />}
-        keyExtractor={(item) => item}
+        renderItem={({item}) => <Album {...props} id={item._id} />}
+        keyExtractor={(item) => item._id}
 
       />
       <DisplayerCustom
         {...props}
         title={'Indie'}
-        listItemId={props.profil.albumFavorite}
+        listItemId={indie}
         horizontal={true}
-        renderItem={({item}) => <Album {...props} id={item} />}
-        keyExtractor={(item) => item}
+        renderItem={({item}) => <Album {...props} id={item._id} />}
+        keyExtractor={(item) => item._id}
 
       />
       <DisplayerCustom
         {...props}
         title={'Metal'}
-        listItemId={props.profil.albumFavorite}
+        listItemId={metal}
         horizontal={true}
-        renderItem={({item}) => <Album {...props} id={item} />}
-        keyExtractor={(item) => item}
+        renderItem={({item}) => <Album {...props} id={item._id} />}
+        keyExtractor={(item) => item._id}
 
       />
       <DisplayerCustom
         {...props}
         title={'Classical'}
-        listItemId={props.profil.albumFavorite}
+        listItemId={classical}
         horizontal={true}
-        renderItem={({item}) => <Album {...props} id={item} />}
-        keyExtractor={(item) => item}
+        renderItem={({item}) => <Album {...props} id={item._id} />}
+        keyExtractor={(item) => item._id}
 
       />
       <DisplayerCustom
         {...props}
         title={'Dance'}
-        listItemId={props.profil.albumFavorite}
+        listItemId={dance}
         horizontal={true}
-        renderItem={({item}) => <Album {...props} id={item} />}
-        keyExtractor={(item) => item}
+        renderItem={({item}) => <Album {...props} id={item._id} />}
+        keyExtractor={(item) => item._id}
 
       />
       <DisplayerCustom
         {...props}
         title={'K-pop'}
-        listItemId={props.profil.albumFavorite}
+        listItemId={kpop}
         horizontal={true}
-        renderItem={({item}) => <Album {...props} id={item} />}
-        keyExtractor={(item) => item}
+        renderItem={({item}) => <Album {...props} id={item._id} />}
+        keyExtractor={(item) => item._id}
 
       />
       <PlayerOverlay {...props} />

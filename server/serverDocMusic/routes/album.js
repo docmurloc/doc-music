@@ -140,7 +140,7 @@ router.get('/research', async function(req, res, next) {
 });
 
 router.get('/recent', async function(req, res, next) {
-  let albums = await AlbumModel.find().limit(6);
+  let albums = await AlbumModel.find().sort({ _id: -1 }).limit(6);
 
   albums.forEach((album) => {
     album.artwork = album.artwork ? baseURLImage + album.artwork : baseURLImage + missingImage;
@@ -158,7 +158,7 @@ router.get('/top', async function(req, res, next) {
 });
 
 router.get('/genre', async function(req, res, next) {
-  let albums = await AlbumModel.find({genre : req.headers.genre}).sort({ _id: -1 }).limit(6);
+  let albums = await AlbumModel.find({genre : req.headers.genre}).sort({ like: -1 }).limit(6);
 
   albums.forEach((album) => {
     album.artwork = album.artwork ? baseURLImage + album.artwork : baseURLImage + missingImage;
