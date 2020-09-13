@@ -43,7 +43,16 @@ function BrowsePage(props) {
       />
       <DisplayerCustom
         {...props}
-        title={'Dance'}
+        title={'Pop'}
+        listItemId={props.profil.albumFavorite}
+        horizontal={true}
+        renderItem={({item}) => <Album {...props} id={item} />}
+        keyExtractor={(item) => item}
+
+      />
+      <DisplayerCustom
+        {...props}
+        title={'Jazz'}
         listItemId={props.profil.albumFavorite}
         horizontal={true}
         renderItem={({item}) => <Album {...props} id={item} />}
@@ -61,7 +70,61 @@ function BrowsePage(props) {
       />
       <DisplayerCustom
         {...props}
-        title={'Jazz'}
+        title={'Blues'}
+        listItemId={props.profil.albumFavorite}
+        horizontal={true}
+        renderItem={({item}) => <Album {...props} id={item} />}
+        keyExtractor={(item) => item}
+
+      />
+      <DisplayerCustom
+        {...props}
+        title={'House'}
+        listItemId={props.profil.albumFavorite}
+        horizontal={true}
+        renderItem={({item}) => <Album {...props} id={item} />}
+        keyExtractor={(item) => item}
+
+      />
+      <DisplayerCustom
+        {...props}
+        title={'Indie'}
+        listItemId={props.profil.albumFavorite}
+        horizontal={true}
+        renderItem={({item}) => <Album {...props} id={item} />}
+        keyExtractor={(item) => item}
+
+      />
+      <DisplayerCustom
+        {...props}
+        title={'Metal'}
+        listItemId={props.profil.albumFavorite}
+        horizontal={true}
+        renderItem={({item}) => <Album {...props} id={item} />}
+        keyExtractor={(item) => item}
+
+      />
+      <DisplayerCustom
+        {...props}
+        title={'Classical'}
+        listItemId={props.profil.albumFavorite}
+        horizontal={true}
+        renderItem={({item}) => <Album {...props} id={item} />}
+        keyExtractor={(item) => item}
+
+      />
+      <DisplayerCustom
+        {...props}
+        title={'Dance'}
+        listItemId={props.profil.albumFavorite}
+        horizontal={true}
+        renderItem={({item}) => <Album {...props} id={item} />}
+        keyExtractor={(item) => item}
+
+      />
+      <DisplayerCustom
+        {...props}
+        title={'K-pop'}
         listItemId={props.profil.albumFavorite}
         horizontal={true}
         renderItem={({item}) => <Album {...props} id={item} />}
