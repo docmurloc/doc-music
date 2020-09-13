@@ -13,7 +13,7 @@ function ResearchBar(props) {
         <View style={styles.box}>
           <TextInput
             style={styles.textInput}
-            placeholder="Artist, track, album...."
+            placeholder={props.placeholder}
             placeholderTextColor = 'rgba(169, 169, 169, 1)'
             onChangeText={(text) => setresearch(text)}
             value={research}

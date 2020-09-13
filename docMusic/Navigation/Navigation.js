@@ -21,6 +21,7 @@ import HistoryPage from '../components/HistoryPage';
 import FirstPage from '../components/Firstpage';
 import ForYouPage from '../components/ForYouPage';
 import BrowsePage from '../components/BrowsePage';
+import AlbumPage from '../components/AlbumPage';
 
 const getProfilCache = async (props) => {
   try {
@@ -46,6 +47,7 @@ function HomeStack() {
         },
       }}>
       <Stack.Screen name="HomePage" component={HomePage} options={{headerShown: false}}/>
+      <Stack.Screen name="AlbumPage" component={AlbumPage} options={{headerShown: false}}/>
       <Stack.Screen name="playlist" component={PlaylistPage} options={{headerShown: false}}/>
       <Stack.Screen name="Player" component={PlayerPage} options={{headerShown: false}}/>
     </Stack.Navigator>

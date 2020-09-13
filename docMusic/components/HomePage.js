@@ -46,19 +46,12 @@ function HomePage(props) {
             icon={require('../Images/library.png')}
             />
             <ButtonSimple
-            text={'Playlists'}
-            style={styles.button}
-            styleText={styles.text}
-            />
-            <ButtonSimple
-            text={'Artists'}
-            style={styles.button}
-            styleText={styles.text}
-            />
-            <ButtonSimple
             text={'Albums'}
             style={styles.button}
             styleText={styles.text}
+            onPress={() => {
+              props.navigation.navigate('AlbumPage');
+            }}
             />
             <ButtonSimple
             text={'Songs'}

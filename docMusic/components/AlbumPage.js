@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import ResearchBar from './ResearchBar';
 import {GetTrackByTitle} from '../APIserver/Track';
-import {GetAlbumByTitle} from '../APIserver/Album';
+import {GetAlbumByTitle, GetTopListAlbum} from '../APIserver/Album';
 import ResearchItem from './ResearchItem';
 import PlayerOverlay from './PlayerOverlay';
 import HeaderPage from './HeaderPage';
@@ -13,41 +13,29 @@ import DisplayerCustom from './DisplayerCustom';
 
 import {StyleSheet, Text, View, FlatList} from 'react-native';
 
-function ResearchPage(props) {
+function AlbumPage(props) {
   const [research, setresearch] = useState(null);
 
   useEffect(() => {
     async function getTitle(newResearch) {
       if (newResearch) {
-        setResult(await GetTrackByTitle(newResearch));
         setAlbum(await GetAlbumByTitle(newResearch));
       } else {
-        setResult(null);
-        setAlbum(null);
+        setAlbum(await GetTopListAlbum());
       }
     }
     getTitle(research);
   }, [research]);
 
-  const [result, setResult] = useState(null);
   const [album, setAlbum] = useState(null);
 
   return (
     <View style={styles.container}>
       <HeaderPage
-      title={'Search'}
-      icon={require('../Images/search.png')}
+      title={'Albums'}
+      icon={require('../Images/logoMusic.png')}
       />
-      <ResearchBar onPress={setresearch} placeholder={'Track or album'}/>
-      <DisplayerCustom
-        {...props}
-        style={styles.FlatList}
-        title={'Tracks'}
-        listItemId={result}
-        horizontal={false}
-        renderItem={({item}) => <ResearchItem {...props} id={item._id} />}
-        keyExtractor={(item) => item._id}
-      />
+      <ResearchBar onPress={setresearch} placeholder={'Album'}/>
       <DisplayerCustom
         {...props}
         style={styles.FlatList}
@@ -75,13 +63,13 @@ const styles = StyleSheet.create({
     //textAlign: 'center',
   },
   FlatList: {
-    height: "35%",
+    height: "70%",
     marginTop: 10,
-    //backgroundColor: 'red'
+    //backgroundColor:'red'
   }
 });
 
 const mapStateToProps = (state) => {
   return state;
 };
-export default connect(mapStateToProps)(ResearchPage);
+export default connect(mapStateToProps)(AlbumPage);

@@ -69,7 +69,7 @@ function Album(props) {
           <View style={styles.content2}>
             <CustomText style={styles.title}>{album.title}</CustomText>
             <CustomText style={styles.text} numberOfLines={2} ellipsizeMode="tail">
-              {album.genre} {album.artist}
+              {album.genre} by {album.artist}
             </CustomText>
           </View>
         </View>
