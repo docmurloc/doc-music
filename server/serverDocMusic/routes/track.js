@@ -99,6 +99,17 @@ router.get('/all', async function(req, res, next) {
   res.status(200).send(tracks);
 });
 
+router.get('/top', async function(req, res, next) {
+  let tracks = await TrackModel.find({}).sort({ like: -1 }).limit(6);
+
+  tracks.forEach((track) => {
+    track.artwork = track.artwork ? baseURLImage + track.artwork : baseURLImage + missingImage;
+    track.url = baseURLTrack + track.url;
+  })
+
+  res.status(200).send(tracks);
+});
+
 function escapeRegExp(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 }
@@ -153,6 +164,7 @@ router.post('/upload', async function(req, res, next) {
       album: fields.track_album ? fields.track_album : null,
       genre: fields.track_genre,
       url: nameFile,
+      like: 0,
     });
     await track.save();
     res.render('upload', {

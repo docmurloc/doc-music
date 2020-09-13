@@ -12,6 +12,7 @@ var TrackModelSchema = new Schema({
     date: String,
     url: String,
     artwork: String,
+    like: Number,
 
 });
 

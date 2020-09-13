@@ -72,6 +72,25 @@ async function GetTrackByTitle(title) {
 
 exports.GetTrackByTitle = GetTrackByTitle;
 
+async function GetListTopTrack() {
+  let answer = await fetch(
+    'http://' + IP_SERVER + ':' + PORT_SERVER + '/tracks/top',
+    {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'GET',
+    },
+  );
+
+  answer = await answer.json();
+
+  return answer;
+}
+
+exports.GetListTopTrack = GetListTopTrack;
+
 async function TrackFavorite(userToken) {
   fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/tracks/favorite', {
     headers: {

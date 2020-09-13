@@ -57,6 +57,9 @@ function HomePage(props) {
             text={'Songs'}
             style={styles.button}
             styleText={styles.text}
+            onPress={() => {
+              props.navigation.navigate('TrackPage');
+            }}
             />
           </>
         }
