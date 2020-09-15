@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image} from 'react-native'
+import {Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -9,15 +9,12 @@ import AsyncStorage from '@react-native-community/async-storage';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-import HeaderLeft from '../components/header';
-
 import LoginPage from '../components/LoginPage';
 import HomePage from '../components/HomePage';
 import SignUpPage from '../components/SignUpPage';
 import PlaylistPage from '../components/PlaylistPage';
 import PlayerPage from '../components/PlayerPage';
 import ResearchPage from '../components/ResearchPage';
-import HistoryPage from '../components/HistoryPage';
 import FirstPage from '../components/Firstpage';
 import ForYouPage from '../components/ForYouPage';
 import BrowsePage from '../components/BrowsePage';
@@ -47,11 +44,31 @@ function HomeStack() {
           backgroundColor: 'rgb(200, 200, 200)',
         },
       }}>
-      <Stack.Screen name="HomePage" component={HomePage} options={{headerShown: false}}/>
-      <Stack.Screen name="AlbumPage" component={AlbumPage} options={{headerShown: false}}/>
-      <Stack.Screen name="TrackPage" component={TrackPage} options={{headerShown: false}}/>
-      <Stack.Screen name="playlist" component={PlaylistPage} options={{headerShown: false}}/>
-      <Stack.Screen name="Player" component={PlayerPage} options={{headerShown: false}}/>
+      <Stack.Screen
+        name="HomePage"
+        component={HomePage}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="AlbumPage"
+        component={AlbumPage}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="TrackPage"
+        component={TrackPage}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="playlist"
+        component={PlaylistPage}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Player"
+        component={PlayerPage}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 }
@@ -59,60 +76,57 @@ function HomeStack() {
 function HomeNavigator() {
   return (
     <Tab.Navigator
-    
-    screenOptions={({ route }) => ({
-      tabBarIcon: ({ focused, color, size }) => {
+      screenOptions={({route}) => ({
+        tabBarIcon: ({focused, color, size}) => {
+          const iconStyle = {
+            width: size,
+            height: size,
+            resizeMode: 'contain',
+          };
 
-        const iconStyle = {
-          width: size,
-          height: size,
-          resizeMode: 'contain',
-        }
+          //console.log("route ", route);
+          //console.log("Focused ", focused);
+          //console.log("color ", color);
+          //console.log("size ", size);
 
-        //console.log("route ", route);
-        //console.log("Focused ", focused);
-        //console.log("color ", color);
-        //console.log("size ", size);
-
-        if (route.name === 'Library') {
-          return (
-            <Image
-            source={require('../Images/library.png')}
-            style={iconStyle}
-            />
-          )
-        } else if (route.name === 'For you') {
-          return (
-            <Image
-            source={require('../Images/forYou.png')}
-            style={iconStyle}
-            />
-          )
-        } else if (route.name === 'Browse') {
-          return (
-            <Image
-            source={require('../Images/browse.png')}
-            style={iconStyle}
-            />
-          )
-        } else if (route.name === 'Search') {
-          return (
-            <Image
-            source={require('../Images/search.png')}
-            style={iconStyle}
-            />
-          )
-        }
-      },
-    })}
-    tabBarOptions={{
-      activeTintColor: '#000',
-      inactiveTintColor: '#000',
-      style: {
-        backgroundColor: 'rgba(250, 248, 240, 1)',
-      }
-    }}
-    >
+          if (route.name === 'Library') {
+            return (
+              <Image
+                source={require('../Images/library.png')}
+                style={iconStyle}
+              />
+            );
+          } else if (route.name === 'For you') {
+            return (
+              <Image
+                source={require('../Images/forYou.png')}
+                style={iconStyle}
+              />
+            );
+          } else if (route.name === 'Browse') {
+            return (
+              <Image
+                source={require('../Images/browse.png')}
+                style={iconStyle}
+              />
+            );
+          } else if (route.name === 'Search') {
+            return (
+              <Image
+                source={require('../Images/search.png')}
+                style={iconStyle}
+              />
+            );
+          }
+        },
+      })}
+      tabBarOptions={{
+        activeTintColor: '#000',
+        inactiveTintColor: '#000',
+        style: {
+          backgroundColor: 'rgba(250, 248, 240, 1)',
+        },
+      }}>
       <Tab.Screen name="Library" component={HomeStack} />
       <Tab.Screen name="For you" component={ForYouPage} />
       <Tab.Screen name="Browse" component={BrowsePage} />
@@ -122,7 +136,6 @@ function HomeNavigator() {
 }
 
 function MyStack(props) {
-
   if (!props.profil.access_token) {
     getProfilCache(props);
   }
