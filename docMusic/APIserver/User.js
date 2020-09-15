@@ -4,7 +4,6 @@ import {TrackFavorite, TrackUnfavorite} from './Track';
 import {AlbumFavorite} from './Album';
 
 async function loginUser(props, newPseudo, newPassword, setInfo) {
-
   fetch('http://' + IP_SERVER + ':' + PORT_SERVER + '/users/login', {
     headers: {
       Accept: 'application/json',

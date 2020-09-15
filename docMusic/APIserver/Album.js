@@ -69,7 +69,7 @@ async function GetListAlbumByGenre(genreAlbum) {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        genre : genreAlbum
+        genre: genreAlbum,
       },
       method: 'GET',
     },
@@ -145,7 +145,7 @@ async function GetAlbumByTitle(title) {
 
   answer = await answer.json();
 
-  console.log("result album by title ", answer);
+  console.log('result album by title ', answer);
 
   return answer;
 }
