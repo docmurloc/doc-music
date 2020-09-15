@@ -62,18 +62,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 10,
-    //alignItems: 'center',
-    //justifyContent: 'flex-start',
     backgroundColor: 'rgba(227, 224, 215, 1)',
   },
   title: {
     fontSize: 30,
-    //textAlign: 'center',
   },
   FlatList: {
     height: '35%',
     marginTop: 10,
-    //backgroundColor: 'red'
   },
 });
 

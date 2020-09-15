@@ -22,7 +22,6 @@ function Displayer(props) {
       </View>
       <FlatList
         horizontal={true}
-        //numColumns={2}
         data={props.listItemId}
         renderItem={({item}) => <Album {...props} id={item} />}
         keyExtractor={(item) => item}

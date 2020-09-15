@@ -108,7 +108,6 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-around',
-    //padding: 5,
     flexDirection: 'row',
   },
   box: {
@@ -116,7 +115,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     paddingTop: 10,
-    //backgroundColor: 'red'
   },
   title: {
     fontSize: 20,

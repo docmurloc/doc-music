@@ -77,8 +77,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     padding: 10,
-    //backgroundColor: 'rgba(215, 215, 215, 1)',
-    //borderRadius: 15,
   },
   box: {
     width: '100%',

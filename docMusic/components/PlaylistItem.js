@@ -31,8 +31,6 @@ async function selectedTrack(props, track) {
 
   const action = {type: 'SET_CURRENT_TRACK', track: track};
   props.dispatch(action);
-
-  //props.navigation.navigate('Player');
 }
 
 function PlaylistItem(props) {

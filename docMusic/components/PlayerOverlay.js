@@ -59,12 +59,8 @@ function PlayerOverlay(props) {
 
 const styles = StyleSheet.create({
   container: {
-    //flex: 1,
     backgroundColor: 'rgba(188, 187, 182, 1)',
     borderRadius: 30,
-    //position: 'absolute',
-    //left: 0,
-    //bottom: 0,
     width: '100%',
     paddingHorizontal: 15,
     height: 75,

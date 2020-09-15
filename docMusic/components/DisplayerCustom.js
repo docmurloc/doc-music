@@ -42,8 +42,6 @@ function DisplayerCustom(props) {
     </View>
   );
 }
-//({item}) => <Album {...props} id={item} />
-//(item) => item
 const styles = StyleSheet.create({
   title: {
     fontSize: 30,

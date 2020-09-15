@@ -32,8 +32,6 @@ async function selectedTrack(props, track) {
 
   const action = {type: 'SET_CURRENT_TRACK', track: track};
   props.dispatch(action);
-
-  //props.navigation.navigate('HomePage');
 }
 
 function HistoryItem(props) {
@@ -79,11 +77,9 @@ const styles = StyleSheet.create({
   horizontalDisplay: {
     width: 300,
     padding: 10,
-    //marginLeft : 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    //backgroundColor: 'rgba(215, 215, 215, 1)',
   },
   text: {
     fontSize: 16,

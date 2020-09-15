@@ -61,14 +61,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     paddingTop: 10,
-    //backgroundColor: 'rgba(255, 52, 52, 1)',
   },
   content: {
     margin: 30,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-end',
-    //backgroundColor: 'rgba(52, 255, 52, 1)',
   },
   horizontalDisplay: {
     flexDirection: 'row',
@@ -86,11 +84,8 @@ const styles = StyleSheet.create({
     color: 'rgba(169, 169, 169, 1)',
   },
   Button: {
-    //alignItems: 'center',
-    //justifyContent: 'center',
     padding: 15,
     borderRadius: 10,
-    //backgroundColor: 'rgba(100, 100, 100, 1)',
   },
   textButton: {
     fontSize: 20,
@@ -99,9 +94,6 @@ const styles = StyleSheet.create({
   empty: {
     margin: 10,
     flex: 0.5,
-    //alignItems: 'center',
-    //justifyContent: 'space-around',
-    //backgroundColor: 'rgba(52, 52, 255, 1)',
   },
 });
 

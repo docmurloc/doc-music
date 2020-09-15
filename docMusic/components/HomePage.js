@@ -75,7 +75,6 @@ function HomePage(props) {
 
 const styles = StyleSheet.create({
   container: {
-    //flex: 1,
     justifyContent: 'flex-start',
     backgroundColor: 'rgba(227, 224, 215, 1)',
   },
