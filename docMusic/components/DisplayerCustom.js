@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
 
 import CustomText from './CustomText';
 
@@ -52,7 +51,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
-  return state;
-};
-export default connect(mapStateToProps)(DisplayerCustom);
+export default DisplayerCustom;

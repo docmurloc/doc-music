@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import {StyleSheet, View} from 'react-native';
 
 import ButtonSimple from './ButtonSimple';
@@ -61,7 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
-  return state;
-};
-export default connect(mapStateToProps)(FirstPage);
+export default FirstPage;

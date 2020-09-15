@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import TrackPlayer from 'react-native-track-player';
 
 import * as Progress from 'react-native-progress';
@@ -38,7 +37,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
-  return state;
-};
-export default connect(mapStateToProps)(MyPlayerBar);
+export default MyPlayerBar;

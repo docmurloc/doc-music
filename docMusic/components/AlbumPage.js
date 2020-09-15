@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import {connect} from 'react-redux';
 
 import ResearchBar from './ResearchBar';
 import {GetAlbumByTitle, GetTopListAlbum} from '../APIserver/Album';
@@ -59,7 +58,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
-  return state;
-};
-export default connect(mapStateToProps)(AlbumPage);
+export default AlbumPage;

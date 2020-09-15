@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import {StyleSheet, Text} from 'react-native';
 
 function CustomText(props) {
@@ -22,7 +21,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
-  return state;
-};
-export default connect(mapStateToProps)(CustomText);
+export default CustomText;

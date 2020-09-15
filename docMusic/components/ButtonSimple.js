@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import {TouchableHighlight} from 'react-native';
 
 import CustomText from './CustomText';
@@ -16,7 +15,4 @@ function ButtonSimple(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return state;
-};
-export default connect(mapStateToProps)(ButtonSimple);
+export default ButtonSimple;

@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import {StyleSheet, Text, View, Image} from 'react-native';
 
 import ButtonIcon from './ButtonIcon';
@@ -47,8 +46,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
-  return state;
-};
-
-export default connect(mapStateToProps)(HeaderLeft);
+export default HeaderLeft;

@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {connect} from 'react-redux';
 import {StyleSheet, TextInput, View} from 'react-native';
 
 import ButtonIcon from './ButtonIcon';
@@ -51,7 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
-  return state;
-};
-export default connect(mapStateToProps)(ResearchBar);
+export default ResearchBar;

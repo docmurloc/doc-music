@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {connect} from 'react-redux';
 
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 
@@ -111,7 +110,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
-  return state;
-};
-export default connect(mapStateToProps)(SignUpPage);
+export default SignUpPage;

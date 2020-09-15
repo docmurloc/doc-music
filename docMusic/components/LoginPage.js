@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {connect} from 'react-redux';
 import {StyleSheet, TextInput, View} from 'react-native';
 
 import ButtonSimple from './ButtonSimple';
@@ -97,7 +96,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
-  return state;
-};
-export default connect(mapStateToProps)(LoginPage);
+export default LoginPage;

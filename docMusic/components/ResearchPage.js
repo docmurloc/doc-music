@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import {connect} from 'react-redux';
 
 import ResearchBar from './ResearchBar';
 import {GetTrackByTitle} from '../APIserver/Track';
@@ -73,7 +72,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
-  return state;
-};
-export default connect(mapStateToProps)(ResearchPage);
+export default ResearchPage;

@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
 
 import {StyleSheet, Image, TouchableHighlight} from 'react-native';
 
@@ -35,7 +34,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
-  return state;
-};
-export default connect(mapStateToProps)(ButtonSwitch);
+export default ButtonSwitch;

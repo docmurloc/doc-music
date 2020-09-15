@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
 
 import {StyleSheet, Text, View, Image, TouchableHighlight} from 'react-native';
 
@@ -46,7 +45,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
-  return state;
-};
-export default connect(mapStateToProps)(PlaylistButton);
+export default PlaylistButton;

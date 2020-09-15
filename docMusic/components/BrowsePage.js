@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {connect} from 'react-redux';
 import {StyleSheet, View, ScrollView, RefreshControl} from 'react-native';
 
 import DisplayerCustom from './DisplayerCustom';
@@ -222,7 +221,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
-  return state;
-};
-export default connect(mapStateToProps)(BrowsePage);
+export default BrowsePage;

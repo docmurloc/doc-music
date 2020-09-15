@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {connect} from 'react-redux';
 import {StyleSheet, View, RefreshControl} from 'react-native';
 
 import DisplayerCustom from './DisplayerCustom';
@@ -90,7 +89,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
-  return state;
-};
-export default connect(mapStateToProps)(HomePage);
+export default HomePage;
