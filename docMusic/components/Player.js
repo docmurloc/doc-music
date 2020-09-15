@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 import {pause} from '../APIsound/pause';
 import {play} from '../APIsound/play';
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     textAlign: 'center',
-    color: 'rgba(173, 173, 173, 1)'
+    color: 'rgba(173, 173, 173, 1)',
   },
 });
 

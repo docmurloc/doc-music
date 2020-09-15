@@ -4,7 +4,6 @@ import Store from '../Store/configureStore';
 
 import {
   StyleSheet,
-  Text,
   TouchableHighlight,
   View,
   Image,
@@ -14,8 +13,7 @@ import {
 import {GetRandomAlbum, GetAlbumById} from '../APIserver/Album';
 import {GetPlaylistById} from '../APIserver/Playlist';
 
-import CustomText from './CustomText'
-
+import CustomText from './CustomText';
 
 async function SetAlbumItem(setAlbum, id = null) {
   let answer = null;
@@ -68,7 +66,10 @@ function AlbumItem(props) {
           <Image source={{uri: album.artwork}} style={styles.logo} />
           <View style={styles.content2}>
             <CustomText style={styles.title}>{album.title}</CustomText>
-            <CustomText style={styles.text} numberOfLines={2} ellipsizeMode="tail">
+            <CustomText
+              style={styles.text}
+              numberOfLines={2}
+              ellipsizeMode="tail">
               {album.genre} by {album.artist}
             </CustomText>
           </View>

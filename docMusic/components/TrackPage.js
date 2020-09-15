@@ -3,16 +3,13 @@ import {connect} from 'react-redux';
 
 import ResearchBar from './ResearchBar';
 import {GetTrackByTitle, GetListTopTrack} from '../APIserver/Track';
-import {GetAlbumByTitle, GetTopListAlbum} from '../APIserver/Album';
 
 import ResearchItem from './ResearchItem';
 import PlayerOverlay from './PlayerOverlay';
 import HeaderPage from './HeaderPage';
-import CustomText from './CustomText';
-import AlbumItem from './albumItem';
 import DisplayerCustom from './DisplayerCustom';
 
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 function TrackPage(props) {
   const [research, setresearch] = useState(null);
@@ -32,11 +29,8 @@ function TrackPage(props) {
 
   return (
     <View style={styles.container}>
-      <HeaderPage
-      title={'Songs'}
-      icon={require('../Images/logoMusic.png')}
-      />
-      <ResearchBar onPress={setresearch} placeholder={'Songs'}/>
+      <HeaderPage title={'Songs'} icon={require('../Images/logoMusic.png')} />
+      <ResearchBar onPress={setresearch} placeholder={'Songs'} />
       <DisplayerCustom
         {...props}
         style={styles.FlatList}
@@ -64,10 +58,10 @@ const styles = StyleSheet.create({
     //textAlign: 'center',
   },
   FlatList: {
-    height: "70%",
+    height: '70%',
     marginTop: 10,
     //backgroundColor:'red'
-  }
+  },
 });
 
 const mapStateToProps = (state) => {

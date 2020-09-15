@@ -15,31 +15,41 @@ function PlayerOverlay(props) {
   if (props.track.currentTrack) {
     return (
       <Draggable x={0} y={500}>
-      <View style={styles.container}>
-        <TouchableHighlight onPress={() => props.navigation.navigate('Player')}>
-          <Image
-            source={{uri: props.track.currentTrack.artwork}}
-            style={styles.logo}
-          />
-        </TouchableHighlight>
-        <View
-          style={styles.box}
-          onPress={() => props.navigation.navigate('Player')}>
-          <View>
-            <Text style={styles.title} ellipsizeMode={'tail'} numberOfLines={2}>
-              {props.track.currentTrack.title}
-            </Text>
+        <View style={styles.container}>
+          <TouchableHighlight
+            onPress={() => props.navigation.navigate('Player')}>
+            <Image
+              source={{uri: props.track.currentTrack.artwork}}
+              style={styles.logo}
+            />
+          </TouchableHighlight>
+          <View
+            style={styles.box}
+            onPress={() => props.navigation.navigate('Player')}>
+            <View>
+              <Text
+                style={styles.title}
+                ellipsizeMode={'tail'}
+                numberOfLines={2}>
+                {props.track.currentTrack.title}
+              </Text>
+            </View>
           </View>
+          <PlayButton
+            iconOff={require('../Images/playIcon.png')}
+            onPressOff={play}
+            iconOn={require('../Images/pauseIcon.png')}
+            onPressOn={pause}
+          />
+          <ButtonIcon
+            icon={require('../Images/nextArrow.png')}
+            onPress={next}
+          />
+          <ButtonIcon
+            icon={require('../Images/crossIcon.png')}
+            onPress={stop}
+          />
         </View>
-        <PlayButton
-          iconOff={require('../Images/playIcon.png')}
-          onPressOff={play}
-          iconOn={require('../Images/pauseIcon.png')}
-          onPressOn={pause}
-        />
-        <ButtonIcon icon={require('../Images/nextArrow.png')} onPress={next} />
-        <ButtonIcon icon={require('../Images/crossIcon.png')} onPress={stop} />
-      </View>
       </Draggable>
     );
   } else {
@@ -51,7 +61,7 @@ const styles = StyleSheet.create({
   container: {
     //flex: 1,
     backgroundColor: 'rgba(188, 187, 182, 1)',
-    borderRadius: 30  ,
+    borderRadius: 30,
     //position: 'absolute',
     //left: 0,
     //bottom: 0,

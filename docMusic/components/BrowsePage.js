@@ -2,38 +2,36 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {StyleSheet, View, ScrollView, RefreshControl} from 'react-native';
 
-import Displayer from './Displayer';
 import DisplayerCustom from './DisplayerCustom';
 import Album from './Album';
 import PlayerOverlay from './PlayerOverlay';
 import HeaderPage from './HeaderPage';
-import ButtonSimple from './ButtonSimple';
 
 import {GetRandomListAlbum, GetListAlbumByGenre} from '../APIserver/Album';
 
 function BrowsePage(props) {
-    const [randDisplay, setrandDisplay] = useState(null);
+  const [randDisplay, setrandDisplay] = useState(null);
 
-    const [pop, setPop] = useState(null);
-    const [jazz, setJazz] = useState(null);
-    const [rock, setRock] = useState(null);
-    const [blues, setBlues] = useState(null);
-    const [house, setHouse] = useState(null);
-    const [indie, setIndie] = useState(null);
-    const [metal, setMetal] = useState(null);
-    const [classical, setClassical] = useState(null);
-    const [dance, setDance] = useState(null);
-    const [kpop, setkpop] = useState(null);
+  const [pop, setPop] = useState(null);
+  const [jazz, setJazz] = useState(null);
+  const [rock, setRock] = useState(null);
+  const [blues, setBlues] = useState(null);
+  const [house, setHouse] = useState(null);
+  const [indie, setIndie] = useState(null);
+  const [metal, setMetal] = useState(null);
+  const [classical, setClassical] = useState(null);
+  const [dance, setDance] = useState(null);
+  const [kpop, setkpop] = useState(null);
 
-    const [refreshing, setRefreshing] = useState(null);
+  const [refreshing, setRefreshing] = useState(null);
 
-  const onRefresh = React.useCallback( async () => {
+  const onRefresh = React.useCallback(async () => {
     setRefreshing(true);
 
     GetRandomListAlbum(5).then((result) => {
       setrandDisplay(result);
     });
-    setPop(await GetListAlbumByGenre("Pop"));
+    setPop(await GetListAlbumByGenre('Pop'));
 
     setRefreshing(false);
   }, []);
@@ -46,71 +44,71 @@ function BrowsePage(props) {
   }
 
   if (pop === null) {
-    GetListAlbumByGenre("Pop").then((result) => {
-        setPop(result);
+    GetListAlbumByGenre('Pop').then((result) => {
+      setPop(result);
     });
     return <View />;
   }
 
   if (jazz === null) {
-    GetListAlbumByGenre("Jazz").then((result) => {
-        setJazz(result);
+    GetListAlbumByGenre('Jazz').then((result) => {
+      setJazz(result);
     });
     return <View />;
   }
 
   if (rock === null) {
-    GetListAlbumByGenre("Rock").then((result) => {
-        setRock(result);
+    GetListAlbumByGenre('Rock').then((result) => {
+      setRock(result);
     });
     return <View />;
   }
 
   if (blues === null) {
-    GetListAlbumByGenre("Blues").then((result) => {
-        setBlues(result);
+    GetListAlbumByGenre('Blues').then((result) => {
+      setBlues(result);
     });
     return <View />;
   }
 
   if (house === null) {
-    GetListAlbumByGenre("House").then((result) => {
-        setHouse(result);
+    GetListAlbumByGenre('House').then((result) => {
+      setHouse(result);
     });
     return <View />;
   }
 
   if (indie === null) {
-    GetListAlbumByGenre("Indie").then((result) => {
-        setIndie(result);
+    GetListAlbumByGenre('Indie').then((result) => {
+      setIndie(result);
     });
     return <View />;
   }
 
   if (metal === null) {
-    GetListAlbumByGenre("Metal").then((result) => {
-        setMetal(result);
+    GetListAlbumByGenre('Metal').then((result) => {
+      setMetal(result);
     });
     return <View />;
   }
 
   if (classical === null) {
-    GetListAlbumByGenre("Classical").then((result) => {
-        setClassical(result);
+    GetListAlbumByGenre('Classical').then((result) => {
+      setClassical(result);
     });
     return <View />;
   }
 
   if (dance === null) {
-    GetListAlbumByGenre("Dance").then((result) => {
-        setDance(result);
+    GetListAlbumByGenre('Dance').then((result) => {
+      setDance(result);
     });
     return <View />;
   }
 
   if (kpop === null) {
-    GetListAlbumByGenre("K-pop").then((result) => {
-        setkpop(result);
+    GetListAlbumByGenre('K-pop').then((result) => {
+      setkpop(result);
     });
     return <View />;
   }
@@ -121,10 +119,7 @@ function BrowsePage(props) {
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }>
-      <HeaderPage
-      title={'Browse'}
-      icon={require('../Images/browse.png')}
-      />
+      <HeaderPage title={'Browse'} icon={require('../Images/browse.png')} />
       <DisplayerCustom
         {...props}
         title={'Pop'}
@@ -132,7 +127,6 @@ function BrowsePage(props) {
         horizontal={true}
         renderItem={({item}) => <Album {...props} id={item._id} />}
         keyExtractor={(item) => item._id}
-
       />
       <DisplayerCustom
         {...props}
@@ -141,7 +135,6 @@ function BrowsePage(props) {
         horizontal={true}
         renderItem={({item}) => <Album {...props} id={item._id} />}
         keyExtractor={(item) => item._id}
-
       />
       <DisplayerCustom
         {...props}
@@ -150,7 +143,6 @@ function BrowsePage(props) {
         horizontal={true}
         renderItem={({item}) => <Album {...props} id={item._id} />}
         keyExtractor={(item) => item._id}
-
       />
       <DisplayerCustom
         {...props}
@@ -159,7 +151,6 @@ function BrowsePage(props) {
         horizontal={true}
         renderItem={({item}) => <Album {...props} id={item._id} />}
         keyExtractor={(item) => item._id}
-
       />
       <DisplayerCustom
         {...props}
@@ -168,7 +159,6 @@ function BrowsePage(props) {
         horizontal={true}
         renderItem={({item}) => <Album {...props} id={item._id} />}
         keyExtractor={(item) => item._id}
-
       />
       <DisplayerCustom
         {...props}
@@ -177,7 +167,6 @@ function BrowsePage(props) {
         horizontal={true}
         renderItem={({item}) => <Album {...props} id={item._id} />}
         keyExtractor={(item) => item._id}
-
       />
       <DisplayerCustom
         {...props}
@@ -186,7 +175,6 @@ function BrowsePage(props) {
         horizontal={true}
         renderItem={({item}) => <Album {...props} id={item._id} />}
         keyExtractor={(item) => item._id}
-
       />
       <DisplayerCustom
         {...props}
@@ -195,7 +183,6 @@ function BrowsePage(props) {
         horizontal={true}
         renderItem={({item}) => <Album {...props} id={item._id} />}
         keyExtractor={(item) => item._id}
-
       />
       <DisplayerCustom
         {...props}
@@ -204,7 +191,6 @@ function BrowsePage(props) {
         horizontal={true}
         renderItem={({item}) => <Album {...props} id={item._id} />}
         keyExtractor={(item) => item._id}
-
       />
       <DisplayerCustom
         {...props}
@@ -213,7 +199,6 @@ function BrowsePage(props) {
         horizontal={true}
         renderItem={({item}) => <Album {...props} id={item._id} />}
         keyExtractor={(item) => item._id}
-
       />
       <PlayerOverlay {...props} />
     </ScrollView>
@@ -235,7 +220,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 30,
-  }
+  },
 });
 
 const mapStateToProps = (state) => {

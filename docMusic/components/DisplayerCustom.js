@@ -1,41 +1,37 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import CustomText from './CustomText'
+import CustomText from './CustomText';
 
-
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {StyleSheet, View, FlatList} from 'react-native';
 
 function DisplayerCustom(props) {
   if (!props.listItemId || props.listItemId.length <= 0) {
-    return (
-      <View>
-      </View>
-    );
+    return <View />;
   }
 
   return (
     <View style={props.style}>
-        {props.horizontal ? 
-            <View style={styles.titleView}>
-                <CustomText style={styles.title}>{props.title}</CustomText>
-            </View> 
-            :
-             <></>}
+      {props.horizontal ? (
+        <View style={styles.titleView}>
+          <CustomText style={styles.title}>{props.title}</CustomText>
+        </View>
+      ) : (
+        <></>
+      )}
       <FlatList
-        refreshControl={
-            props.refreshControl
-        }
+        refreshControl={props.refreshControl}
         ListHeaderComponent={
-            <>
-                {props.ListHeaderComponent ? props.ListHeaderComponent : <></>}
-                {!props.horizontal ? 
-                <View style={styles.titleView}>
-                    <CustomText style={styles.title}>{props.title}</CustomText>
-                </View> 
-                : 
-                <></>}
-            </>
+          <>
+            {props.ListHeaderComponent ? props.ListHeaderComponent : <></>}
+            {!props.horizontal ? (
+              <View style={styles.titleView}>
+                <CustomText style={styles.title}>{props.title}</CustomText>
+              </View>
+            ) : (
+              <></>
+            )}
+          </>
         }
         horizontal={props.horizontal || false}
         numColumns={props.numColumns || 1}

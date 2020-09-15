@@ -2,16 +2,13 @@ import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 
 import ResearchBar from './ResearchBar';
-import {GetTrackByTitle} from '../APIserver/Track';
 import {GetAlbumByTitle, GetTopListAlbum} from '../APIserver/Album';
-import ResearchItem from './ResearchItem';
 import PlayerOverlay from './PlayerOverlay';
 import HeaderPage from './HeaderPage';
-import CustomText from './CustomText';
 import AlbumItem from './albumItem';
 import DisplayerCustom from './DisplayerCustom';
 
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 function AlbumPage(props) {
   const [research, setresearch] = useState(null);
@@ -31,11 +28,8 @@ function AlbumPage(props) {
 
   return (
     <View style={styles.container}>
-      <HeaderPage
-      title={'Albums'}
-      icon={require('../Images/logoMusic.png')}
-      />
-      <ResearchBar onPress={setresearch} placeholder={'Album'}/>
+      <HeaderPage title={'Albums'} icon={require('../Images/logoMusic.png')} />
+      <ResearchBar onPress={setresearch} placeholder={'Album'} />
       <DisplayerCustom
         {...props}
         style={styles.FlatList}
@@ -63,10 +57,10 @@ const styles = StyleSheet.create({
     //textAlign: 'center',
   },
   FlatList: {
-    height: "70%",
+    height: '70%',
     marginTop: 10,
     //backgroundColor:'red'
-  }
+  },
 });
 
 const mapStateToProps = (state) => {

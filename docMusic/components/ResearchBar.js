@@ -14,7 +14,7 @@ function ResearchBar(props) {
           <TextInput
             style={styles.textInput}
             placeholder={props.placeholder}
-            placeholderTextColor = 'rgba(169, 169, 169, 1)'
+            placeholderTextColor="rgba(169, 169, 169, 1)"
             onChangeText={(text) => setresearch(text)}
             value={research}
           />

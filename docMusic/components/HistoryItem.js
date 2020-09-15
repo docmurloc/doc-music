@@ -8,15 +8,13 @@ import {remplaceTrack} from '../APIsound/track';
 
 import {
   StyleSheet,
-  Text,
   View,
   Image,
   ActivityIndicator,
   TouchableHighlight,
 } from 'react-native';
 
-import CustomText from './CustomText'
-
+import CustomText from './CustomText';
 
 async function SetTrackItem(setTrack, id) {
   let answer = await GetTrackById(id);
@@ -58,7 +56,10 @@ function HistoryItem(props) {
       <View style={styles.horizontalDisplay}>
         <Image source={{uri: track.artwork}} style={styles.icon} />
         <View style={styles.box}>
-          <CustomText style={styles.title} numberOfLines={2} ellipsizeMode="tail">
+          <CustomText
+            style={styles.title}
+            numberOfLines={2}
+            ellipsizeMode="tail">
             {track.title}
           </CustomText>
           <CustomText style={styles.text}>{track.artist}</CustomText>

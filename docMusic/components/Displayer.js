@@ -2,8 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import Album from './Album';
-import CustomText from './CustomText'
-
+import CustomText from './CustomText';
 
 import {StyleSheet, Text, View, FlatList} from 'react-native';
 

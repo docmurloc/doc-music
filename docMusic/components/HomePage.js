@@ -31,35 +31,33 @@ function HomePage(props) {
   }
 
   return (
-    <View
-      style={styles.container}
-      >
+    <View style={styles.container}>
       <DisplayerCustom
         {...props}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }  
+        }
         ListHeaderComponent={
           <>
             <HeaderPage
-            title={'Library'}
-            icon={require('../Images/library.png')}
+              title={'Library'}
+              icon={require('../Images/library.png')}
             />
             <ButtonSimple
-            text={'Albums'}
-            style={styles.button}
-            styleText={styles.text}
-            onPress={() => {
-              props.navigation.navigate('AlbumPage');
-            }}
+              text={'Albums'}
+              style={styles.button}
+              styleText={styles.text}
+              onPress={() => {
+                props.navigation.navigate('AlbumPage');
+              }}
             />
             <ButtonSimple
-            text={'Songs'}
-            style={styles.button}
-            styleText={styles.text}
-            onPress={() => {
-              props.navigation.navigate('TrackPage');
-            }}
+              text={'Songs'}
+              style={styles.button}
+              styleText={styles.text}
+              onPress={() => {
+                props.navigation.navigate('TrackPage');
+              }}
             />
           </>
         }
@@ -69,7 +67,6 @@ function HomePage(props) {
         numColumns={2}
         renderItem={({item}) => <Album {...props} id={item._id} />}
         keyExtractor={(item) => item._id}
-
       />
       <PlayerOverlay {...props} />
     </View>
@@ -91,7 +88,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 30,
-  }
+  },
 });
 
 const mapStateToProps = (state) => {

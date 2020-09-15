@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     padding: 30,
-    backgroundColor: 'rgba(52,52,52,1)'
+    backgroundColor: 'rgba(52,52,52,1)',
   },
   logo: {
     width: 300,

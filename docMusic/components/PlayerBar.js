@@ -4,14 +4,7 @@ import TrackPlayer from 'react-native-track-player';
 
 import * as Progress from 'react-native-progress';
 
-import {StyleSheet, Text, View} from 'react-native';
-
-function convertSecondeToMinSec(seconde) {
-  let min = Math.floor(seconde / 60);
-  let sec = Math.floor(seconde % 60);
-
-  return '' + min + ':' + sec;
-}
+import {StyleSheet, View} from 'react-native';
 
 class MyPlayerBar extends TrackPlayer.ProgressComponent {
   render() {

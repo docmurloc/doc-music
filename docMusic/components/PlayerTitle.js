@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 import ButtonSwitch from './ButtonSwitch';
 import CustomText from './CustomText';
@@ -75,10 +75,16 @@ function PlayerTitle(props) {
         statusButton={props.player.unfavorite}
       />
       <View style={styles.box}>
-        <CustomText style={styles.title} ellipsizeMode={'tail'} numberOfLines={2}>
+        <CustomText
+          style={styles.title}
+          ellipsizeMode={'tail'}
+          numberOfLines={2}>
           {props.track.currentTrack.title}
         </CustomText>
-        <CustomText style={styles.text} ellipsizeMode={'tail'} numberOfLines={1}>
+        <CustomText
+          style={styles.text}
+          ellipsizeMode={'tail'}
+          numberOfLines={1}>
           {props.track.currentTrack.artist}
         </CustomText>
       </View>
@@ -116,12 +122,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     fontWeight: 'bold',
-    color: 'rgba(173, 173, 173, 1)'
+    color: 'rgba(173, 173, 173, 1)',
   },
   text: {
     color: 'rgba(173, 173, 173, 1)',
     fontSize: 15,
-  }
+  },
 });
 
 const mapStateToProps = (state) => {

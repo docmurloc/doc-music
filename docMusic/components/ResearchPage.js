@@ -7,11 +7,10 @@ import {GetAlbumByTitle} from '../APIserver/Album';
 import ResearchItem from './ResearchItem';
 import PlayerOverlay from './PlayerOverlay';
 import HeaderPage from './HeaderPage';
-import CustomText from './CustomText';
 import AlbumItem from './albumItem';
 import DisplayerCustom from './DisplayerCustom';
 
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 function ResearchPage(props) {
   const [research, setresearch] = useState(null);
@@ -34,11 +33,8 @@ function ResearchPage(props) {
 
   return (
     <View style={styles.container}>
-      <HeaderPage
-      title={'Search'}
-      icon={require('../Images/search.png')}
-      />
-      <ResearchBar onPress={setresearch} placeholder={'Track or album'}/>
+      <HeaderPage title={'Search'} icon={require('../Images/search.png')} />
+      <ResearchBar onPress={setresearch} placeholder={'Track or album'} />
       <DisplayerCustom
         {...props}
         style={styles.FlatList}
@@ -75,10 +71,10 @@ const styles = StyleSheet.create({
     //textAlign: 'center',
   },
   FlatList: {
-    height: "35%",
+    height: '35%',
     marginTop: 10,
     //backgroundColor: 'red'
-  }
+  },
 });
 
 const mapStateToProps = (state) => {
