@@ -3,7 +3,7 @@ import {StyleSheet, Text, ViewStyle} from 'react-native';
 
 type CustomTextProps = {
   style: any,
-  readonly children: JSX.Element
+  readonly children: string
 }
 
 function CustomText({style, children} : CustomTextProps) {

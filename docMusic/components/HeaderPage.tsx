@@ -1,9 +1,14 @@
 import React from 'react';
-import {StyleSheet, Image, View} from 'react-native';
+import {StyleSheet, Image, View, ImageSourcePropType} from 'react-native';
 
 import CustomText from './CustomText';
 
-function HeaderPage(props) {
+type HeaderPageProps = {
+  title: string,
+  icon: ImageSourcePropType
+}
+
+function HeaderPage(props : HeaderPageProps) {
   return (
     <View style={styles.box}>
       <View style={styles.imageView}>
