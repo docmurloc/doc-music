@@ -26,7 +26,7 @@ async function SetAlbumItem(setAlbum, id = null) {
   setAlbum(answer);
 }
 
-async function SetAlbumFavorite(idTrack) {
+async function SetAlbumFavorite(idTrack : string) {
   const store = Store.getState();
   const arrayLike = store.profil.albumFavorite;
 
@@ -39,7 +39,7 @@ async function SetAlbumFavorite(idTrack) {
   }
 }
 
-async function selectedAlbum(props, id, album) {
+async function selectedAlbum(props, id : string, album) {
   let answer = await GetPlaylistById(id);
   SetAlbumFavorite(album);
   const action = {type: 'SET_CURRENT_PLAYLIST', playlist: answer};
